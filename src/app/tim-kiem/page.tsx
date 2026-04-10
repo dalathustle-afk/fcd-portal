@@ -4,27 +4,66 @@ import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { Search } from 'lucide-react'
-import { products } from '@/content/products'
+import { products } from '@/data/products'
 import { policies } from '@/content/policies'
 import { flavorCategories } from '@/content/flavors'
-import { partners } from '@/content/partners'
-import type { SearchResult } from '@/lib/types'
+import { partners } from '@/data/partners'
+
+interface SearchResult {
+  type: string
+  title: string
+  subtitle?: string
+  href: string
+  tags?: string[]
+}
 
 function buildAllResults(): SearchResult[] {
   const results: SearchResult[] = []
-  products.forEach((p) => results.push({ type: 'product', title: p.name, subtitle: `${p.code} · ${p.description.substring(0, 80)}`, href: `/san-pham/${p.slug}`, tags: p.tags }))
-  policies.forEach((p) => results.push({ type: 'policy', title: p.title, subtitle: p.summary, href: `/chinh-sach/${p.slug}`, tags: p.tags }))
-  flavorCategories.forEach((f) => results.push({ type: 'flavor', title: `Gu ${f.label}`, subtitle: f.character, href: `/gu-ca-phe#${f.slug}`, tags: [f.slug] }))
-  partners.forEach((p) => results.push({ type: 'partner', title: p.name, subtitle: `${p.industry} · ${p.city}`, href: '/doi-tac', tags: [] }))
+  // Products — use new ProductRecord fields
+  products.forEach((p) =>
+    results.push({
+      type: 'product',
+      title: p.name,
+      subtitle: `${p.code} · ${p.descriptionShort.substring(0, 80)}`,
+      href: `/san-pham/${p.slug}`,
+      tags: [p.code, p.group],
+    })
+  )
+  // Policies
+  policies.forEach((p) =>
+    results.push({ type: 'policy', title: p.title, subtitle: p.summary, href: `/chinh-sach/${p.slug}`, tags: p.tags })
+  )
+  // Flavor categories
+  flavorCategories.forEach((f) =>
+    results.push({ type: 'flavor', title: `Gu ${f.label}`, subtitle: f.character, href: `/gu-ca-phe#${f.slug}`, tags: [f.slug] })
+  )
+  // Partners — only name (no industry/city in new PartnerRecord unless available)
+  partners.forEach((p) =>
+    results.push({
+      type: 'partner',
+      title: p.name,
+      subtitle: p.category ?? 'Đối tác doanh nghiệp',
+      href: '/doi-tac',
+      tags: [],
+    })
+  )
+  // Static pages
   results.push(
-    { type: 'page', title: 'Chương trình An Nhiên', subtitle: 'Giải pháp cà phê đặc sản toàn diện', href: '/an-nhien' },
-    { type: 'page', title: 'Bảng giá niêm yết', subtitle: 'Xem bảng giá đầy đủ', href: '/bang-gia' },
-    { type: 'page', title: 'Giới thiệu FCD', subtitle: 'Thương hiệu cà phê đặc sản Cầu Đất', href: '/gioi-thieu' },
+    { type: 'page', title: 'Chương trình An Nhiên', subtitle: 'Triết lý An & Nhìn, 5 Không, 10 bước kiểm soát', href: '/an-nhien' },
+    { type: 'page', title: 'Bảng giá niêm yết', subtitle: 'Giá chính thức từ 10/02/2026', href: '/bang-gia' },
+    { type: 'page', title: 'Giới thiệu FCD', subtitle: 'Thương hiệu cà phê đặc sản Cầu Đất', href: '/gioi-thieu' }
   )
   return results
 }
 
-const typeLabels: Record<string, string> = { product: '☕ Sản phẩm', policy: '📜 Chính sách', flavor: '🎨 Gu cà phê', partner: '🤝 Đối tác', page: '📄 Trang' }
+const typeLabels: Record<string, string> = {
+  product: '☕ Sản phẩm',
+  policy: '📜 Chính sách',
+  flavor: '🎨 Gu cà phê',
+  partner: '🤝 Đối tác',
+  page: '📄 Trang',
+}
+
 const allResults = buildAllResults()
 
 function SearchContent() {
@@ -36,11 +75,14 @@ function SearchContent() {
   useEffect(() => {
     if (!query.trim()) { setResults([]); return }
     const q = query.toLowerCase()
-    setResults(allResults.filter((r) =>
-      r.title.toLowerCase().includes(q) ||
-      r.subtitle?.toLowerCase().includes(q) ||
-      r.tags?.some((t) => t.toLowerCase().includes(q))
-    ))
+    setResults(
+      allResults.filter(
+        (r) =>
+          r.title.toLowerCase().includes(q) ||
+          r.subtitle?.toLowerCase().includes(q) ||
+          r.tags?.some((t) => t.toLowerCase().includes(q))
+      )
+    )
   }, [query])
 
   const grouped = results.reduce<Record<string, SearchResult[]>>((acc, r) => {
@@ -99,12 +141,12 @@ function SearchContent() {
       {!query && (
         <div className="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {[
-            { href: '/san-pham', icon: '☕', title: 'Tra cứu sản phẩm', desc: 'Tìm theo gu, dòng, giá' },
+            { href: '/san-pham', icon: '☕', title: 'Tra cứu sản phẩm', desc: 'Tìm theo mã, gu, nhóm' },
             { href: '/chinh-sach', icon: '📜', title: 'Chính sách', desc: 'Chiết khấu, hỗ trợ, đại sứ' },
-            { href: '/bang-gia', icon: '📋', title: 'Bảng giá', desc: 'Giá lẻ và giá combo' },
+            { href: '/bang-gia', icon: '📋', title: 'Bảng giá', desc: 'Giá niêm yết từ 10/02/2026' },
             { href: '/gu-ca-phe', icon: '🎨', title: 'Gu cà phê', desc: '4 nhóm gu đặc trưng' },
-            { href: '/an-nhien', icon: '✨', title: 'An Nhiên', desc: 'Chương trình giá trị FCD' },
-            { href: '/doi-tac', icon: '🤝', title: 'Đối tác', desc: '25+ doanh nghiệp đồng hành' },
+            { href: '/an-nhien', icon: '✨', title: 'An Nhiên', desc: 'An & Nhìn, 5 Không, combo 12kg' },
+            { href: '/doi-tac', icon: '🤝', title: 'Đối tác', desc: 'Doanh nghiệp đồng hành FCD' },
           ].map((item) => (
             <Link
               key={item.href}

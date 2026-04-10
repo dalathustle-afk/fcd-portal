@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import { MapPin, Phone, Mail, MessageCircle, Share2 } from 'lucide-react'
+import { MapPin, MessageSquare } from 'lucide-react'
+import { siteData } from '@/data/site'
 
 const footerLinks = [
   {
@@ -30,6 +31,8 @@ const footerLinks = [
 ]
 
 export function Footer() {
+  const { contact, social } = siteData
+
   return (
     <footer className="bg-[#1C0F07] text-[#EDE4D8]/70 border-t border-[#E8A84C]/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-14">
@@ -43,40 +46,68 @@ export function Footer() {
             <p className="text-sm leading-relaxed mb-5">
               Cà phê đặc sản từ Cầu Đất — chất lượng minh bạch, trải nghiệm an nhiên.
             </p>
+
             <div className="space-y-2 text-sm">
-              <div className="flex items-start gap-2">
-                <MapPin size={14} className="mt-0.5 text-[#C07A2B] shrink-0" />
-                <span>Cầu Đất, Đà Lạt, Lâm Đồng</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Phone size={14} className="text-[#C07A2B]" />
-                <a href="tel:+84000000000" className="hover:text-[#E8A84C] transition-colors">
-                  Liên hệ qua form
-                </a>
-              </div>
-              <div className="flex items-center gap-2">
-                <Mail size={14} className="text-[#C07A2B]" />
-                <a href="mailto:hello@fcd.vn" className="hover:text-[#E8A84C] transition-colors">
-                  hello@fcd.vn
-                </a>
-              </div>
+              {/* Address — verified */}
+              {contact.address && (
+                <div className="flex items-start gap-2">
+                  <MapPin size={14} className="mt-0.5 text-[#C07A2B] shrink-0" />
+                  <span>{contact.address}</span>
+                </div>
+              )}
+
+              {/* Phone — only show if verified */}
+              {contact.showPhone && contact.phone && (
+                <div className="flex items-center gap-2">
+                  <a href={`tel:${contact.phone}`} className="hover:text-[#E8A84C] transition-colors">
+                    {contact.phone}
+                  </a>
+                </div>
+              )}
+
+              {/* Email — only show if verified */}
+              {contact.showEmail && contact.email && (
+                <div className="flex items-center gap-2">
+                  <a href={`mailto:${contact.email}`} className="hover:text-[#E8A84C] transition-colors">
+                    {contact.email}
+                  </a>
+                </div>
+              )}
+
+              {/* Fallback if no phone/email confirmed */}
+              {!contact.showPhone && !contact.showEmail && (
+                <div className="flex items-center gap-2">
+                  <MessageSquare size={14} className="text-[#C07A2B]" />
+                  <Link href="/lien-he" className="hover:text-[#E8A84C] transition-colors">
+                    {contact.contactFallbackLabel}
+                  </Link>
+                </div>
+              )}
             </div>
-            <div className="flex gap-3 mt-5">
-              <a
-                href="https://facebook.com"
-                aria-label="Facebook FCD"
-                className="p-2 rounded-lg bg-[#E8A84C]/10 hover:bg-[#E8A84C]/20 text-[#E8A84C] transition-colors"
-              >
-                <Share2 size={16} />
-              </a>
-              <a
-                href="https://zalo.me"
-                aria-label="Zalo FCD"
-                className="p-2 rounded-lg bg-[#E8A84C]/10 hover:bg-[#E8A84C]/20 text-[#E8A84C] transition-colors"
-              >
-                <MessageCircle size={16} />
-              </a>
-            </div>
+
+            {/* Social links — only render if URL is confirmed */}
+            {(social.facebook || social.zalo) && (
+              <div className="flex gap-3 mt-5">
+                {social.facebook && (
+                  <a
+                    href={social.facebook}
+                    aria-label="Facebook FCD"
+                    className="p-2 rounded-lg bg-[#E8A84C]/10 hover:bg-[#E8A84C]/20 text-[#E8A84C] transition-colors text-xs font-semibold"
+                  >
+                    FB
+                  </a>
+                )}
+                {social.zalo && (
+                  <a
+                    href={social.zalo}
+                    aria-label="Zalo FCD"
+                    className="p-2 rounded-lg bg-[#E8A84C]/10 hover:bg-[#E8A84C]/20 text-[#E8A84C] transition-colors text-xs font-semibold"
+                  >
+                    Zalo
+                  </a>
+                )}
+              </div>
+            )}
           </div>
 
           {/* Nav columns */}

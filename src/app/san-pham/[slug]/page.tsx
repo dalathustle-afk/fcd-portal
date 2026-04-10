@@ -1,10 +1,8 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { ArrowLeft, MapPin, Package, Tag } from 'lucide-react'
-import { products } from '@/content/products'
-import { flavorCategories } from '@/content/flavors'
-import { FlavorRadar } from '@/components/products/FlavorRadar'
+import { ArrowLeft, MapPin, Package } from 'lucide-react'
+import { products } from '@/data/products'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -19,17 +17,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const product = products.find((p) => p.slug === slug)
   if (!product) return {}
   return {
-    title: product.name,
-    description: product.description,
+    title: `${product.name} — FCD`,
+    description: product.descriptionShort,
   }
 }
 
-const roastLabels: Record<string, string> = {
-  light: 'Rang nhẹ',
-  'medium-light': 'Rang vừa nhẹ',
-  medium: 'Rang vừa',
-  'medium-dark': 'Rang vừa đậm',
-  dark: 'Rang đậm',
+const groupLabels: Record<string, string> = {
+  'gu-pho-thong': 'Gu Phổ Thông',
+  'gu-truyen-thong': 'Gu Truyền Thống',
+  'gu-dam-vi': 'Gu Đậm Vị',
+  'gu-can-bang': 'Gu Cân Bằng',
+  'gu-tinh-te': 'Gu Tinh Tế',
+  'gu-nguyen-ban': 'Gu Nguyên Bản',
+  'phin-giay': 'Phin Giấy',
+  'bo-dung-cu': 'Bộ Dụng Cụ',
+  'hop-qua-giay': 'Hộp Quà Giấy',
+  'hop-qua-tinh-te': 'Hộp Quà Tinh Tế',
+  'an-nhien-combo': 'Gói An Nhiên 12kg',
 }
 
 export default async function SanPhamChiTietPage({ params }: Props) {
@@ -37,9 +41,8 @@ export default async function SanPhamChiTietPage({ params }: Props) {
   const product = products.find((p) => p.slug === slug)
   if (!product) notFound()
 
-  const flavorCat = flavorCategories.find((f) => f.id === product.flavor.category)
   const relatedProducts = products
-    .filter((p) => p.flavor.category === product.flavor.category && p.id !== product.id)
+    .filter((p) => p.group === product.group && p.id !== product.id)
     .slice(0, 3)
 
   return (
@@ -53,7 +56,9 @@ export default async function SanPhamChiTietPage({ params }: Props) {
             <ArrowLeft size={14} /> Quay lại danh sách
           </Link>
           <div className="flex items-center gap-3 mb-2">
-            <span className="badge badge-amber">{flavorCat?.icon} Gu {flavorCat?.label}</span>
+            <span className="badge badge-amber">
+              {groupLabels[product.group] ?? product.group}
+            </span>
             <span className="text-[#EDE4D8]/40 text-sm font-mono">{product.code}</span>
           </div>
           <h1 className="text-3xl sm:text-4xl font-bold text-white">{product.name}</h1>
@@ -63,109 +68,117 @@ export default async function SanPhamChiTietPage({ params }: Props) {
       <section className="py-10 bg-[#FDF6ED]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid lg:grid-cols-2 gap-10">
-            {/* Left: flavor radar + details */}
+
+            {/* Left: product detail */}
             <div className="space-y-6">
-              {/* Flavor card */}
-              <div className="bg-white rounded-2xl border border-[#D9CABC] p-7">
-                <h2 className="font-bold text-[#1A0F08] mb-5">Biểu đồ hương vị</h2>
-                <FlavorRadar flavor={product.flavor} />
+              {/* Product image placeholder */}
+              <div className="bg-white rounded-2xl border border-[#D9CABC] overflow-hidden">
+                <div className="h-56 flex flex-col items-center justify-center gap-3 bg-[#F5EDE0]">
+                  <span className="text-6xl">☕</span>
+                  <span className="text-sm font-bold text-[#6B2D0A] bg-[#E8A84C]/20 px-3 py-1 rounded-full">
+                    {product.code}
+                  </span>
+                  {product.todoImage && (
+                    <span className="text-xs text-[#6B5A4E] bg-white/60 px-2 py-0.5 rounded">
+                      Ảnh thật sẽ được cập nhật
+                    </span>
+                  )}
+                </div>
               </div>
 
               {/* Flavor notes */}
-              <div className="bg-white rounded-2xl border border-[#D9CABC] p-6">
-                <h3 className="font-semibold text-[#1A0F08] mb-4">🎵 Notes hương vị</h3>
-                <div className="flex flex-wrap gap-2">
-                  {product.notes.map((note) => (
-                    <span key={note} className="badge badge-amber px-3 py-1.5 text-sm">
-                      {note}
-                    </span>
-                  ))}
+              {product.flavorNotes && product.flavorNotes.length > 0 && (
+                <div className="bg-white rounded-2xl border border-[#D9CABC] p-6">
+                  <h3 className="font-semibold text-[#1A0F08] mb-4">🎵 Notes hương vị</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {product.flavorNotes.map((note) => (
+                      <span key={note} className="badge badge-amber px-3 py-1.5 text-sm">
+                        {note}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-                <div className="mt-4 pt-4 border-t border-[#F5EDE0]">
-                  <p className="text-xs text-[#6B5A4E]">
-                    Phù hợp: {product.flavor.suitableFor.join(' · ')}
-                  </p>
-                </div>
-              </div>
-            </div>
+              )}
 
-            {/* Right: info */}
-            <div className="space-y-6">
-              {/* Description */}
+              {/* Specs */}
               <div className="bg-white rounded-2xl border border-[#D9CABC] p-6">
-                <h2 className="font-bold text-[#1A0F08] mb-3">Mô tả sản phẩm</h2>
-                <p className="text-[#6B5A4E] leading-relaxed">{product.description}</p>
-              </div>
-
-              {/* Product specs */}
-              <div className="bg-white rounded-2xl border border-[#D9CABC] p-6">
-                <h3 className="font-semibold text-[#1A0F08] mb-4">Thông số kỹ thuật</h3>
+                <h3 className="font-semibold text-[#1A0F08] mb-4">Thông số</h3>
                 <dl className="space-y-3">
+                  {product.origin && (
+                    <div className="flex gap-3">
+                      <dt className="text-xs font-semibold text-[#6B5A4E] w-28 shrink-0 flex items-center gap-1">
+                        <MapPin size={12} /> Vùng nguyên liệu
+                      </dt>
+                      <dd className="text-sm text-[#1A0F08]">{product.origin}</dd>
+                    </div>
+                  )}
+                  {product.roastLevel && (
+                    <div className="flex gap-3">
+                      <dt className="text-xs font-semibold text-[#6B5A4E] w-28 shrink-0">Độ rang</dt>
+                      <dd className="text-sm text-[#1A0F08]">{product.roastLevel}</dd>
+                    </div>
+                  )}
                   <div className="flex gap-3">
-                    <dt className="text-xs font-semibold text-[#6B5A4E] w-28 shrink-0 flex items-center gap-1">
-                      <Tag size={12} /> Nguyên liệu
-                    </dt>
-                    <dd className="text-sm text-[#1A0F08]">{product.ingredients}</dd>
+                    <dt className="text-xs font-semibold text-[#6B5A4E] w-28 shrink-0">Mã sản phẩm</dt>
+                    <dd className="text-sm text-[#1A0F08] font-mono">{product.code}</dd>
                   </div>
                   <div className="flex gap-3">
-                    <dt className="text-xs font-semibold text-[#6B5A4E] w-28 shrink-0 flex items-center gap-1">
-                      <MapPin size={12} /> Vùng trồng
-                    </dt>
-                    <dd className="text-sm text-[#1A0F08]">{product.origin.join(', ')}</dd>
-                  </div>
-                  <div className="flex gap-3">
-                    <dt className="text-xs font-semibold text-[#6B5A4E] w-28 shrink-0">Độ rang</dt>
-                    <dd className="text-sm text-[#1A0F08]">{roastLabels[product.roastLevel]}</dd>
+                    <dt className="text-xs font-semibold text-[#6B5A4E] w-28 shrink-0">Nhóm</dt>
+                    <dd className="text-sm text-[#1A0F08]">{groupLabels[product.group] ?? product.group}</dd>
                   </div>
                 </dl>
               </div>
+            </div>
+
+            {/* Right: description + pricing */}
+            <div className="space-y-6">
+              <div className="bg-white rounded-2xl border border-[#D9CABC] p-6">
+                <h2 className="font-bold text-[#1A0F08] mb-3">Mô tả sản phẩm</h2>
+                <p className="text-[#6B5A4E] leading-relaxed">{product.descriptionLong ?? product.descriptionShort}</p>
+              </div>
 
               {/* Pricing table */}
-              <div className="bg-white rounded-2xl border border-[#D9CABC] overflow-hidden">
-                <div className="px-6 py-4 border-b border-[#F5EDE0]">
-                  <h3 className="font-semibold text-[#1A0F08] flex items-center gap-2">
-                    <Package size={16} /> Quy cách & Giá niêm yết
-                  </h3>
-                </div>
-                <div className="table-responsive">
+              {product.prices.length > 0 && (
+                <div className="bg-white rounded-2xl border border-[#D9CABC] overflow-hidden">
+                  <div className="px-6 py-4 border-b border-[#F5EDE0]">
+                    <h3 className="font-semibold text-[#1A0F08] flex items-center gap-2">
+                      <Package size={16} /> Quy cách &amp; Giá niêm yết
+                    </h3>
+                  </div>
                   <table className="w-full text-sm">
                     <thead className="bg-[#F5EDE0]">
                       <tr>
                         <th className="text-left px-6 py-3 text-xs font-semibold text-[#6B5A4E]">Quy cách</th>
-                        <th className="text-right px-6 py-3 text-xs font-semibold text-[#6B5A4E]">Giá lẻ</th>
-                        <th className="text-right px-6 py-3 text-xs font-semibold text-[#6B5A4E]">Giá combo</th>
+                        <th className="text-right px-6 py-3 text-xs font-semibold text-[#6B5A4E]">Giá niêm yết</th>
                       </tr>
                     </thead>
                     <tbody>
-                      {product.format.map((fmt) => (
-                        <tr key={fmt.sku} className="border-t border-[#F5EDE0]">
-                          <td className="px-6 py-3">
-                            <div className="font-medium text-[#1A0F08]">{fmt.weight}</div>
-                            <div className="text-xs text-[#6B5A4E] font-mono">{fmt.sku}</div>
-                          </td>
-                          <td className="px-6 py-3 text-right font-semibold text-[#6B2D0A]">
-                            {fmt.price.toLocaleString('vi-VN')}đ
-                          </td>
-                          <td className="px-6 py-3 text-right">
-                            {fmt.priceCombo ? (
-                              <span className="font-semibold text-[#166534]">
-                                {fmt.priceCombo.toLocaleString('vi-VN')}đ
-                              </span>
-                            ) : (
-                              <span className="text-[#6B5A4E]">—</span>
-                            )}
+                      {product.prices.map((pt) => (
+                        <tr key={pt.size} className="border-t border-[#F5EDE0]">
+                          <td className="px-6 py-3 font-medium text-[#1A0F08]">{pt.size}</td>
+                          <td className="px-6 py-3 text-right font-bold text-[#6B2D0A]">
+                            {pt.price.toLocaleString('vi-VN')}đ
                           </td>
                         </tr>
                       ))}
                     </tbody>
                   </table>
+                  <div className="px-6 py-3 bg-[#FDF6ED] border-t border-[#F5EDE0]">
+                    <p className="text-xs text-[#6B5A4E]">
+                      ⓘ Giá niêm yết khách hàng lẻ, hiệu lực từ 10/02/2026.
+                    </p>
+                  </div>
                 </div>
-                <div className="px-6 py-4 bg-[#FDF6ED] border-t border-[#F5EDE0]">
-                  <p className="text-xs text-[#6B5A4E]">
-                    ⓘ Giá niêm yết, tham khảo tại thời điểm cập nhật. Giá combo áp dụng theo chương trình An Nhiên.
+              )}
+
+              {product.prices.length === 0 && (
+                <div className="bg-[#FDF6ED] rounded-2xl border border-[#D9CABC] p-6">
+                  <h3 className="font-semibold text-[#1A0F08] mb-2">Giá &amp; Quy cách</h3>
+                  <p className="text-sm text-[#6B5A4E]">
+                    Liên hệ FCD để xác nhận giá và điều kiện đặt hàng cho nhóm sản phẩm này.
                   </p>
                 </div>
-              </div>
+              )}
 
               {/* CTA */}
               <div className="bg-[#1C0F07] rounded-2xl p-6 text-center">
@@ -185,7 +198,7 @@ export default async function SanPhamChiTietPage({ params }: Props) {
           {/* Related products */}
           {relatedProducts.length > 0 && (
             <div className="mt-12">
-              <h2 className="text-xl font-bold text-[#1A0F08] mb-6">Sản phẩm cùng gu</h2>
+              <h2 className="text-xl font-bold text-[#1A0F08] mb-6">Sản phẩm cùng nhóm</h2>
               <div className="grid sm:grid-cols-3 gap-5">
                 {relatedProducts.map((rp) => (
                   <Link
@@ -193,12 +206,15 @@ export default async function SanPhamChiTietPage({ params }: Props) {
                     href={`/san-pham/${rp.slug}`}
                     className="bg-white rounded-xl border border-[#D9CABC] p-5 card-hover group"
                   >
-                    <div className="font-semibold text-[#1A0F08] mb-1 group-hover:text-[#6B2D0A] transition-colors">
+                    <div className="font-medium text-[#1A0F08] mb-1 group-hover:text-[#6B2D0A] transition-colors">
                       {rp.name}
                     </div>
-                    <div className="text-sm text-[#6B5A4E]">
-                      {rp.format[0].price.toLocaleString('vi-VN')}đ
-                    </div>
+                    <div className="text-xs text-[#6B5A4E] font-mono">{rp.code}</div>
+                    {rp.prices[0] && (
+                      <div className="text-sm font-bold text-[#6B2D0A] mt-2">
+                        {rp.prices[0].price.toLocaleString('vi-VN')}đ
+                      </div>
+                    )}
                   </Link>
                 ))}
               </div>

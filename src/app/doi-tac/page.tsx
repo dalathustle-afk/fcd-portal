@@ -1,89 +1,63 @@
 import type { Metadata } from 'next'
-import { partners } from '@/content/partners'
-import { PartnerGrid } from '@/components/partners/PartnerGrid'
+import { partners } from '@/data/partners'
 
 export const metadata: Metadata = {
-  title: 'Đối tác đồng hành FCD',
-  description: 'Danh sách 25+ doanh nghiệp và tổ chức đang đồng hành cùng FCD trên toàn quốc.',
+  title: 'Đối tác doanh nghiệp — FCD',
+  description: 'Danh sách doanh nghiệp và tổ chức đang sử dụng cà phê FCD.',
 }
 
-const industries = Array.from(new Set(partners.map((p) => p.industry)))
-
 export default function DoiTacPage() {
-  const platinumPartners = partners.filter((p) => p.tier === 'platinum')
-  const goldPartners = partners.filter((p) => p.tier === 'gold')
-  const standardPartners = partners.filter((p) => p.tier === 'standard')
-
   return (
     <>
       <section className="pt-24 pb-10 bg-[#1C0F07]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <span className="badge badge-amber mb-4 inline-flex">🤝 Đối tác</span>
           <h1 className="text-3xl sm:text-4xl font-bold text-white mb-3">
-            Đối tác & Doanh nghiệp đồng hành
+            Đối tác &amp; Doanh nghiệp đồng hành
           </h1>
           <p className="text-[#EDE4D8]/60 max-w-lg">
-            {partners.length}+ doanh nghiệp và tổ chức đang tin tưởng đồng hành cùng FCD — từ F&B đến y tế, giáo dục và công nghệ.
+            Các doanh nghiệp và tổ chức đang tin dùng cà phê FCD trong môi trường làm việc.
           </p>
         </div>
       </section>
 
       <section className="py-12 bg-[#FDF6ED]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 space-y-14">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 space-y-10">
 
-          {/* Stats */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            {[
-              { value: `${partners.length}+`, label: 'Đối tác toàn quốc' },
-              { value: `${platinumPartners.length}`, label: 'Đối tác Platinum' },
-              { value: `${industries.length}+`, label: 'Ngành nghề' },
-              { value: '3+', label: 'Vùng địa lý' },
-            ].map((stat) => (
-              <div key={stat.label} className="bg-white rounded-2xl border border-[#D9CABC] p-5 text-center">
-                <div className="text-2xl font-bold text-[#6B2D0A] mb-1">{stat.value}</div>
-                <div className="text-xs text-[#6B5A4E]">{stat.label}</div>
+          {/* Partner list */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {partners.map((partner) => (
+              <div
+                key={partner.id}
+                className="bg-white rounded-2xl border border-[#D9CABC] p-6"
+              >
+                <h3 className="font-semibold text-[#1A0F08] mb-1 leading-snug">{partner.name}</h3>
+                {partner.category && (
+                  <p className="text-xs text-[#6B5A4E] mb-1">{partner.category}</p>
+                )}
+                {partner.city && (
+                  <p className="text-xs text-[#6B5A4E]">📍 {partner.city}</p>
+                )}
               </div>
             ))}
           </div>
 
-          {/* Platinum */}
-          {platinumPartners.length > 0 && (
-            <div>
-              <div className="flex items-center gap-3 mb-5">
-                <span className="text-lg">⭐</span>
-                <h2 className="text-xl font-bold text-[#1A0F08]">Đối tác Platinum</h2>
-              </div>
-              <PartnerGrid partners={platinumPartners} />
-            </div>
-          )}
-
-          {/* Gold */}
-          {goldPartners.length > 0 && (
-            <div>
-              <div className="flex items-center gap-3 mb-5">
-                <span className="text-lg">🌟</span>
-                <h2 className="text-xl font-bold text-[#1A0F08]">Đối tác Gold</h2>
-              </div>
-              <PartnerGrid partners={goldPartners} />
-            </div>
-          )}
-
-          {/* Standard */}
-          {standardPartners.length > 0 && (
-            <div>
-              <div className="flex items-center gap-3 mb-5">
-                <span className="text-lg">🤝</span>
-                <h2 className="text-xl font-bold text-[#1A0F08]">Đối tác đồng hành</h2>
-              </div>
-              <PartnerGrid partners={standardPartners} />
-            </div>
-          )}
+          {/* Note về danh sách */}
+          <div className="bg-[#E8A84C]/10 border border-[#E8A84C]/30 rounded-xl p-5 text-sm text-[#6B5A4E]">
+            ⓘ Danh sách đối tác cập nhật từ dữ liệu xác minh. Nếu doanh nghiệp của bạn chưa xuất hiện,
+            vui lòng{' '}
+            <a href="/lien-he" className="text-[#C07A2B] underline hover:text-[#6B2D0A]">
+              liên hệ FCD
+            </a>{' '}
+            để cập nhật.
+          </div>
 
           {/* CTA */}
           <div className="bg-[#1C0F07] rounded-2xl p-8 text-center">
             <h3 className="text-xl font-bold text-white mb-2">Trở thành đối tác FCD</h3>
             <p className="text-[#EDE4D8]/60 mb-5 text-sm max-w-md mx-auto">
-              Bạn đang tìm giải pháp cà phê chất lượng cho doanh nghiệp? Liên hệ để cùng xây dựng mối hợp tác bền vững.
+              Bạn đang tìm giải pháp cà phê chất lượng cho doanh nghiệp?
+              Liên hệ để được tư vấn gói phù hợp.
             </p>
             <a
               href="/lien-he"

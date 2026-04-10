@@ -1,20 +1,26 @@
 import Link from 'next/link'
-import { ArrowRight, Search, BookOpen, ShieldCheck, Coffee, MapPin, Users, Award } from 'lucide-react'
-import { products } from '@/content/products'
-import { partners } from '@/content/partners'
+import { ArrowRight, ShieldCheck, Coffee, MapPin, Users, Award } from 'lucide-react'
+import { products } from '@/data/products'
+import { partners } from '@/data/partners'
 import { flavorCategories } from '@/content/flavors'
 import { HeroSearch } from '@/components/search/HeroSearch'
-import { PartnerGrid } from '@/components/partners/PartnerGrid'
 
+/**
+ * Homepage — reads from src/data/ (real data layer)
+ * Featured products: B3 / A3 / CAO1 / O1 (official catalog)
+ * Partners: from verified Excel list only
+ */
 export default function HomePage() {
-  const featuredProducts = products.filter((p) => p.featured).slice(0, 4)
-  const featuredPartners = partners.filter((p) => p.featured).slice(0, 12)
+  // Featured products = only the 4 official catalog entries marked featured: true
+  const featuredProducts = products.filter((p) => p.featured)
+
+  // Featured partners = verified from Excel
+  const featuredPartners = partners.filter((p) => p.featured)
 
   return (
     <>
       {/* ── HERO ─────────────────────────────────────────────────── */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden gradient-hero">
-        {/* Background texture */}
         <div className="absolute inset-0 opacity-20">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-[#C07A2B] blur-3xl" />
           <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-[#6B2D0A] blur-3xl" />
@@ -36,40 +42,35 @@ export default function HomePage() {
             Minh bạch từ vùng trồng đến tay bạn.
           </p>
 
-          {/* 3 CTA buttons */}
           <div className="flex flex-col sm:flex-row gap-3 justify-center mb-12">
             <Link
               href="/an-nhien"
               id="cta-an-nhien"
-              className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#C07A2B] hover:bg-[#E8A84C] text-[#1C0F07] font-semibold text-sm transition-all shadow-lg shadow-[#C07A2B]/30 hover:shadow-[#E8A84C]/30"
+              className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#C07A2B] hover:bg-[#E8A84C] text-[#1C0F07] font-semibold text-sm transition-all shadow-lg shadow-[#C07A2B]/30"
             >
-              Chương trình An Nhiên
-              <ArrowRight size={16} />
+              Chương trình An Nhiên <ArrowRight size={16} />
             </Link>
             <Link
               href="/san-pham"
               id="cta-san-pham"
               className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white border border-white/20 font-semibold text-sm transition-all"
             >
-              <Coffee size={16} />
-              Tra cứu sản phẩm & giá
+              <Coffee size={16} /> Tra cứu sản phẩm &amp; giá
             </Link>
             <Link
               href="/chinh-sach"
               id="cta-chinh-sach"
               className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white border border-white/20 font-semibold text-sm transition-all"
             >
-              <ShieldCheck size={16} />
-              Xem chính sách
+              <ShieldCheck size={16} /> Xem chính sách
             </Link>
           </div>
 
-          {/* Search box */}
           <HeroSearch />
         </div>
       </section>
 
-      {/* ── STRENGTHS ────────────────────────────────────────────── */}
+      {/* ── VÌ SAO CHỌN FCD ──────────────────────────────────────── */}
       <section className="py-20 bg-[#F5EDE0]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
@@ -84,28 +85,25 @@ export default function HomePage() {
               {
                 icon: <MapPin className="text-[#C07A2B]" size={28} />,
                 title: 'Vùng nguyên liệu',
-                desc: 'Arabica Cầu Đất 1.500m+ & Robusta Buôn Ma Thuột — nguồn gốc truy xuất được.',
+                desc: 'Arabica Cầu Đất 1.500m+ và Robusta Buôn Ma Thuột — nguồn gốc xác minh được.',
               },
               {
                 icon: <Award className="text-[#C07A2B]" size={28} />,
                 title: 'Tiêu chuẩn SCA',
-                desc: 'Quy trình rang xay và cupping theo chuẩn Specialty Coffee Association quốc tế.',
+                desc: 'Quy trình rang xay và cupping theo định hướng Specialty Coffee Association.',
               },
               {
                 icon: <Coffee className="text-[#C07A2B]" size={28} />,
-                title: '4 gu vị đặc trưng',
-                desc: 'Đậm vị · Cân bằng · Tinh tế · Nguyên bản — phù hợp mọi khẩu vị.',
+                title: '5 Không cam kết',
+                desc: 'Không trộn độn, không tẩm ướp, không khét cháy, không tạp hương, không nấm mốc.',
               },
               {
                 icon: <Users className="text-[#C07A2B]" size={28} />,
-                title: 'Đối tác đồng hành',
-                desc: '25+ doanh nghiệp tin tưởng đồng hành cùng FCD trên toàn quốc.',
+                title: 'Đối tác doanh nghiệp',
+                desc: 'Được tin dùng bởi ngân hàng, doanh nghiệp nước ngoài và tổ chức uy tín.',
               },
             ].map((item) => (
-              <div
-                key={item.title}
-                className="bg-white rounded-2xl p-6 border border-[#D9CABC] card-hover"
-              >
+              <div key={item.title} className="bg-white rounded-2xl p-6 border border-[#D9CABC] card-hover">
                 <div className="w-12 h-12 rounded-xl bg-[#FDF6ED] flex items-center justify-center mb-4">
                   {item.icon}
                 </div>
@@ -130,14 +128,14 @@ export default function HomePage() {
                 An Nhiên cùng FCD
               </h2>
               <p className="text-[#EDE4D8]/70 mb-6 leading-relaxed">
-                Không chỉ là tên gọi — đây là chương trình giá trị toàn diện kết hợp sản phẩm chất lượng cao,
-                combo tiết kiệm và chính sách hỗ trợ rõ ràng cho cá nhân, văn phòng và đối tác.
+                &ldquo;An&rdquo; — an toàn, an tâm, được bảo đảm bằng hệ kiểm soát chất lượng 10 bước.
+                &ldquo;Nhìn&rdquo; — tự nhiên, nguyên bản, minh bạch theo cam kết 5 Không.
               </p>
               <div className="space-y-3 mb-8">
                 {[
-                  '🛡️ An cho sức khỏe — không hương liệu, kiểm soát chặt',
-                  '✅ An tâm cho người dùng — minh bạch từ nguồn gốc đến giá',
-                  '☕ An nhiên trong trải nghiệm — specialty coffee dễ tiếp cận',
+                  '🛡️ Không trộn độn, không tẩm ướp hương liệu nhân tạo',
+                  '✅ Kiểm soát 10 bước từ vùng trồng đến tay người dùng',
+                  '☕ Combo 12kg cho văn phòng — linh hoạt gu, liên hệ để xác nhận giá',
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-3">
                     <span className="text-sm text-[#EDE4D8]/80">{item}</span>
@@ -152,11 +150,11 @@ export default function HomePage() {
               </Link>
             </div>
 
-            {/* Quick stats */}
+            {/* Proof stats — only verified facts */}
             <div className="grid grid-cols-2 gap-4">
               {[
-                { value: '4', label: 'Gu vị đặc trưng', icon: '☕' },
-                { value: '25+', label: 'Đối tác doanh nghiệp', icon: '🤝' },
+                { value: '10', label: 'Bước kiểm soát chất lượng', icon: '🔬' },
+                { value: '5', label: 'Cam kết "Không"', icon: '🛡️' },
                 { value: '2', label: 'Vùng nguyên liệu', icon: '🌿' },
                 { value: '100%', label: 'Cà phê thật — không hương liệu', icon: '✅' },
               ].map((stat) => (
@@ -174,7 +172,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── FLAVOR CATEGORIES ────────────────────────────────────── */}
+      {/* ── 4 GU CÀ PHÊ ──────────────────────────────────────────── */}
       <section className="py-20 bg-[#FDF6ED]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
@@ -189,23 +187,16 @@ export default function HomePage() {
                 href={`/gu-ca-phe#${cat.slug}`}
                 className="group block rounded-2xl overflow-hidden border border-[#D9CABC] bg-white card-hover"
               >
-                <div
-                  className="h-2"
-                  style={{ backgroundColor: cat.color }}
-                />
+                <div className="h-2" style={{ backgroundColor: cat.color }} />
                 <div className="p-5">
                   <span className="text-3xl mb-3 block">{cat.icon}</span>
                   <h3 className="font-bold text-[#1A0F08] mb-1.5 group-hover:text-[#6B2D0A] transition-colors">
                     {cat.label}
                   </h3>
-                  <p className="text-xs text-[#6B5A4E] leading-relaxed mb-3">
-                    {cat.character}
-                  </p>
+                  <p className="text-xs text-[#6B5A4E] leading-relaxed mb-3">{cat.character}</p>
                   <div className="flex flex-wrap gap-1">
                     {cat.highlights.slice(0, 2).map((h) => (
-                      <span key={h} className="badge badge-amber text-xs">
-                        {h}
-                      </span>
+                      <span key={h} className="badge badge-amber text-xs">{h}</span>
                     ))}
                   </div>
                 </div>
@@ -224,13 +215,14 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── FEATURED PRODUCTS ────────────────────────────────────── */}
+      {/* ── SẢN PHẨM NỔI BẬT ────────────────────────────────────── */}
+      {/* Featured products: B3 / A3 / CAO1 / O1 from official catalog */}
       <section className="py-20 bg-[#F5EDE0]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex items-end justify-between mb-10">
             <div>
               <h2 className="text-3xl font-bold text-[#1A0F08] mb-2">Sản phẩm nổi bật</h2>
-              <p className="text-[#6B5A4E]">Được đặt hàng nhiều nhất</p>
+              <p className="text-[#6B5A4E]">4 gu chủ lực từ catalog chính thức</p>
             </div>
             <Link
               href="/san-pham"
@@ -242,34 +234,43 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {featuredProducts.map((product) => {
-              const mainFormat = product.format[0]
-              const flavorCat = flavorCategories.find((f) => f.id === product.flavor.category)
+              const minPrice = product.prices[0]?.price ?? 0
               return (
                 <Link
                   key={product.id}
                   href={`/san-pham/${product.slug}`}
                   className="group block bg-white rounded-2xl overflow-hidden border border-[#D9CABC] card-hover"
                 >
-                  <div
-                    className="h-40 flex items-center justify-center text-6xl"
-                    style={{ background: `${flavorCat?.color}18` }}
-                  >
-                    ☕
+                  {/* Image placeholder — todoImage: true until real photos provided */}
+                  <div className="h-40 flex flex-col items-center justify-center gap-2 bg-[#F5EDE0]">
+                    <span className="text-5xl">☕</span>
+                    <span className="text-xs font-bold text-[#6B2D0A] bg-[#E8A84C]/20 px-2 py-0.5 rounded-full">
+                      {product.code}
+                    </span>
                   </div>
                   <div className="p-5">
                     <div className="flex items-start justify-between gap-2 mb-2">
-                      <span className="badge badge-amber text-xs">{flavorCat?.label}</span>
+                      <span className="badge badge-amber text-xs">
+                        {product.group === 'gu-dam-vi' && 'Đậm Vị'}
+                        {product.group === 'gu-can-bang' && 'Cân Bằng'}
+                        {product.group === 'gu-tinh-te' && 'Tinh Tế'}
+                        {product.group === 'gu-nguyen-ban' && 'Nguyên Bản'}
+                      </span>
                       <span className="text-xs text-[#6B5A4E] font-mono">{product.code}</span>
                     </div>
                     <h3 className="font-semibold text-[#1A0F08] mb-1 group-hover:text-[#6B2D0A] leading-snug">
                       {product.name}
                     </h3>
-                    <p className="text-xs text-[#6B5A4E] mb-3 line-clamp-2">{product.description}</p>
-                    <div className="flex items-center justify-between">
-                      <span className="font-bold text-[#6B2D0A]">
-                        {mainFormat.price.toLocaleString('vi-VN')}đ
-                      </span>
-                      <span className="text-xs text-[#6B5A4E]">{mainFormat.weight}</span>
+                    <p className="text-xs text-[#6B5A4E] mb-3 line-clamp-2">{product.descriptionShort}</p>
+                    <div className="flex items-center justify-between pt-2 border-t border-[#F5EDE0]">
+                      {minPrice > 0 ? (
+                        <span className="font-bold text-[#6B2D0A]">
+                          {minPrice.toLocaleString('vi-VN')}đ
+                        </span>
+                      ) : (
+                        <span className="text-xs text-[#6B5A4E]">Liên hệ</span>
+                      )}
+                      <span className="text-xs text-[#6B5A4E]">250g</span>
                     </div>
                   </div>
                 </Link>
@@ -288,16 +289,33 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── PARTNERS ─────────────────────────────────────────────── */}
+      {/* ── ĐỐI TÁC DOANH NGHIỆP ──────────────────────────────────── */}
+      {/* Data from Danh-sach-kh-cong-ty.xlsx — verified entries only */}
       <section className="py-20 bg-[#FDF6ED]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-[#1A0F08] mb-3">Đối tác đồng hành</h2>
+            <h2 className="text-3xl font-bold text-[#1A0F08] mb-3">Đối tác doanh nghiệp</h2>
             <p className="text-[#6B5A4E] max-w-xl mx-auto">
-              Được tin tưởng bởi hơn 25 doanh nghiệp và tổ chức trên toàn quốc
+              Được tin dùng bởi các doanh nghiệp, ngân hàng và tổ chức uy tín
             </p>
           </div>
-          <PartnerGrid partners={featuredPartners} compact />
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+            {featuredPartners.map((partner) => (
+              <div
+                key={partner.id}
+                className="bg-white rounded-xl border border-[#D9CABC] p-4 flex flex-col gap-2"
+              >
+                <div className="font-semibold text-[#1A0F08] text-sm leading-snug">
+                  {partner.name}
+                </div>
+                {partner.category && (
+                  <div className="text-xs text-[#6B5A4E]">{partner.category}</div>
+                )}
+              </div>
+            ))}
+          </div>
+
           <div className="text-center mt-8">
             <Link
               href="/doi-tac"
@@ -314,7 +332,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {[
-              { href: '/bang-gia', icon: '📋', title: 'Bảng giá niêm yết', desc: 'Xem giá đầy đủ, cập nhật mới nhất' },
+              { href: '/bang-gia', icon: '📋', title: 'Bảng giá niêm yết', desc: 'Giá chính thức từ 10/02/2026' },
               { href: '/chinh-sach', icon: '📜', title: 'Thư viện chính sách', desc: 'Chiết khấu, hỗ trợ, đại sứ CTV' },
               { href: '/lien-he', icon: '💬', title: 'Liên hệ tư vấn', desc: 'Nhận tư vấn sản phẩm phù hợp' },
             ].map((item) => (

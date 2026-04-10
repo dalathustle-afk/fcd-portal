@@ -1,10 +1,11 @@
 import type { Metadata } from 'next'
-import { priceList } from '@/content/prices'
-import { PriceTable } from '@/components/pricing/PriceTable'
+import { priceList } from '@/data/prices'
+import { PriceTableReal } from '@/components/pricing/PriceTableReal'
 
 export const metadata: Metadata = {
   title: 'Bảng giá niêm yết FCD',
-  description: 'Bảng giá niêm yết chính thức các sản phẩm FCD — giá lẻ và giá combo An Nhiên. Cập nhật tháng 2/2026.',
+  description:
+    'Bảng giá niêm yết chính thức FCD — giá lẻ các gu P, P3, C, C3, B3, A3, CAO1, O1 và phin giấy. Cập nhật 10/02/2026.',
 }
 
 export default function BangGiaPage() {
@@ -28,7 +29,7 @@ export default function BangGiaPage() {
 
       <section className="py-10 bg-[#FDF6ED]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <PriceTable items={priceList.items} />
+          <PriceTableReal items={priceList.items} />
         </div>
       </section>
     </>

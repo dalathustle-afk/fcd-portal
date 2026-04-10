@@ -2,204 +2,127 @@
 
 import { useState, useMemo } from 'react'
 import Link from 'next/link'
-import { Search, Filter, X } from 'lucide-react'
-import { clsx } from 'clsx'
-import type { Product, FlavorCategory } from '@/lib/types'
+import { Search } from 'lucide-react'
+import type { ProductRecord } from '@/data/products'
 
-const lineLabels: Record<string, string> = {
-  premium: 'Premium',
-  signature: 'Signature',
-  classic: 'Classic',
-  blend: 'Blend',
-  espresso: 'Espresso',
-  gift: 'Hộp quà',
-}
-const roastLabels: Record<string, string> = {
-  light: 'Rang nhẹ',
-  'medium-light': 'Rang vừa nhẹ',
-  medium: 'Rang vừa',
-  'medium-dark': 'Rang vừa đậm',
-  dark: 'Rang đậm',
+const groupLabels: Record<string, string> = {
+  'gu-pho-thong': 'Gu Phổ Thông',
+  'gu-truyen-thong': 'Gu Truyền Thống',
+  'gu-dam-vi': 'Gu Đậm Vị',
+  'gu-can-bang': 'Gu Cân Bằng',
+  'gu-tinh-te': 'Gu Tinh Tế',
+  'gu-nguyen-ban': 'Gu Nguyên Bản',
+  'phin-giay': 'Phin Giấy',
+  'bo-dung-cu': 'Bộ Dụng Cụ',
+  'hop-qua-giay': 'Hộp Quà Giấy',
+  'hop-qua-tinh-te': 'Hộp Quà Tinh Tế',
+  'an-nhien-combo': 'Gói An Nhiên 12kg',
 }
 
 interface Props {
-  products: Product[]
-  flavors: FlavorCategory[]
+  products: ProductRecord[]
 }
 
-export function ProductFilters({ products, flavors }: Props) {
-  const [query, setQuery] = useState('')
-  const [selectedFlavor, setSelectedFlavor] = useState<string>('all')
-  const [selectedLine, setSelectedLine] = useState<string>('all')
-  const [maxPrice, setMaxPrice] = useState<number>(500000)
+export function ProductFilters({ products }: Props) {
+  const [search, setSearch] = useState('')
+  const [group, setGroup] = useState<string>('all')
 
-  const lines = Array.from(new Set(products.map((p) => p.line)))
+  const groups = useMemo(() => {
+    const g = Array.from(new Set(products.map((p) => p.group)))
+    return g
+  }, [products])
 
   const filtered = useMemo(() => {
     return products.filter((p) => {
-      const q = query.toLowerCase()
-      const matchesQuery =
-        !q ||
-        p.name.toLowerCase().includes(q) ||
-        p.code.toLowerCase().includes(q) ||
-        p.tags.some((t) => t.includes(q))
-      const matchesFlavor = selectedFlavor === 'all' || p.flavor.category === selectedFlavor
-      const matchesLine = selectedLine === 'all' || p.line === selectedLine
-      const minPrice = Math.min(...p.format.map((f) => f.price))
-      const matchesPrice = minPrice <= maxPrice
-      return matchesQuery && matchesFlavor && matchesLine && matchesPrice
+      const matchSearch =
+        !search ||
+        p.name.toLowerCase().includes(search.toLowerCase()) ||
+        p.code.toLowerCase().includes(search.toLowerCase()) ||
+        (p.descriptionShort ?? '').toLowerCase().includes(search.toLowerCase())
+      const matchGroup = group === 'all' || p.group === group
+      return matchSearch && matchGroup
     })
-  }, [products, query, selectedFlavor, selectedLine, maxPrice])
+  }, [products, search, group])
 
   return (
-    <>
-      {/* Filter bar */}
-      <div className="bg-white rounded-2xl border border-[#D9CABC] p-5 mb-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {/* Search */}
-          <div className="relative sm:col-span-2 lg:col-span-1">
-            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#6B5A4E]" />
-            <input
-              type="text"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Tên, mã sản phẩm, gu…"
-              id="product-search"
-              className="w-full pl-9 pr-3 py-2.5 rounded-lg border border-[#D9CABC] text-sm text-[#1A0F08] placeholder:text-[#6B5A4E]/60 focus:outline-none focus:border-[#C07A2B] transition-colors"
-            />
-          </div>
-
-          {/* Flavor filter */}
-          <select
-            value={selectedFlavor}
-            onChange={(e) => setSelectedFlavor(e.target.value)}
-            id="filter-flavor"
-            className="py-2.5 px-3 rounded-lg border border-[#D9CABC] text-sm text-[#1A0F08] focus:outline-none focus:border-[#C07A2B] bg-white"
-          >
-            <option value="all">Tất cả gu</option>
-            {flavors.map((f) => (
-              <option key={f.id} value={f.id}>{f.icon} Gu {f.label}</option>
-            ))}
-          </select>
-
-          {/* Line filter */}
-          <select
-            value={selectedLine}
-            onChange={(e) => setSelectedLine(e.target.value)}
-            id="filter-line"
-            className="py-2.5 px-3 rounded-lg border border-[#D9CABC] text-sm text-[#1A0F08] focus:outline-none focus:border-[#C07A2B] bg-white"
-          >
-            <option value="all">Tất cả dòng</option>
-            {lines.map((l) => (
-              <option key={l} value={l}>{lineLabels[l]}</option>
-            ))}
-          </select>
-
-          {/* Price */}
-          <div>
-            <label className="block text-xs text-[#6B5A4E] mb-1.5">
-              Giá tối đa: <strong>{maxPrice.toLocaleString('vi-VN')}đ</strong>
-            </label>
-            <input
-              type="range"
-              min={100000}
-              max={500000}
-              step={25000}
-              value={maxPrice}
-              onChange={(e) => setMaxPrice(Number(e.target.value))}
-              className="w-full accent-[#C07A2B]"
-            />
-          </div>
+    <div>
+      {/* Filters */}
+      <div className="flex flex-col sm:flex-row gap-4 mb-8">
+        <div className="relative flex-1">
+          <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#6B5A4E]" />
+          <input
+            type="text"
+            placeholder="Tìm theo tên, mã sản phẩm..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-[#D9CABC] bg-white text-[#1A0F08] text-sm focus:outline-none focus:border-[#C07A2B]"
+          />
         </div>
-
-        {/* Active filters */}
-        <div className="flex items-center gap-2 mt-3 flex-wrap">
-          <span className="text-xs text-[#6B5A4E]">{filtered.length} sản phẩm</span>
-          {(query || selectedFlavor !== 'all' || selectedLine !== 'all') && (
-            <button
-              onClick={() => { setQuery(''); setSelectedFlavor('all'); setSelectedLine('all') }}
-              className="flex items-center gap-1 text-xs text-[#6B2D0A] hover:text-[#C07A2B] transition-colors"
-            >
-              <X size={12} /> Xóa bộ lọc
-            </button>
-          )}
-        </div>
+        <select
+          value={group}
+          onChange={(e) => setGroup(e.target.value)}
+          className="px-4 py-2.5 rounded-xl border border-[#D9CABC] bg-white text-[#1A0F08] text-sm focus:outline-none focus:border-[#C07A2B]"
+        >
+          <option value="all">Tất cả nhóm</option>
+          {groups.map((g) => (
+            <option key={g} value={g}>{groupLabels[g] ?? g}</option>
+          ))}
+        </select>
       </div>
 
+      {/* Results count */}
+      <p className="text-sm text-[#6B5A4E] mb-5">
+        {filtered.length} sản phẩm
+      </p>
+
       {/* Product grid */}
-      {filtered.length === 0 ? (
-        <div className="text-center py-20">
-          <p className="text-5xl mb-4">☕</p>
-          <p className="text-[#6B5A4E]">Không tìm thấy sản phẩm phù hợp</p>
-        </div>
-      ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {filtered.map((product) => {
-            const mainFmt = product.format[0]
-            const flavorColor =
-              product.flavor.category === 'tinh-te' ? '#9D174D'
-              : product.flavor.category === 'dam-vi' ? '#7C2D12'
-              : product.flavor.category === 'nguyen-ban' ? '#166534'
-              : '#92400E'
-
-            return (
-              <Link
-                key={product.id}
-                href={`/san-pham/${product.slug}`}
-                className="group bg-white rounded-2xl border border-[#D9CABC] overflow-hidden card-hover"
-              >
-                {/* Product image placeholder */}
-                <div
-                  className="h-36 flex flex-col items-center justify-center gap-2"
-                  style={{ background: `${flavorColor}12` }}
-                >
-                  <span className="text-5xl">☕</span>
-                  <span
-                    className="text-xs font-semibold px-2 py-0.5 rounded-full text-white"
-                    style={{ backgroundColor: flavorColor }}
-                  >
-                    {lineLabels[product.line]}
-                  </span>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+        {filtered.map((p) => {
+          const minPrice = p.prices[0]?.price ?? 0
+          const minSize = p.sizes[0] ?? ''
+          return (
+            <Link
+              key={p.id}
+              href={`/san-pham/${p.slug}`}
+              className="group block bg-white rounded-2xl overflow-hidden border border-[#D9CABC] card-hover"
+            >
+              {/* Placeholder image until real photos available */}
+              <div className="h-36 flex flex-col items-center justify-center gap-2 bg-[#F5EDE0]">
+                <span className="text-4xl">☕</span>
+                <span className="text-xs font-bold text-[#6B2D0A] bg-[#E8A84C]/20 px-2 py-0.5 rounded-full">
+                  {p.code}
+                </span>
+              </div>
+              <div className="p-4">
+                <span className="text-xs text-[#C07A2B] font-semibold">
+                  {groupLabels[p.group] ?? p.group}
+                </span>
+                <h3 className="font-semibold text-[#1A0F08] text-sm mt-0.5 mb-1 group-hover:text-[#6B2D0A] leading-snug">
+                  {p.name}
+                </h3>
+                <p className="text-xs text-[#6B5A4E] line-clamp-2 mb-3">{p.descriptionShort}</p>
+                <div className="flex items-center justify-between border-t border-[#F5EDE0] pt-2">
+                  {minPrice > 0 ? (
+                    <span className="font-bold text-[#6B2D0A] text-sm">
+                      {minPrice.toLocaleString('vi-VN')}đ
+                    </span>
+                  ) : (
+                    <span className="text-xs text-[#6B5A4E]">Liên hệ</span>
+                  )}
+                  <span className="text-xs text-[#6B5A4E]">{minSize}</span>
                 </div>
+              </div>
+            </Link>
+          )
+        })}
+      </div>
 
-                <div className="p-5">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-mono text-[#6B5A4E]">{product.code}</span>
-                    <span className="text-xs text-[#6B5A4E]">{roastLabels[product.roastLevel]}</span>
-                  </div>
-
-                  <h3 className="font-semibold text-[#1A0F08] mb-2 leading-snug group-hover:text-[#6B2D0A] transition-colors">
-                    {product.name}
-                  </h3>
-
-                  {/* Flavor hints */}
-                  <div className="flex flex-wrap gap-1 mb-3">
-                    {product.notes.slice(0, 3).map((note) => (
-                      <span key={note} className="badge badge-amber text-xs">
-                        {note}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="flex items-center justify-between pt-3 border-t border-[#F5EDE0]">
-                    <div>
-                      <span className="font-bold text-[#6B2D0A]">
-                        {mainFmt.price.toLocaleString('vi-VN')}đ
-                      </span>
-                      <span className="text-xs text-[#6B5A4E] ml-1">/ {mainFmt.weight}</span>
-                    </div>
-                    {mainFmt.priceCombo && (
-                      <span className="badge badge-green text-xs">
-                        Combo {mainFmt.priceCombo.toLocaleString('vi-VN')}đ
-                      </span>
-                    )}
-                  </div>
-                </div>
-              </Link>
-            )
-          })}
+      {filtered.length === 0 && (
+        <div className="text-center py-16 text-[#6B5A4E]">
+          <div className="text-4xl mb-3">☕</div>
+          <p>Không tìm thấy sản phẩm phù hợp.</p>
         </div>
       )}
-    </>
+    </div>
   )
 }

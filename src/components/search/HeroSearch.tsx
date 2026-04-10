@@ -3,22 +3,31 @@
 import { useState, useRef, useEffect } from 'react'
 import { Search, X, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
-import { products } from '@/content/products'
+import { products } from '@/data/products'
 import { policies } from '@/content/policies'
 import { flavorCategories } from '@/content/flavors'
-import { partners } from '@/content/partners'
-import type { SearchResult } from '@/lib/types'
+import { partners } from '@/data/partners'
+
+
+interface SearchResult {
+  type: string
+  title: string
+  subtitle?: string
+  href: string
+  tags?: string[]
+}
 
 function buildIndex(): SearchResult[] {
   const results: SearchResult[] = []
 
   products.forEach((p) => {
+    const minPrice = p.prices[0]?.price
     results.push({
       type: 'product',
       title: p.name,
-      subtitle: `Mã: ${p.code} · ${p.format[0]?.price?.toLocaleString('vi-VN')}đ`,
+      subtitle: `Mã: ${p.code}${minPrice ? ` · ${minPrice.toLocaleString('vi-VN')}đ` : ''}`,
       href: `/san-pham/${p.slug}`,
-      tags: p.tags,
+      tags: [p.code, p.group],
     })
   })
 
@@ -46,15 +55,15 @@ function buildIndex(): SearchResult[] {
     results.push({
       type: 'partner',
       title: p.name,
-      subtitle: `${p.industry} · ${p.city}`,
+      subtitle: p.category ?? 'Đối tác doanh nghiệp',
       href: '/doi-tac',
-      tags: [p.industry],
+      tags: [],
     })
   })
 
   results.push(
-    { type: 'page', title: 'Chương trình An Nhiên', subtitle: 'Giải pháp cà phê đặc sản toàn diện', href: '/an-nhien' },
-    { type: 'page', title: 'Bảng giá niêm yết', subtitle: 'Xem bảng giá đầy đủ', href: '/bang-gia' },
+    { type: 'page', title: 'Chương trình An Nhiên', subtitle: 'Triết lý An & Nhìn, 5 Không, 10 bước', href: '/an-nhien' },
+    { type: 'page', title: 'Bảng giá niêm yết', subtitle: 'Giá chính thức từ 10/02/2026', href: '/bang-gia' },
     { type: 'page', title: 'Giới thiệu FCD', subtitle: 'Thương hiệu cà phê Cầu Đất', href: '/gioi-thieu' },
   )
 
@@ -79,6 +88,7 @@ const typeIcon: Record<string, string> = {
 export function HeroSearch() {
   const [query, setQuery] = useState('')
   const [results, setResults] = useState<SearchResult[]>([])
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [open, setOpen] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
   const index = useRef(buildIndex())
