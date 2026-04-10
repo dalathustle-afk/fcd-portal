@@ -19,17 +19,21 @@ const catSlugToGroup: Record<string, string> = {
 export default function GuCaPhePage() {
   return (
     <>
-      <section className="pt-24 pb-10 gradient-hero">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center">
-          <span className="badge badge-amber mb-4 inline-flex mx-auto">🎨 Tra cứu</span>
-          <h1 className="text-3xl sm:text-4xl font-bold text-white mb-3">Gu cà phê FCD</h1>
-          <p className="text-[#EDE4D8]/60 max-w-lg mx-auto">
+      <section className="pt-24 pb-16 bg-[#1A120A] relative overflow-hidden">
+        <div className="absolute inset-0 opacity-8">
+          <div className="absolute top-0 right-0 w-80 h-80 rounded-full bg-[#6B8C6B] blur-3xl" />
+          <div className="absolute bottom-0 left-1/4 w-64 h-64 rounded-full bg-[#B87333] blur-3xl" />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 text-center">
+          <span className="badge badge-sage mb-5 inline-flex mx-auto">🎨 Tra cứu</span>
+          <h1 className="font-display text-4xl sm:text-5xl text-white italic mb-4">Gu cà phê FCD</h1>
+          <p className="text-white/55 max-w-lg mx-auto text-sm">
             4 nhóm gu vị đặc trưng — mỗi gu có sản phẩm tương ứng trong catalog chính thức
           </p>
         </div>
       </section>
 
-      <section className="py-12 bg-[#FDF6ED]">
+      <section className="py-12 section-cream texture-leaf">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           {/* Quick nav */}
           <div className="flex flex-wrap gap-3 mb-12 justify-center">
@@ -37,7 +41,7 @@ export default function GuCaPhePage() {
               <a
                 key={cat.id}
                 href={`#${cat.slug}`}
-                className="flex items-center gap-2 px-4 py-2 rounded-xl border border-[#D9CABC] bg-white text-sm font-medium text-[#6B5A4E] hover:border-[#C07A2B] hover:text-[#6B2D0A] transition-all card-hover"
+                className="flex items-center gap-2 px-5 py-2 rounded-full border border-[#D9CABC] bg-white text-sm font-medium text-[#6B5A4E] hover:border-[#B87333] hover:text-[#7C3D18] transition-all"
               >
                 <span>{cat.icon}</span> {cat.label}
               </a>

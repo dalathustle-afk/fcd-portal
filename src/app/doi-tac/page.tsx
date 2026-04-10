@@ -1,4 +1,6 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
+import { ArrowRight } from 'lucide-react'
 import { partners } from '@/data/partners'
 
 export const metadata: Metadata = {
@@ -9,62 +11,68 @@ export const metadata: Metadata = {
 export default function DoiTacPage() {
   return (
     <>
-      <section className="pt-24 pb-10 bg-[#1C0F07]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <span className="badge badge-amber mb-4 inline-flex">🤝 Đối tác</span>
-          <h1 className="text-3xl sm:text-4xl font-bold text-white mb-3">
+      {/* ══ HERO ══════════════════════════════════════════════════ */}
+      <section className="pt-24 pb-16 bg-[#1A120A] relative overflow-hidden">
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-[#6B8C6B] blur-3xl" />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
+          <span className="badge badge-sage mb-5 inline-flex">🤝 Đối tác</span>
+          <h1 className="font-display text-4xl sm:text-5xl text-white italic mb-4 leading-tight">
             Đối tác &amp; Doanh nghiệp đồng hành
           </h1>
-          <p className="text-[#EDE4D8]/60 max-w-lg">
+          <p className="text-white/55 max-w-lg text-sm leading-relaxed">
             Các doanh nghiệp và tổ chức đang tin dùng cà phê FCD trong môi trường làm việc.
           </p>
         </div>
       </section>
 
-      <section className="py-12 bg-[#FDF6ED]">
+      {/* ══ PARTNER GRID ══════════════════════════════════════════ */}
+      <section className="py-16 section-cream texture-leaf">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 space-y-10">
-
-          {/* Partner list */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {partners.map((partner) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {partners.map((partner, i) => (
               <div
                 key={partner.id}
-                className="bg-white rounded-2xl border border-[#D9CABC] p-6"
+                className={`card-nature p-5 animate-fade-in`}
+                style={{ animationDelay: `${(i % 9) * 0.05}s` }}
               >
-                <h3 className="font-semibold text-[#1A0F08] mb-1 leading-snug">{partner.name}</h3>
+                <h3 className="font-semibold text-[#1A120A] mb-1 leading-snug text-sm">{partner.name}</h3>
                 {partner.category && (
-                  <p className="text-xs text-[#6B5A4E] mb-1">{partner.category}</p>
+                  <p className="text-xs text-[#9C8472]">{partner.category}</p>
                 )}
                 {partner.city && (
-                  <p className="text-xs text-[#6B5A4E]">📍 {partner.city}</p>
+                  <p className="text-xs text-[#9C8472] mt-0.5">📍 {partner.city}</p>
                 )}
               </div>
             ))}
           </div>
 
-          {/* Note về danh sách */}
-          <div className="bg-[#E8A84C]/10 border border-[#E8A84C]/30 rounded-xl p-5 text-sm text-[#6B5A4E]">
+          {/* Note */}
+          <div className="bg-[#FAF6F0] border border-[#D9CABC] rounded-2xl p-5 text-sm text-[#6B5A4E]">
             ⓘ Danh sách đối tác cập nhật từ dữ liệu xác minh. Nếu doanh nghiệp của bạn chưa xuất hiện,
             vui lòng{' '}
-            <a href="/lien-he" className="text-[#C07A2B] underline hover:text-[#6B2D0A]">
-              liên hệ FCD
-            </a>{' '}
-            để cập nhật.
+            <Link href="/lien-he" className="text-[#B87333] underline hover:text-[#7C3D18]">liên hệ FCD</Link>
+            {' '}để cập nhật.
           </div>
 
           {/* CTA */}
-          <div className="bg-[#1C0F07] rounded-2xl p-8 text-center">
-            <h3 className="text-xl font-bold text-white mb-2">Trở thành đối tác FCD</h3>
-            <p className="text-[#EDE4D8]/60 mb-5 text-sm max-w-md mx-auto">
-              Bạn đang tìm giải pháp cà phê chất lượng cho doanh nghiệp?
-              Liên hệ để được tư vấn gói phù hợp.
-            </p>
-            <a
-              href="/lien-he"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#C07A2B] hover:bg-[#E8A84C] text-[#1C0F07] font-semibold text-sm transition-all"
-            >
-              Liên hệ hợp tác
-            </a>
+          <div className="relative overflow-hidden bg-[#1A120A] rounded-2xl p-10 text-center">
+            <div className="absolute inset-0 opacity-10">
+              <div className="absolute top-0 right-0 w-64 h-64 rounded-full bg-[#B87333] blur-3xl" />
+            </div>
+            <div className="relative">
+              <h3 className="font-display text-2xl text-white italic mb-3">Trở thành đối tác FCD</h3>
+              <p className="text-white/55 mb-6 text-sm max-w-md mx-auto">
+                Bạn đang tìm giải pháp cà phê chất lượng cho doanh nghiệp? Liên hệ để được tư vấn gói phù hợp.
+              </p>
+              <Link
+                href="/lien-he"
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#B87333] hover:bg-[#D4914A] text-white font-semibold text-sm transition-all"
+              >
+                Liên hệ hợp tác <ArrowRight size={15} />
+              </Link>
+            </div>
           </div>
         </div>
       </section>
