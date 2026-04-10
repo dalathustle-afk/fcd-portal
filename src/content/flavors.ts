@@ -1,5 +1,19 @@
 import type { FlavorCategory } from '@/lib/types'
 
+/**
+ * src/content/flavors.ts
+ * STEP 2 — Orphaned slugs replaced with real product slugs from src/data/products.ts
+ *
+ * product[] arrays now reference slugs that EXIST in data/products.ts
+ * Old slugs (arabica-caudat-natural, robusta-buon-ma-thuot, etc.) removed.
+ *
+ * Flavor categories map to product groups:
+ *   dam-vi     → group: 'gu-dam-vi'      → B3
+ *   can-bang   → group: 'gu-can-bang'    → A3
+ *   tinh-te    → group: 'gu-tinh-te'     → CAO1
+ *   nguyen-ban → group: 'gu-nguyen-ban'  → O1
+ *   (also include pho-thong and truyen-thong for full listing)
+ */
 export const flavorCategories: FlavorCategory[] = [
   {
     id: 'dam-vi',
@@ -17,7 +31,8 @@ export const flavorCategories: FlavorCategory[] = [
       'Yêu thích espresso mạnh',
     ],
     highlights: ['Dark chocolate', 'Đắng mượt', 'Ca cao thô', 'Crema dày', 'Khói gỗ nhẹ'],
-    products: ['robusta-buon-ma-thuot', 'espresso-blend-dark'],
+    // Real slugs from src/data/products.ts (group: gu-dam-vi)
+    products: ['gu-dam-vi-b3'],
   },
   {
     id: 'can-bang',
@@ -35,7 +50,8 @@ export const flavorCategories: FlavorCategory[] = [
       'Đối tác muốn phục vụ nhiều nhóm khách',
     ],
     highlights: ['Chocolate sữa', 'Caramel nhẹ', 'Hạt điều rang', 'Cam nhẹ', 'Bánh mì nướng'],
-    products: ['signature-blend-5gu', 'blend-an-nhien-everyday', 'hop-qua-an-nhien-3vi'],
+    // Real slugs from src/data/products.ts (group: gu-can-bang)
+    products: ['gu-can-bang-a3'],
   },
   {
     id: 'tinh-te',
@@ -53,7 +69,8 @@ export const flavorCategories: FlavorCategory[] = [
       'Muốn khám phá terroir vùng trồng',
     ],
     highlights: ['Đào vàng', 'Mật ong rừng', 'Hoa nhài', 'Cam bergamot', 'Chanh vàng', 'Vải thiều'],
-    products: ['arabica-caudat-natural', 'arabica-caudat-washed'],
+    // Real slugs from src/data/products.ts (group: gu-tinh-te)
+    products: ['gu-tinh-te-cao1'],
   },
   {
     id: 'nguyen-ban',
@@ -71,6 +88,7 @@ export const flavorCategories: FlavorCategory[] = [
       'Cà phê hàng ngày bền vững',
     ],
     highlights: ['Đất cao nguyên', 'Ổi xanh', 'Trái cây khô', 'Cacao nhẹ', 'Thân vị vừa'],
-    products: ['nguyen-ban-highland-blend'],
+    // Real slugs from src/data/products.ts (group: gu-nguyen-ban)
+    products: ['gu-nguyen-ban-o1'],
   },
 ]

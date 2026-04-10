@@ -16,6 +16,13 @@ const navLinks = [
       { href: '/gu-ca-phe', label: 'Gu cà phê' },
     ],
   },
+  {
+    label: 'Chất lượng',
+    children: [
+      { href: '/quy-trinh-chat-luong', label: 'Quy trình chất lượng' },
+      { href: '/chung-nhan', label: 'Chứng nhận' },
+    ],
+  },
   { href: '/chinh-sach', label: 'Chính sách' },
   { href: '/doi-tac', label: 'Đối tác' },
   { href: '/lien-he', label: 'Liên hệ' },
