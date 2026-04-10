@@ -2,6 +2,7 @@
 
 import { useState, useMemo } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Search } from 'lucide-react'
 import type { ProductRecord } from '@/data/products'
 
@@ -10,7 +11,7 @@ const groupLabels: Record<string, string> = {
   'gu-truyen-thong': 'Gu Truyền Thống',
   'gu-dam-vi': 'Gu Đậm Vị',
   'gu-can-bang': 'Gu Cân Bằng',
-  'gu-tinh-te': 'Gu Tinh Tế',
+  'gu-tinh-te': 'Gu Tinh Túy',
   'gu-nguyen-ban': 'Gu Nguyên Bản',
   'phin-giay': 'Phin Giấy',
   'bo-dung-cu': 'Bộ Dụng Cụ',
@@ -80,23 +81,38 @@ export function ProductFilters({ products }: Props) {
         {filtered.map((p) => {
           const minPrice = p.prices[0]?.price ?? 0
           const minSize = p.sizes[0] ?? ''
+          const hasImage = !p.todoImage && !!p.image
           return (
             <Link
               key={p.id}
               href={`/san-pham/${p.slug}`}
               className="group block bg-white rounded-2xl overflow-hidden border border-[#D9CABC] card-hover"
             >
-              {/* Placeholder image until real photos available */}
-              <div className="h-36 flex flex-col items-center justify-center gap-2 bg-[#F5EDE0]">
-                <span className="text-4xl">☕</span>
-                <span className="text-xs font-bold text-[#6B2D0A] bg-[#E8A84C]/20 px-2 py-0.5 rounded-full">
-                  {p.code}
+              {/* Product image */}
+              <div className="relative h-52 bg-[#F5EDE0] overflow-hidden">
+                {hasImage ? (
+                  <Image
+                    src={p.image}
+                    alt={p.alt}
+                    fill
+                    className="object-contain object-center group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  />
+                ) : (
+                  <div className="h-full flex flex-col items-center justify-center gap-2">
+                    <span className="text-4xl">☕</span>
+                    <span className="text-xs font-bold text-[#6B2D0A] bg-[#E8A84C]/20 px-2 py-0.5 rounded-full">
+                      {p.code}
+                    </span>
+                  </div>
+                )}
+                {/* Gu label badge */}
+                <span className="absolute top-2 left-2 text-[10px] font-semibold bg-[#1C0F07]/70 text-[#E8A84C] px-2 py-0.5 rounded-full backdrop-blur-sm">
+                  {p.guLabel ?? groupLabels[p.group] ?? p.group}
                 </span>
               </div>
+
               <div className="p-4">
-                <span className="text-xs text-[#C07A2B] font-semibold">
-                  {groupLabels[p.group] ?? p.group}
-                </span>
                 <h3 className="font-semibold text-[#1A0F08] text-sm mt-0.5 mb-1 group-hover:text-[#6B2D0A] leading-snug">
                   {p.name}
                 </h3>

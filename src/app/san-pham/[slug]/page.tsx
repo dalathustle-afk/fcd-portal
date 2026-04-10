@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowLeft, MapPin, Package } from 'lucide-react'
 import { products } from '@/data/products'
+import { ProductImageViewer } from '@/components/products/ProductImageViewer'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -73,9 +74,9 @@ export default async function SanPhamChiTietPage({ params }: Props) {
 
             {/* Left: product detail */}
             <div className="space-y-6">
-              {/* Product image */}
-              <div className="bg-white rounded-2xl border border-[#D9CABC] overflow-hidden">
-                {product.todoImage || !product.image ? (
+              {/* Product image — full + zoom */}
+              {product.todoImage || !product.image ? (
+                <div className="bg-white rounded-2xl border border-[#D9CABC] overflow-hidden">
                   <div className="h-56 flex flex-col items-center justify-center gap-3 bg-[#F5EDE0]">
                     <span className="text-6xl">☕</span>
                     <span className="text-sm font-bold text-[#6B2D0A] bg-[#E8A84C]/20 px-3 py-1 rounded-full">
@@ -85,19 +86,10 @@ export default async function SanPhamChiTietPage({ params }: Props) {
                       Ảnh thật sẽ được cập nhật
                     </span>
                   </div>
-                ) : (
-                  <div className="relative w-full" style={{ aspectRatio: '4/3' }}>
-                    <Image
-                      src={product.image}
-                      alt={product.alt}
-                      fill
-                      className="object-cover object-top"
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                      priority
-                    />
-                  </div>
-                )}
-              </div>
+                </div>
+              ) : (
+                <ProductImageViewer src={product.image} alt={product.alt} />
+              )}
 
               {/* Flavor notes */}
               {product.flavorNotes && product.flavorNotes.length > 0 && (

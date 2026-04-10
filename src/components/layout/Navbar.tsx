@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Search, Menu, X, ChevronDown } from 'lucide-react'
 import { clsx } from 'clsx'
 
@@ -31,12 +31,25 @@ const navLinks = [
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [dropdownOpen, setDropdownOpen] = useState(false)
+  // Track which dropdown is open by label key
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null)
+  const navRef = useRef<HTMLUListElement>(null)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClick = (e: MouseEvent) => {
+      if (navRef.current && !navRef.current.contains(e.target as Node)) {
+        setOpenDropdown(null)
+      }
+    }
+    document.addEventListener('mousedown', handleClick)
+    return () => document.removeEventListener('mousedown', handleClick)
   }, [])
 
   return (
@@ -59,29 +72,35 @@ export function Navbar() {
         </Link>
 
         {/* Desktop Nav */}
-        <ul className="hidden lg:flex items-center gap-1">
+        <ul ref={navRef} className="hidden lg:flex items-center gap-1">
           {navLinks.map((link) =>
             link.children ? (
               <li key={link.label} className="relative">
                 <button
                   className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-[#EDE4D8]/80 hover:text-[#E8A84C] transition-colors rounded-md"
-                  onClick={() => setDropdownOpen((v) => !v)}
-                  onBlur={() => setTimeout(() => setDropdownOpen(false), 150)}
+                  onClick={() =>
+                    setOpenDropdown((prev) =>
+                      prev === link.label ? null : link.label
+                    )
+                  }
                 >
                   {link.label}
                   <ChevronDown
                     size={14}
-                    className={clsx('transition-transform', dropdownOpen && 'rotate-180')}
+                    className={clsx(
+                      'transition-transform',
+                      openDropdown === link.label && 'rotate-180'
+                    )}
                   />
                 </button>
-                {dropdownOpen && (
-                  <div className="absolute top-full left-0 mt-1 w-40 rounded-xl bg-[#1C0F07] border border-[#E8A84C]/15 shadow-xl shadow-black/30 overflow-hidden">
+                {openDropdown === link.label && (
+                  <div className="absolute top-full left-0 mt-1 min-w-[180px] rounded-xl bg-[#1C0F07] border border-[#E8A84C]/15 shadow-xl shadow-black/30 overflow-hidden z-50">
                     {link.children.map((child) => (
                       <Link
                         key={child.href}
                         href={child.href}
-                        className="block px-4 py-2.5 text-sm text-[#EDE4D8]/80 hover:text-[#E8A84C] hover:bg-[#E8A84C]/5 transition-colors"
-                        onClick={() => setDropdownOpen(false)}
+                        className="block px-4 py-2.5 text-sm text-[#EDE4D8]/80 hover:text-[#E8A84C] hover:bg-[#E8A84C]/5 transition-colors whitespace-nowrap"
+                        onClick={() => setOpenDropdown(null)}
                       >
                         {child.label}
                       </Link>
@@ -168,15 +187,6 @@ export function Navbar() {
               </Link>
             )
           )}
-          <div className="pt-3 border-t border-[#E8A84C]/10">
-            <Link
-              href="/lien-he"
-              className="flex w-full items-center justify-center py-3 rounded-xl bg-[#C07A2B] text-[#1C0F07] text-sm font-semibold"
-              onClick={() => setMobileOpen(false)}
-            >
-              Liên hệ tư vấn
-            </Link>
-          </div>
         </div>
       )}
     </header>

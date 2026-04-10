@@ -121,8 +121,8 @@ export const products: ProductRecord[] = [
       { size: '2kg',  price: 850000, currency: 'VND' },
     ],
     featured: false,
-    image: '/images/products/page-summary.png',
-    alt: 'Cà Phê FCD Gu Phổ Thông P',
+    image: '/images/products/p.png',
+    alt: 'Cà Phê FCD Gu Phổ Thông P 500g — From Cầu Đất',
     sourceRef: 'FCD-Bang-gia-niem-yet-KH-le-100226-1.pdf tr.2',
     todoImage: false,
   },
@@ -153,7 +153,7 @@ export const products: ProductRecord[] = [
     image: '/images/products/page-summary.png',
     alt: 'Cà Phê FCD Gu Phổ Thông P3',
     sourceRef: 'FCD-Bang-gia-niem-yet-KH-le-100226-1.pdf tr.2',
-    todoImage: false,
+    todoImage: true,
   },
 
   // ── GU TRUYỀN THỐNG ─────────────────────────────────────────────
