@@ -113,7 +113,47 @@ export default async function SanPhamChiTietPage({ params }: Props) {
                 </div>
               )}
 
-              {/* Specs */}
+              {/* Taste profile bars */}
+              {product.tasteProfile && (
+                <div className="bg-white rounded-2xl border border-[#D9CABC] p-6">
+                  <h3 className="font-semibold text-[#1A0F08] mb-4">👅 Profile vị giác</h3>
+                  <div className="space-y-2">
+                    {([
+                      { label: 'Đắng', value: product.tasteProfile.bitter },
+                      { label: 'Ngọ t', value: product.tasteProfile.sweet },
+                      { label: 'Chua', value: product.tasteProfile.acid },
+                      { label: 'Đậm (body)', value: product.tasteProfile.body },
+                      { label: 'Hậu vị béo', value: product.tasteProfile.finish },
+                    ] as { label: string; value: number }[]).map(({ label, value }) => (
+                      <div key={label} className="flex items-center gap-3">
+                        <span className="text-xs text-[#6B5A4E] w-20 shrink-0">{label}</span>
+                        <div className="flex-1 bg-[#F5EDE0] rounded-full h-2">
+                          <div
+                            className="bg-[#C07A2B] rounded-full h-2 transition-all"
+                            style={{ width: `${value * 10}%` }}
+                          />
+                        </div>
+                        <span className="text-xs font-bold text-[#6B2D0A] w-4">{value}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Brewing methods */}
+              {product.brewingMethods && product.brewingMethods.length > 0 && (
+                <div className="bg-white rounded-2xl border border-[#D9CABC] p-6">
+                  <h3 className="font-semibold text-[#1A0F08] mb-3">☕ Cách pha phù hợp</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {product.brewingMethods.map((m) => (
+                      <span key={m} className="text-xs bg-[#F5EDE0] text-[#6B2D0A] px-3 py-1 rounded-full border border-[#D9CABC]">
+                        {m}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
               <div className="bg-white rounded-2xl border border-[#D9CABC] p-6">
                 <h3 className="font-semibold text-[#1A0F08] mb-4">Thông số</h3>
                 <dl className="space-y-3">
@@ -123,6 +163,24 @@ export default async function SanPhamChiTietPage({ params }: Props) {
                         <MapPin size={12} /> Vùng nguyên liệu
                       </dt>
                       <dd className="text-sm text-[#1A0F08]">{product.origin}</dd>
+                    </div>
+                  )}
+                  {product.altitude && (
+                    <div className="flex gap-3">
+                      <dt className="text-xs font-semibold text-[#6B5A4E] w-28 shrink-0">Độ cao</dt>
+                      <dd className="text-sm text-[#1A0F08]">{product.altitude}</dd>
+                    </div>
+                  )}
+                  {product.blend && product.blend !== '—' && (
+                    <div className="flex gap-3">
+                      <dt className="text-xs font-semibold text-[#6B5A4E] w-28 shrink-0">Công thức phối</dt>
+                      <dd className="text-sm text-[#1A0F08]">{product.blend}</dd>
+                    </div>
+                  )}
+                  {product.processing && product.processing !== '—' && (
+                    <div className="flex gap-3">
+                      <dt className="text-xs font-semibold text-[#6B5A4E] w-28 shrink-0">Chế biến</dt>
+                      <dd className="text-sm text-[#1A0F08]">{product.processing}</dd>
                     </div>
                   )}
                   {product.roastLevel && (
@@ -147,7 +205,7 @@ export default async function SanPhamChiTietPage({ params }: Props) {
             <div className="space-y-6">
               <div className="bg-white rounded-2xl border border-[#D9CABC] p-6">
                 <h2 className="font-bold text-[#1A0F08] mb-3">Mô tả sản phẩm</h2>
-                <p className="text-[#6B5A4E] leading-relaxed">{product.descriptionLong ?? product.descriptionShort}</p>
+                <p className="text-[#6B5A4E] leading-relaxed">{product.descriptionShort}</p>
               </div>
 
               {/* Pricing table */}
