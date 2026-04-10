@@ -83,16 +83,19 @@ export const priceList: PriceList = {
     { productCode: 'A3', productName: 'Phin Giấy A3 — Hộp 5 gói', unit: 'hộp', retailPrice: 92000, category: 'phin-giay' },
     { productCode: 'A3', productName: 'Phin Giấy A3 — Hộp 10 gói', unit: 'hộp', retailPrice: 183000, category: 'phin-giay' },
 
-    // ── GÓI AN NHIÊN 12KG (combo) ─────────────────────────────────
-    // TODO: Add exact unit prices from PDF once confirmed
-    { productCode: 'ANCF.P', productName: 'Gói An Nhiên 12kg — P', unit: 'gói 12kg', retailPrice: 0, category: 'combo', comboNote: 'Liên hệ để xác nhận giá combo 12kg' },
-    { productCode: 'ANCF.P3', productName: 'Gói An Nhiên 12kg — P3', unit: 'gói 12kg', retailPrice: 0, category: 'combo', comboNote: 'Liên hệ để xác nhận giá combo 12kg' },
-    { productCode: 'ANCF.C', productName: 'Gói An Nhiên 12kg — C', unit: 'gói 12kg', retailPrice: 0, category: 'combo', comboNote: 'Liên hệ để xác nhận giá combo 12kg' },
-    { productCode: 'ANCF.C3', productName: 'Gói An Nhiên 12kg — C3', unit: 'gói 12kg', retailPrice: 0, category: 'combo', comboNote: 'Liên hệ để xác nhận giá combo 12kg' },
-    { productCode: 'ANCF.B3', productName: 'Gói An Nhiên 12kg — B3', unit: 'gói 12kg', retailPrice: 0, category: 'combo', comboNote: 'Liên hệ để xác nhận giá combo 12kg' },
-    { productCode: 'ANCF.MIX', productName: 'Gói An Nhiên 12kg — Mix', unit: 'gói 12kg', retailPrice: 0, category: 'combo', comboNote: 'Liên hệ để xác nhận giá combo 12kg' },
-    { productCode: 'ANCF.A3', productName: 'Gói An Nhiên 12kg — A3', unit: 'gói 12kg', retailPrice: 0, category: 'combo', comboNote: 'Liên hệ để xác nhận giá combo 12kg' },
-    { productCode: 'ANCF.CAO1', productName: 'Gói An Nhiên 12kg — CAO1', unit: 'gói 12kg', retailPrice: 0, category: 'combo', comboNote: 'Liên hệ để xác nhận giá combo 12kg' },
-    { productCode: 'ANCF.O1', productName: 'Gói An Nhiên 12kg — O1', unit: 'gói 12kg', retailPrice: 0, category: 'combo', comboNote: 'Liên hệ để xác nhận giá combo 12kg' },
+    // ── GÓI AN NHIÊN 12KG (AN NHIÊN CÙNG FROM CẦU ĐẤT) ─────────────
+    // Source: FCD-Bang-gia-niem-yet-KH-le-100226-1.pdf — trang 11
+    // Giá = niêm yết (vnd/kg). Tổng trị = giá × 12.
+    // Thanh toán 50% trước, 50% còn lại trả góp 11 tháng.
+    // Kèm tặng máy pha cà phê 20 bar.
+    { productCode: 'ANCF.P',    productName: 'Gói An Nhiên 12kg — Gu Phổ Thông P',   unit: 'vnd/kg', retailPrice: 436000,  category: 'combo', comboNote: 'Mua 12kg tặng máy pha 20 bar — TT 50% trước' },
+    { productCode: 'ANCF.P3',   productName: 'Gói An Nhiên 12kg — Gu Phổ Thông P3',  unit: 'vnd/kg', retailPrice: 458000,  category: 'combo', comboNote: 'Mua 12kg tặng máy pha 20 bar — TT 50% trước' },
+    { productCode: 'ANCF.C',    productName: 'Gói An Nhiên 12kg — Gu Truyền Thống C', unit: 'vnd/kg', retailPrice: 492000,  category: 'combo', comboNote: 'Mua 12kg tặng máy pha 20 bar — TT 50% trước' },
+    { productCode: 'ANCF.C3',   productName: 'Gói An Nhiên 12kg — Gu Truyền Thống C3',unit: 'vnd/kg', retailPrice: 518000,  category: 'combo', comboNote: 'Mua 12kg tặng máy pha 20 bar — TT 50% trước' },
+    { productCode: 'ANCF.B3',   productName: 'Gói An Nhiên 12kg — Gu Đậm Vị B3',     unit: 'vnd/kg', retailPrice: 570000,  category: 'combo', comboNote: 'Mua 12kg tặng máy pha 20 bar — TT 50% trước' },
+    { productCode: 'ANCF.MIX',  productName: 'Gói An Nhiên 12kg — Trọn Gu Mix (8 gu)',unit: 'vnd/kg', retailPrice: 628000,  category: 'combo', comboNote: 'Mua 12kg tặng máy pha 20 bar — TT 50% trước' },
+    { productCode: 'ANCF.A3',   productName: 'Gói An Nhiên 12kg — Gu Cân Bằng A3',   unit: 'vnd/kg', retailPrice: 706000,  category: 'combo', comboNote: 'Mua 12kg tặng máy pha 20 bar — TT 50% trước' },
+    { productCode: 'ANCF.CAO1', productName: 'Gói An Nhiên 12kg — Gu Tinh Túy CAO1', unit: 'vnd/kg', retailPrice: 826000,  category: 'combo', comboNote: 'Mua 12kg tặng máy pha 20 bar — TT 50% trước' },
+    { productCode: 'ANCF.O1',   productName: 'Gói An Nhiên 12kg — Gu Nguyên Bản O1', unit: 'vnd/kg', retailPrice: 1026000, category: 'combo', comboNote: 'Mua 12kg tặng máy pha 20 bar — TT 50% trước' },
   ],
 }
