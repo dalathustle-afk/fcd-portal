@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowLeft, MapPin, Package } from 'lucide-react'
 import { products } from '@/data/products'
@@ -28,6 +29,7 @@ const groupLabels: Record<string, string> = {
   'gu-dam-vi': 'Gu Đậm Vị',
   'gu-can-bang': 'Gu Cân Bằng',
   'gu-tinh-te': 'Gu Tinh Tế',
+  'gu-tinh-tuy': 'Gu Tinh Túy',
   'gu-nguyen-ban': 'Gu Nguyên Bản',
   'phin-giay': 'Phin Giấy',
   'bo-dung-cu': 'Bộ Dụng Cụ',
@@ -71,19 +73,30 @@ export default async function SanPhamChiTietPage({ params }: Props) {
 
             {/* Left: product detail */}
             <div className="space-y-6">
-              {/* Product image placeholder */}
+              {/* Product image */}
               <div className="bg-white rounded-2xl border border-[#D9CABC] overflow-hidden">
-                <div className="h-56 flex flex-col items-center justify-center gap-3 bg-[#F5EDE0]">
-                  <span className="text-6xl">☕</span>
-                  <span className="text-sm font-bold text-[#6B2D0A] bg-[#E8A84C]/20 px-3 py-1 rounded-full">
-                    {product.code}
-                  </span>
-                  {product.todoImage && (
+                {product.todoImage || !product.image ? (
+                  <div className="h-56 flex flex-col items-center justify-center gap-3 bg-[#F5EDE0]">
+                    <span className="text-6xl">☕</span>
+                    <span className="text-sm font-bold text-[#6B2D0A] bg-[#E8A84C]/20 px-3 py-1 rounded-full">
+                      {product.code}
+                    </span>
                     <span className="text-xs text-[#6B5A4E] bg-white/60 px-2 py-0.5 rounded">
                       Ảnh thật sẽ được cập nhật
                     </span>
-                  )}
-                </div>
+                  </div>
+                ) : (
+                  <div className="relative w-full" style={{ aspectRatio: '4/3' }}>
+                    <Image
+                      src={product.image}
+                      alt={product.alt}
+                      fill
+                      className="object-cover object-top"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      priority
+                    />
+                  </div>
+                )}
               </div>
 
               {/* Flavor notes */}
