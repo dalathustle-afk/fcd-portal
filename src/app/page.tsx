@@ -279,67 +279,42 @@ export default function HomePage() {
             {featuredProducts.map((product, i) => {
               const minPrice = product.prices[0]?.price ?? 0
               const hasImage = !product.todoImage && !!product.image
-              const gradMap: Record<string, string> = {
-                'gu-pho-thong':    'from-[#2C1A0E] via-[#3D2412] to-[#1A0F07]',
-                'gu-truyen-thong': 'from-[#1A1200] via-[#2E2204] to-[#1A0F07]',
-                'gu-dam-vi':       'from-[#1A0D0D] via-[#2E1608] to-[#0F0805]',
-                'gu-can-bang':     'from-[#0D1A14] via-[#1A2E20] to-[#091208]',
-                'gu-tinh-te':      'from-[#12141A] via-[#1E2030] to-[#0A0C14]',
-                'gu-nguyen-ban':   'from-[#1A1A0D] via-[#252510] to-[#101008]',
-              }
-              const glowMap: Record<string, string> = {
-                'gu-pho-thong':    'rgba(184,115,51,0.22)',
-                'gu-truyen-thong': 'rgba(212,145,74,0.22)',
-                'gu-dam-vi':       'rgba(180,60,40,0.25)',
-                'gu-can-bang':     'rgba(74,103,65,0.25)',
-                'gu-tinh-te':      'rgba(80,100,180,0.22)',
-                'gu-nguyen-ban':   'rgba(160,150,50,0.22)',
-              }
-              const grad  = gradMap[product.group] ?? 'from-[#1A120A] via-[#2D1E12] to-[#0F0807]'
-              const glow  = glowMap[product.group] ?? 'rgba(184,115,51,0.18)'
               return (
                 <Link
                   key={product.id}
                   href={`/san-pham/${product.slug}`}
-                  className={`group block rounded-2xl overflow-hidden border border-[#1A120A]/10 shadow-sm hover:shadow-xl hover:shadow-[#1A120A]/10 transition-all duration-300 animate-fade-in delay-${(i+1)*100}`}
+                  className={`group block bg-white rounded-2xl overflow-hidden border border-[#D9CABC] hover:border-[#C07A2B]/40 hover:shadow-lg transition-all duration-300 card-nature animate-fade-in delay-${(i+1)*100}`}
                 >
-                  {/* Premium image stage */}
-                  <div className={`relative h-52 bg-gradient-to-b ${grad} overflow-hidden`}>
-                    <div
-                      className="absolute bottom-0 left-0 right-0 h-28 pointer-events-none"
-                      style={{ background: `radial-gradient(ellipse 70% 60% at 50% 100%, ${glow}, transparent)` }}
-                    />
+                  <div className="relative h-52 bg-white overflow-hidden flex items-center justify-center">
                     {hasImage ? (
                       <Image
                         src={product.image}
                         alt={product.alt}
                         fill
-                        className="object-contain object-center group-hover:scale-105 transition-transform duration-500 p-4"
-                        style={{ filter: 'drop-shadow(0 8px 20px rgba(0,0,0,0.45))' }}
+                        className="object-contain object-center group-hover:scale-105 transition-transform duration-500 p-5"
                         sizes="(max-width: 640px) 100vw, 25vw"
                       />
                     ) : (
-                      <div className="h-full flex flex-col items-center justify-center gap-3 opacity-60">
+                      <div className="h-full flex flex-col items-center justify-center gap-2 opacity-40">
                         <span className="text-5xl">☕</span>
-                        <span className="text-xs font-bold text-[#E8A84C] bg-[#E8A84C]/10 px-3 py-1 rounded-full font-mono border border-[#E8A84C]/20">{product.code}</span>
+                        <span className="text-xs font-bold text-[#7C3D18] bg-[#E3A558]/20 px-2 py-0.5 rounded-full font-mono">{product.code}</span>
                       </div>
                     )}
-                    <span className="absolute top-2.5 left-2.5 text-[10px] font-semibold bg-black/30 text-[#E8A84C] px-2 py-0.5 rounded-full backdrop-blur-sm border border-[#E8A84C]/20">
+                    <span className="absolute top-2 left-2 text-[10px] font-semibold bg-[#1C0F07]/70 text-[#E8A84C] px-2 py-0.5 rounded-full backdrop-blur-sm">
                       {product.guLabel}
                     </span>
-                    {minPrice > 0 && (
-                      <div className="absolute bottom-2.5 right-2.5 bg-white/90 backdrop-blur-sm rounded-lg px-2 py-1 shadow">
-                        <span className="text-xs font-bold text-[#7C3D18]">{minPrice.toLocaleString('vi-VN')}đ</span>
-                      </div>
-                    )}
                   </div>
-                  <div className="p-4 bg-white">
+                  <div className="p-4 border-t border-[#F5EDE0]">
                     <h3 className="font-semibold text-[#1A120A] mb-1.5 text-sm group-hover:text-[#7C3D18] leading-snug transition-colors">
                       {product.name}
                     </h3>
                     <p className="text-[11px] text-[#6B5A4E] mb-3 line-clamp-2 leading-relaxed">{product.descriptionShort}</p>
                     <div className="flex items-center justify-between pt-2 border-t border-[#F5EDE0]">
-                      <span className="text-[10px] text-[#9C8472] font-mono bg-[#F5EDE0] px-2 py-0.5 rounded">{product.code}</span>
+                      {minPrice > 0 ? (
+                        <span className="font-bold text-[#7C3D18] text-sm">{minPrice.toLocaleString('vi-VN')}đ</span>
+                      ) : (
+                        <span className="text-xs text-[#6B5A4E]">Liên hệ</span>
+                      )}
                       <span className="text-[10px] text-[#9C8472]">250g</span>
                     </div>
                   </div>
