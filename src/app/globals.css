@@ -1,11 +1,11 @@
 /* ─────────────────────────────────────────────────────────────────────────────
    FCD Portal — globals.css  (Nature Edition)
-   FONT FIX: Lora (serif) thay Playfair Display — hỗ trợ đầy đủ tiếng Việt
-   Be Vietnam Pro — body/UI sans-serif, Vietnamese native
+   FONT: Be Vietnam Pro ONLY — designed specifically for Vietnamese diacritics
+   No secondary serif needed: weight 700/800 gives premium "display" feel
 ───────────────────────────────────────────────────────────────────────────── */
 
-/* Load fonts with explicit Vietnamese subset via Google Fonts v2 */
-@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+/* Be Vietnam Pro — Vietnamese native, all weights + italic */
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700&display=swap');
 @import "tailwindcss";
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -55,9 +55,10 @@
 @theme inline {
   --color-background: var(--fcd-bg);
   --color-foreground: var(--fcd-text);
-  --font-sans:    'Be Vietnam Pro', system-ui, sans-serif;
-  --font-display: 'Lora', Georgia, serif;
-  --font-body:    'Be Vietnam Pro', system-ui, sans-serif;
+  /* Single font family for everything — Be Vietnam Pro handles all Vietnamese */
+  --font-sans:    'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
+  --font-display: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
+  --font-body:    'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
 
   --color-fcd-espresso:   #1A120A;
   --color-fcd-earth:      #5C3317;
@@ -93,62 +94,83 @@ html {
 body {
   background: var(--fcd-bg);
   color: var(--fcd-text);
-  /* Be Vietnam Pro — designed for Vietnamese, includes all diacritics natively */
   font-family: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
   font-size: 15px;
   line-height: 1.7;
-  /* Ensure precomposed glyphs render correctly */
-  unicode-bidi: plaintext;
+  /* Ensure proper Unicode normalization for Vietnamese */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'kern' 1;
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   Typography — Vietnamese-safe
+   Typography — Vietnamese-safe, single-font system
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
-/* .font-display uses Lora — full Vietnamese unicode block support */
-.font-display { font-family: 'Lora', Georgia, serif; }
-.font-body    { font-family: 'Be Vietnam Pro', system-ui, sans-serif; }
-
-/* h1 with Lora — italic display headings */
-h1 {
-  font-family: 'Lora', Georgia, serif;
-  font-weight: 600;
-  line-height: 1.2;
-  /* No letter-spacing for Vietnamese — diacritics need natural spacing */
-  letter-spacing: 0;
+/*
+  .font-display = Be Vietnam Pro ExtraBold (800)
+  Used for all section headings — this gives the 'display' feel
+  without the Vietnamese glyph issues of serif fonts (Lora / Playfair).
+*/
+.font-display  {
+  font-family: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+.font-body {
+  font-family: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
+  font-weight: 400;
 }
 
-/* h2-h4 with Be Vietnam Pro — UI headings */
-h2, h3, h4, h5, h6 {
-  font-family: 'Be Vietnam Pro', system-ui, sans-serif;
-  font-weight: 600;
-  line-height: 1.35;
+/* h1 — hero headings, largest display */
+h1 {
+  font-family: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
+  font-weight: 800;
+  line-height: 1.15;
   letter-spacing: -0.01em;
 }
 
-/* Italic .font-display class on any element */
-.font-display.italic,
-.font-display[class*="italic"] {
-  font-style: italic;
+/* h2/h3/h4 — section titles & card headings */
+h2, h3, h4, h5, h6 {
+  font-family: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
 }
 
-/* ─── CRITICAL: Vietnamese diacritic safety rules ───────────────────────────
-   Negative or tight letter-spacing causes Vietnamese tone marks (combining
-   diacritics) to visually collide with adjacent characters. Override any
-   accidental tracking-tight / letter-spacing applied via Tailwind utilities.
-──────────────────────────────────────────────────────────────────────────── */
-.font-display,
-h1.font-display,
-h2.font-display,
-[class*="font-display"] {
-  letter-spacing: 0 !important;
-  /* Lora's font metrics already embed the proper advance widths for
-     Vietnamese precomposed glyphs — no adjustment needed */
+/* ─── GLOBAL LAYOUT UTILITIES ────────────────────────────────────────────────
+  .section-header  — Wraps badge + h2 + subtitle in centered block
+  .section-subtitle — Forces subtitle paragraph to be centered + max-width
+                       Fixes the "left-aligned subtitle under centered heading"
+                       bug systemically across ALL modules.
+───────────────────────────────────────────────────────────────────────────── */
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.section-header .section-subtitle,
+.section-header > p {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 32rem; /* ~512px = readable line length */
 }
 
-/* Also neutralize any rogue tracking-tight/tracking-wide on headings */
-h1, h2, h3 {
-  letter-spacing: 0;
+/* Standalone subtitle that can be used anywhere */
+.section-subtitle {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 32rem;
+}
+
+/* text-center children fix — any p in a .text-center container inherits */
+.text-center > p,
+.text-center > .section-subtitle {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

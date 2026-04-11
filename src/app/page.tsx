@@ -93,7 +93,7 @@ export default function HomePage() {
             <h2 className="font-display text-3xl sm:text-4xl text-[#1A120A] mb-4 italic">
               Vì sao chọn From Cầu Đất?
             </h2>
-            <p className="text-[#6B5A4E] max-w-lg mx-auto leading-relaxed text-sm">
+            <p className="text-[#6B5A4E] max-w-lg mx-auto leading-relaxed text-sm text-center">
               Từ vùng nguyên liệu đến thành phẩm — mỗi hạt cà phê đều mang dấu ấn của thiên nhiên và sự tỉ mỉ.
             </p>
           </div>
@@ -217,7 +217,7 @@ export default function HomePage() {
             <h2 className="font-display text-3xl sm:text-4xl text-[#1A120A] mb-4 italic">
               Tìm gu phù hợp với bạn
             </h2>
-            <p className="text-[#6B5A4E] text-sm max-w-md mx-auto">
+            <p className="text-[#6B5A4E] text-sm max-w-md mx-auto text-center">
               Từ vị đậm sâu đến nguyên bản nhẹ nhàng — mỗi gu là một câu chuyện của đất trời.
             </p>
           </div>
@@ -336,7 +336,7 @@ export default function HomePage() {
             <h2 className="font-display text-3xl sm:text-4xl text-[#1A120A] mb-3 italic">
               Doanh nghiệp tin dùng
             </h2>
-            <p className="text-[#6B5A4E] text-sm max-w-md mx-auto">
+            <p className="text-[#6B5A4E] text-sm max-w-md mx-auto text-center">
               Ngân hàng, tổ chức nước ngoài và doanh nghiệp lớn đã chọn FCD cho văn phòng của họ.
             </p>
           </div>

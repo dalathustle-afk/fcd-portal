@@ -65,7 +65,7 @@ export default function DoiTacPage() {
             </div>
             <div className="relative">
               <h3 className="font-display text-2xl text-white italic mb-3">Trở thành đối tác FCD</h3>
-              <p className="text-white/55 mb-6 text-sm max-w-md mx-auto">
+              <p className="text-white/55 mb-6 text-sm max-w-md mx-auto text-center">
                 Bạn đang tìm giải pháp cà phê chất lượng cho doanh nghiệp? Liên hệ để được tư vấn gói phù hợp.
               </p>
               <Link

@@ -113,7 +113,7 @@ export default function QuyTrinhChatLuongPage() {
           <div className="text-center mb-12">
             <span className="badge badge-amber mb-4 inline-flex">📊 Phân loại SCA</span>
             <h2 className="font-display text-3xl text-white italic mb-3">5 Cấp độ chất lượng SCA</h2>
-            <p className="text-white/55 text-sm max-w-md mx-auto">Bạn đang uống cà phê loại nào? Hầu hết cà phê vỉa hè Việt Nam nằm ở cấp 4–5.</p>
+            <p className="text-white/55 text-sm max-w-md mx-auto text-center">Bạn đang uống cà phê loại nào? Hầu hết cà phê vỉa hè Việt Nam nằm ở cấp 4–5.</p>
           </div>
           <div className="space-y-3">
             {scaGrades.map((grade) => (
@@ -142,7 +142,7 @@ export default function QuyTrinhChatLuongPage() {
           <div className="text-center mb-12">
             <span className="badge badge-red mb-4 inline-flex">🔍 Hạt lỗi</span>
             <h2 className="font-display text-3xl sm:text-4xl text-[#1A120A] italic mb-3">6 Loại Hạt Lỗi Sơ Cấp SCA</h2>
-            <p className="text-[#6B5A4E] text-sm max-w-md mx-auto">FCD loại bỏ 100% 6 loại hạt lỗi này bằng máy quang học Nhật Bản (Bước 7)</p>
+            <p className="text-[#6B5A4E] text-sm max-w-md mx-auto text-center">FCD loại bỏ 100% 6 loại hạt lỗi này bằng máy quang học Nhật Bản (Bước 7)</p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {scaPrimaryDefects.map((defect, i) => (

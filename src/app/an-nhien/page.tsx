@@ -48,7 +48,7 @@ export default function AnNhienPage() {
           <div className="text-center mb-12">
             <span className="badge badge-sage mb-4 inline-flex">💡 Triết lý</span>
             <h2 className="font-display text-3xl sm:text-4xl text-[#1A120A] italic mb-3">&ldquo;AN NHIÊN&rdquo; là gì?</h2>
-            <p className="text-[#6B5A4E] text-sm max-w-md mx-auto">Hai khía cạnh tạo nên giá trị cốt lõi của FCD</p>
+            <p className="text-[#6B5A4E] text-sm max-w-md mx-auto text-center">Hai khía cạnh tạo nên giá trị cốt lõi của FCD</p>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
             {/* AN */}
@@ -115,7 +115,7 @@ export default function AnNhienPage() {
           <div className="text-center mb-12">
             <span className="badge badge-sage mb-4 inline-flex backdrop-blur-sm">🛡️ Cam kết</span>
             <h2 className="font-display text-3xl sm:text-4xl text-white italic mb-3">Triết lý 5 Không</h2>
-            <p className="text-white/60 text-sm max-w-md mx-auto">FCD kiên định không dùng bất kỳ chất phụ gia nào — trả lại giá trị thực sự cho hạt cà phê</p>
+            <p className="text-white/60 text-sm max-w-md mx-auto text-center">FCD kiên định không dùng bất kỳ chất phụ gia nào — trả lại giá trị thực sự cho hạt cà phê</p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
             {fiveNoes.map((item, i) => (
@@ -136,7 +136,7 @@ export default function AnNhienPage() {
           <div className="text-center mb-12">
             <span className="badge badge-amber mb-4 inline-flex">⚙️ Quy trình</span>
             <h2 className="font-display text-3xl sm:text-4xl text-[#1A120A] italic mb-3">10 Bước Kiểm Soát Chất Lượng</h2>
-            <p className="text-[#6B5A4E] text-sm max-w-md mx-auto">Hệ sinh thái khép kín từ nông trại đến ly cà phê — mỗi bước đều có chứng minh</p>
+            <p className="text-[#6B5A4E] text-sm max-w-md mx-auto text-center">Hệ sinh thái khép kín từ nông trại đến ly cà phê — mỗi bước đều có chứng minh</p>
           </div>
           <div className="space-y-3">
             {tenSteps.map((step, i) => (
@@ -165,7 +165,7 @@ export default function AnNhienPage() {
           <div className="text-center mb-12">
             <span className="badge badge-green mb-4 inline-flex">✅ Chứng nhận</span>
             <h2 className="font-display text-3xl sm:text-4xl text-[#1A120A] italic mb-3">Bảo chứng chất lượng</h2>
-            <p className="text-[#6B5A4E] text-sm max-w-md mx-auto">Chất lượng không tự công bố — có thể kiểm chứng qua hệ thống chứng nhận uy tín</p>
+            <p className="text-[#6B5A4E] text-sm max-w-md mx-auto text-center">Chất lượng không tự công bố — có thể kiểm chứng qua hệ thống chứng nhận uy tín</p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {proofPoints.map((pp, i) => (
@@ -190,7 +190,7 @@ export default function AnNhienPage() {
           <div className="text-center mb-12">
             <span className="badge badge-amber mb-4 inline-flex">💰 Bài toán chi phí</span>
             <h2 className="font-display text-3xl text-white italic mb-3">Chi phí mỗi ly là bao nhiêu?</h2>
-            <p className="text-white/55 text-sm max-w-md mx-auto">Tính theo giá niêm yết chính thức tháng 02/2026 — với 2 mức pha chiết</p>
+            <p className="text-white/55 text-sm max-w-md mx-auto text-center">Tính theo giá niêm yết chính thức tháng 02/2026 — với 2 mức pha chiết</p>
           </div>
           <div className="overflow-x-auto rounded-2xl border border-white/10">
             <table className="w-full text-sm">

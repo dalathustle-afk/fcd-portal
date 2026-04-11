@@ -63,7 +63,7 @@ export default function GioiThieuPage() {
           <div className="text-center mb-14">
             <span className="badge badge-amber mb-4 inline-flex">💡 Giá trị cốt lõi</span>
             <h2 className="font-display text-3xl sm:text-4xl text-[#1A120A] italic mb-3">Những cam kết của FCD</h2>
-            <p className="text-[#6B5A4E] text-sm max-w-md mx-auto">
+            <p className="text-[#6B5A4E] text-sm max-w-md mx-auto text-center">
               Nền tảng xây dựng thương hiệu cà phê đặc sản trung thực
             </p>
           </div>
@@ -101,7 +101,7 @@ export default function GioiThieuPage() {
           <div className="text-center mb-12">
             <span className="badge badge-sage mb-4 inline-flex">🗺️ Nguồn gốc</span>
             <h2 className="font-display text-3xl sm:text-4xl text-[#1A120A] italic mb-3">Hai vùng nguyên liệu</h2>
-            <p className="text-[#6B5A4E] text-sm">Hai vùng trồng hàng đầu Việt Nam tạo nên hương vị FCD</p>
+            <p className="text-[#6B5A4E] text-sm text-center">Hai vùng trồng hàng đầu Việt Nam tạo nên hương vị FCD</p>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
             {brandInfo.regions.map((region, i) => (
