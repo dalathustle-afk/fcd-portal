@@ -35,7 +35,7 @@ export function Footer() {
   const { contact, social } = siteData
 
   return (
-    <footer className="bg-[#2B1810] text-white/65 border-t border-[#E3A558]/10">
+    <footer className="bg-[#2B1810] text-white/75 border-t border-[#E3A558]/12">
 
       {/* Leaf divider top */}
       <div className="divider-leaf opacity-20" />
@@ -48,9 +48,9 @@ export function Footer() {
             <div className="flex items-center gap-2 mb-4">
               <Leaf size={16} className="text-[#6B8C6B]" />
               <span className="font-display text-[#E3A558] text-2xl italic">FCD</span>
-              <span className="text-white/25 text-[10px] font-medium tracking-widest uppercase">FROMCAUDAT</span>
+              <span className="text-white/72 text-[10px] font-medium tracking-widest uppercase">FROMCAUDAT</span>
             </div>
-            <p className="text-sm leading-relaxed mb-5 text-white/60 font-light">
+            <p className="text-sm leading-relaxed mb-5 text-white/70 font-light">
               Cà phê đặc sản từ Cầu Đất — chất lượng minh bạch, trải nghiệm an nhiên.
             </p>
 
@@ -58,7 +58,7 @@ export function Footer() {
               {contact.address && (
                 <div className="flex items-start gap-2">
                   <MapPin size={13} className="mt-0.5 text-[#B87333] shrink-0" />
-                  <span className="text-xs leading-relaxed">{contact.address}</span>
+                  <span className="text-xs text-white/70 leading-relaxed">{contact.address}</span>
                 </div>
               )}
               {contact.showPhone && contact.phone && (
@@ -85,13 +85,13 @@ export function Footer() {
               <div className="flex gap-2 mt-5">
                 {social.facebook && (
                   <a href={social.facebook} aria-label="Facebook FCD"
-                    className="px-3 py-1.5 rounded-full bg-white/5 hover:bg-[#E3A558]/10 text-white/50 hover:text-[#E3A558] transition-colors text-xs font-semibold">
+                    className="px-3 py-1.5 rounded-full bg-white/5 hover:bg-[#E3A558]/10 text-white/72 hover:text-[#E3A558] transition-colors text-xs font-semibold">
                     FB
                   </a>
                 )}
                 {social.zalo && (
                   <a href={social.zalo} aria-label="Zalo FCD"
-                    className="px-3 py-1.5 rounded-full bg-white/5 hover:bg-[#E3A558]/10 text-white/50 hover:text-[#E3A558] transition-colors text-xs font-semibold">
+                    className="px-3 py-1.5 rounded-full bg-white/5 hover:bg-[#E3A558]/10 text-white/72 hover:text-[#E3A558] transition-colors text-xs font-semibold">
                     Zalo
                   </a>
                 )}
@@ -106,7 +106,7 @@ export function Footer() {
               <ul className="space-y-2.5">
                 {section.links.map((link) => (
                   <li key={link.href}>
-                    <Link href={link.href} className="text-xs text-white/60 hover:text-[#E3A558] transition-colors leading-relaxed">
+                    <Link href={link.href} className="text-xs text-white/70 hover:text-[#E3A558] transition-colors leading-relaxed">
                       {link.label}
                     </Link>
                   </li>
@@ -118,8 +118,8 @@ export function Footer() {
 
         {/* Bottom */}
         <div className="mt-12 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-[10px] text-white/25">&copy; {new Date().getFullYear()} FROMCAUDAT. Mọi quyền được bảo lưu.</p>
-          <p className="text-[10px] text-white/25">Giá niêm yết có thể thay đổi — vui lòng xác nhận trước khi đặt hàng.</p>
+          <p className="text-[10px] text-white/55">&copy; {new Date().getFullYear()} FROMCAUDAT. Mọi quyền được bảo lưu.</p>
+          <p className="text-[10px] text-white/55">Giá niêm yết có thể thay đổi — vui lòng xác nhận trước khi đặt hàng.</p>
         </div>
       </div>
     </footer>

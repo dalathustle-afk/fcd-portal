@@ -48,15 +48,26 @@
   --fcd-text-soft:  #9C8472;   /* captions, placeholders */
   --fcd-text-ghost: #BBA898;   /* ghost text */
 
+  /* ── Semantic on-dark text palette ────────────────────────────
+     Use these on dark backgrounds, image overlays, video heroes.
+     All values pass WCAG AA (4.5:1) on espresso bg #2B1810.       */
+  --on-dark-primary:   rgba(255,255,255,0.96); /* headings, CTAs — 14:1 */
+  --on-dark-secondary: rgba(255,255,255,0.82); /* body text — 10:1 */
+  --on-dark-muted:     rgba(255,255,255,0.65); /* captions — 7:1 */
+  --on-dark-faint:     rgba(255,255,255,0.50); /* decorative only — 5:1 */
+  --on-dark-accent:    #E3A558;               /* copper accent on dark */
+
   /* ── Semantic ────────────────────────────────────────────────── */
   --fcd-border:     #D5C4B4;
   --fcd-bg:         #FAF7F2;
 
-  /* ── Overlay system — HARMONIZED (no harsh pure-black overlays) */
-  --overlay-hero:   linear-gradient(160deg, rgba(43,24,16,.82) 0%, rgba(43,24,16,.65) 50%, rgba(61,36,18,.30) 100%);
-  --overlay-dark:   linear-gradient(180deg, rgba(43,24,16,.88) 0%, rgba(43,24,16,.72) 60%, rgba(43,24,16,.20) 100%);
-  --overlay-side:   linear-gradient(90deg, rgba(43,24,16,.85) 0%, rgba(43,24,16,.65) 50%, rgba(43,24,16,.15) 100%);
+  /* ── Overlay system — CONTRAST-SAFE (minimum 65% at text zones) */
+  --overlay-hero:   linear-gradient(to bottom, rgba(43,24,16,.72) 0%, rgba(43,24,16,.58) 45%, rgba(43,24,16,.30) 100%);
+  --overlay-dark:   linear-gradient(180deg, rgba(43,24,16,.90) 0%, rgba(43,24,16,.78) 60%, rgba(43,24,16,.25) 100%);
+  --overlay-side:   linear-gradient(90deg, rgba(43,24,16,.90) 0%, rgba(43,24,16,.72) 55%, rgba(43,24,16,.10) 100%);
   --overlay-bottom: linear-gradient(to top, rgba(250,247,242,1) 0%, rgba(250,247,242,0) 100%);
+  /* Strong overlay for text sitting directly on bright/colourful photography */
+  --overlay-strong: linear-gradient(to bottom, rgba(43,24,16,.88) 0%, rgba(43,24,16,.75) 50%, rgba(43,24,16,.50) 100%);
 
   /* ── Shadows — organic warm tones, no cold grey ────────────── */
   --shadow-xs:      0 1px 3px rgba(90,52,26,0.06);
@@ -298,22 +309,25 @@ h2, h3, h4, h5, h6 {
    Glass / Backdrop effects
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .glass-dark {
-  background: rgba(43,24,16,0.52);
-  backdrop-filter: blur(14px) saturate(160%);
-  -webkit-backdrop-filter: blur(14px) saturate(160%);
-  border: 1px solid rgba(227,165,88,0.10);
+  /* Upgraded: 52% → 72% — text inside is now WCAG AA compliant */
+  background: rgba(43,24,16,0.72);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid rgba(227,165,88,0.14);
+  color: var(--on-dark-primary);
 }
+.glass-dark p, .glass-dark span, .glass-dark li { color: var(--on-dark-secondary); }
 .glass-light {
-  background: rgba(250,247,242,0.80);
+  background: rgba(250,247,242,0.88);
   backdrop-filter: blur(16px) saturate(150%);
   -webkit-backdrop-filter: blur(16px) saturate(150%);
   border: 1px solid rgba(213,196,180,0.40);
 }
 .glass-nature {
-  background: rgba(107,140,107,0.07);
+  background: rgba(107,140,107,0.10);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(107,140,107,0.18);
+  border: 1px solid rgba(107,140,107,0.22);
 }
 .glass-parchment {
   background: rgba(245,237,224,0.75);
@@ -549,16 +563,18 @@ h2, h3, h4, h5, h6 {
   display: inline-flex; align-items: center; gap: 8px;
   padding: 12px 26px;
   border-radius: 9999px;
-  background: transparent;
-  border: 1px solid rgba(255,255,255,0.18);
-  color: rgba(255,255,255,0.85);
+  background: rgba(255,255,255,0.06);
+  /* Upgraded: 18% → 30% border — visible on bright image hotspots */
+  border: 1.5px solid rgba(255,255,255,0.30);
+  color: rgba(255,255,255,0.92);
   font: 500 0.875rem/1 'Be Vietnam Pro', sans-serif;
+  letter-spacing: 0.01em;
   transition: border-color 240ms, color 240ms, background 240ms;
 }
 .btn-ghost:hover {
-  border-color: rgba(255,255,255,0.40);
+  border-color: rgba(255,255,255,0.55);
   color: white;
-  background: rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.10);
 }
 .btn-text {
   display: inline-flex; align-items: center; gap: 6px;
@@ -608,11 +624,20 @@ h2, h3, h4, h5, h6 {
   color: var(--fcd-earth);
   border: 1px solid rgba(43,24,16,0.12);
 }
-/* On dark backgrounds — reversed badge */
+/* On dark/image backgrounds — readable reversed badge (WCAG AA) */
 .badge-on-dark {
-  background: rgba(255,255,255,0.08);
-  color: rgba(255,255,255,0.75);
-  border: 1px solid rgba(255,255,255,0.14);
+  /* Upgraded: 8% bg → 12%, 75% text → 90%, 14% border → 24% */
+  background: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.92);
+  border: 1px solid rgba(255,255,255,0.26);
+  backdrop-filter: blur(6px);
+}
+/* Even stronger badge for use directly on bright photography */
+.badge-on-image {
+  background: rgba(43,24,16,0.65);
+  color: rgba(255,255,255,0.95);
+  border: 1px solid rgba(227,165,88,0.30);
+  backdrop-filter: blur(8px);
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -688,3 +713,89 @@ h2, h3, h4, h5, h6 {
   .marquee-ltr, .marquee-rtl { animation: none; }
   .reveal { opacity: 1; transform: none; transition: none; }
 }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   CONTRAST SAFETY SYSTEM — "Highland Edition"
+   Semantic utilities for guaranteed readable text on dark/image surfaces.
+   Use these instead of ad-hoc text-white/[n] values.
+   All pass WCAG AA (4.5:1) on espresso bg #2B1810.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+/* On-dark text classes — for headings, body, captions on dark/video/image bg */
+.text-on-dark          { color: var(--on-dark-primary); }
+.text-on-dark-body     { color: var(--on-dark-secondary); }
+.text-on-dark-muted    { color: var(--on-dark-muted); }
+.text-on-dark-accent   { color: var(--on-dark-accent); }
+
+/* Guaranteed-readable overlay zones — apply to container behind text */
+.overlay-safe {
+  /* Strong enough for white text at any font size */
+  background: linear-gradient(
+    to bottom,
+    rgba(43,24,16,0.90) 0%,
+    rgba(43,24,16,0.78) 50%,
+    rgba(43,24,16,0.55) 100%
+  );
+}
+/* Overlay for hero sections where you want image to remain vivid */
+.overlay-hero-soft {
+  background: linear-gradient(
+    to bottom,
+    rgba(43,24,16,0.62) 0%,
+    rgba(43,24,16,0.42) 45%,
+    rgba(43,24,16,0.20) 100%
+  );
+}
+/* Overlay for side-layout image sections (image right, text left) */
+.overlay-side-safe {
+  background: linear-gradient(
+    to right,
+    rgba(43,24,16,0.92) 0%,
+    rgba(43,24,16,0.76) 40%,
+    rgba(43,24,16,0.20) 70%,
+    transparent 100%
+  );
+}
+
+/* Dark surface section — for full dark background content areas */
+.surface-dark {
+  background: var(--fcd-espresso);
+  color: var(--on-dark-primary);
+}
+.surface-dark h1, .surface-dark h2, .surface-dark h3,
+.surface-dark h4, .surface-dark h5, .surface-dark h6 {
+  color: var(--on-dark-primary);
+}
+.surface-dark p, .surface-dark li { color: var(--on-dark-secondary); }
+.surface-dark .text-muted { color: var(--on-dark-muted); }
+
+/* Safe text reading zone — adds a subtle dark panel behind text blocks */
+.text-reading-zone {
+  background: rgba(43,24,16,0.55);
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Footer utility — stronger contrast for all footer text */
+.footer-link {
+  color: rgba(255,255,255,0.70);
+  transition: color 200ms ease;
+}
+.footer-link:hover { color: #E8A84C; }
+.footer-heading {
+  color: rgba(255,255,255,0.92);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.footer-caption { color: rgba(255,255,255,0.45); font-size: 0.7rem; }
+
+/* Navbar safe text */
+.nav-link {
+  color: rgba(255,255,255,0.82);
+  transition: color 200ms ease;
+}
+.nav-link:hover { color: #E8A84C; }

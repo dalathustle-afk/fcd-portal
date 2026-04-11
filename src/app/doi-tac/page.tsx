@@ -48,7 +48,7 @@ export default function DoiTacPage() {
       <section className="relative pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0">
           <Image src="/images/nature/hero-caudat.png" alt="Đối tác FCD" fill className="object-cover object-center" priority />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#1A120A]/92 via-[#1A120A]/80 to-[#FAF6F0]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#2B1810]/92 via-[#2B1810]/80 to-[#FAF6F0]" />
         </div>
         <div className="relative max-w-3xl mx-auto px-4 sm:px-6 text-center">
           <span className="badge badge-sage mb-5 inline-flex">🤝 Đối tác</span>

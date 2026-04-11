@@ -23,7 +23,7 @@ export default function GioiThieuPage() {
       <section className="relative pt-24 pb-24 overflow-hidden min-h-[70vh] flex items-center">
         <div className="absolute inset-0">
           <Image src="/images/nature/hero-caudat.png" alt="Cầu Đất" fill className="object-cover object-center" priority />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#1A120A]/88 via-[#1A120A]/72 to-[#FAF6F0]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#2B1810]/88 via-[#2B1810]/72 to-[#FAF6F0]" />
         </div>
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
           {/* Logo */}
@@ -146,7 +146,7 @@ export default function GioiThieuPage() {
           <div className="text-center mb-12">
             <span className="badge badge-amber mb-4 inline-flex">🏆 Tiêu chuẩn</span>
             <h2 className="font-display text-3xl text-white italic mb-3">Tiêu chuẩn &amp; Kiểm định</h2>
-            <p className="text-white/55 text-sm">Chất lượng được xác nhận, không tự công bố</p>
+            <p className="text-white/78 text-sm">Chất lượng được xác nhận, không tự công bố</p>
           </div>
           <div className="grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
             <div className="glass-dark rounded-2xl p-6">

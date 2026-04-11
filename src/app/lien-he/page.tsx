@@ -152,7 +152,7 @@ export default function LienHePage() {
       <section className="relative pt-32 pb-16 overflow-hidden">
         <div className="absolute inset-0">
           <Image src="/images/nature/coffee-cherry.png" alt="Cà phê Arabica Cầu Đất" fill className="object-cover object-center" priority />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#1A120A]/90 via-[#1A120A]/78 to-[#FAF6F0]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#2B1810]/90 via-[#2B1810]/78 to-[#FAF6F0]" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
           <span className="badge badge-sage mb-4 inline-flex backdrop-blur-sm"><Leaf size={11} /> Liên hệ</span>
@@ -178,7 +178,7 @@ export default function LienHePage() {
 
             {/* Info sidebar */}
             <div className="space-y-6">
-              <div className="bg-[#1A120A] rounded-2xl p-7">
+              <div className="bg-[#2B1810] rounded-2xl p-7">
                 <h3 className="font-display italic text-[#E3A558] text-xl mb-5">Chúng tôi hỗ trợ gì?</h3>
                 <div className="space-y-4">
                   {[
@@ -191,7 +191,7 @@ export default function LienHePage() {
                       <span className="text-xl shrink-0">{item.icon}</span>
                       <div>
                         <div className="font-semibold text-white/90 text-sm">{item.title}</div>
-                        <div className="text-xs text-white/45 mt-0.5">{item.desc}</div>
+                        <div className="text-xs text-white/68 mt-0.5">{item.desc}</div>
                       </div>
                     </div>
                   ))}

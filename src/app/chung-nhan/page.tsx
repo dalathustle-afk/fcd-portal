@@ -24,7 +24,7 @@ export default function ChungNhanPage() {
       <section className="relative pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0">
           <Image src="/images/nature/hero-caudat.png" alt="Vườn cà phê Cầu Đất" fill className="object-cover object-center" priority />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#1A120A]/92 via-[#1A120A]/80 to-[#FAF6F0]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#2B1810]/92 via-[#2B1810]/80 to-[#FAF6F0]" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 text-center">
           <span className="badge badge-amber mb-5 inline-flex">🏅 Chứng nhận</span>
@@ -99,7 +99,7 @@ export default function ChungNhanPage() {
         </div>
         <div className="relative max-w-2xl mx-auto px-4 sm:px-6 text-center">
           <h2 className="font-display text-2xl text-white mb-3">Cần tài liệu pháp lý chính thức?</h2>
-          <p className="text-white/55 mb-6 text-sm text-center">FCD cung cấp file gốc của các giấy chứng nhận theo yêu cầu của đối tác doanh nghiệp.</p>
+          <p className="text-white/78 mb-6 text-sm text-center">FCD cung cấp file gốc của các giấy chứng nhận theo yêu cầu của đối tác doanh nghiệp.</p>
           <Link href="/lien-he" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#B87333] hover:bg-[#D4914A] text-white font-semibold text-sm transition-all">
             Yêu cầu tài liệu
           </Link>

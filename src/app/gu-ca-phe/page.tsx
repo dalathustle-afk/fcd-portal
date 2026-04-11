@@ -38,7 +38,7 @@ export default function GuCaPhePage() {
             className="object-cover object-center"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#1A120A]/92 via-[#1A120A]/78 to-[#FAF6F0]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#2B1810]/92 via-[#2B1810]/78 to-[#FAF6F0]" />
           {/* Nature texture overlay */}
           <div className="absolute inset-0 opacity-20 mix-blend-overlay"
             style={{ backgroundImage: 'radial-gradient(circle at 70% 40%, rgba(107,140,107,0.4) 0%, transparent 60%)' }} />
@@ -117,7 +117,7 @@ export default function GuCaPhePage() {
                             </div>
                           </div>
                           {/* Label bar at bottom */}
-                          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#1A120A]/80 via-[#1A120A]/40 to-transparent p-5">
+                          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#2B1810]/80 via-[#2B1810]/40 to-transparent p-5">
                             <div className="font-bold text-white text-lg">Gu {cat.label}</div>
                             <div className="text-white/70 text-xs mt-0.5">{cat.character}</div>
                           </div>
@@ -203,7 +203,7 @@ export default function GuCaPhePage() {
                         </div>
                       )}
 
-                      <div className="bg-[#1A120A] rounded-2xl p-5 text-center">
+                      <div className="bg-[#2B1810] rounded-2xl p-5 text-center">
                         <p className="text-xs text-[#EDE4D8]/60 mb-3">Muốn tư vấn gu phù hợp?</p>
                         <Link
                           href="/lien-he"

@@ -82,7 +82,7 @@ export function Navbar() {
           </div>
           <div className="hidden sm:flex flex-col leading-tight">
             <span className="text-[#E8A84C] font-bold text-sm tracking-tight transition-colors group-hover:text-[#F0C98A]">FROMCAUDAT</span>
-            <span className="text-white/35 text-[9px] font-medium tracking-widest uppercase">Cà phê đặc sản SCA</span>
+            <span className="text-white/55 text-[9px] font-medium tracking-widest uppercase">Cà phê đặc sản SCA</span>
           </div>
         </Link>
 
@@ -92,13 +92,13 @@ export function Navbar() {
             link.children ? (
               <li key={link.label} className="relative">
                 <button
-                  className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-white/70 hover:text-[#E8A84C] transition-colors duration-200 rounded-md group"
+                  className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-white/82 hover:text-[#E8A84C] transition-colors duration-200 rounded-md group"
                   onClick={() => setOpenDropdown((prev) => prev === link.label ? null : link.label)}
                 >
                   {link.label}
                   <ChevronDown
                     size={13}
-                    className={clsx('transition-transform duration-200 text-white/40 group-hover:text-[#E8A84C]/60', openDropdown === link.label && 'rotate-180')}
+                    className={clsx('transition-transform duration-200 text-white/62 group-hover:text-[#E8A84C]/60', openDropdown === link.label && 'rotate-180')}
                   />
                   {/* Underline hover effect */}
                   <span className="absolute bottom-1 left-3 right-3 h-px bg-[#E8A84C]/0 group-hover:bg-[#E8A84C]/30 transition-all duration-200 rounded-full" />
@@ -109,7 +109,7 @@ export function Navbar() {
                       <Link
                         key={child.href}
                         href={child.href}
-                        className="block px-4 py-2.5 text-sm text-white/65 hover:text-[#E8A84C] hover:bg-[#E8A84C]/06 transition-all duration-150 whitespace-nowrap"
+                        className="block px-4 py-2.5 text-sm text-white/80 hover:text-[#E8A84C] hover:bg-[#E8A84C]/08 transition-all duration-150 whitespace-nowrap"
                         onClick={() => setOpenDropdown(null)}
                       >
                         {child.label}
@@ -126,7 +126,7 @@ export function Navbar() {
                     'px-3 py-2 text-sm font-medium rounded-md transition-all duration-200 block',
                     link.highlight
                       ? 'text-[#E8A84C] font-semibold hover:text-[#F0C98A]'
-                      : 'text-white/70 hover:text-[#E8A84C]'
+                      : 'text-white/82 hover:text-[#E8A84C]'
                   )}
                 >
                   {link.label}
@@ -144,7 +144,7 @@ export function Navbar() {
           <Link
             href="/tim-kiem"
             aria-label="Tìm kiếm"
-            className="p-2 rounded-lg text-white/50 hover:text-[#E8A84C] hover:bg-[#E8A84C]/08 transition-all duration-200"
+            className="p-2 rounded-lg text-white/72 hover:text-[#E8A84C] hover:bg-[#E8A84C]/08 transition-all duration-200"
           >
             <Search size={17} />
           </Link>
@@ -155,7 +155,7 @@ export function Navbar() {
             Liên hệ tư vấn
           </Link>
           <button
-            className="lg:hidden p-2 rounded-lg text-white/55 hover:text-[#E8A84C] transition-colors"
+            className="lg:hidden p-2 rounded-lg text-white/78 hover:text-[#E8A84C] transition-colors"
             onClick={() => setMobileOpen((v) => !v)}
             aria-label={mobileOpen ? 'Đóng menu' : 'Mở menu'}
           >

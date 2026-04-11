@@ -30,14 +30,14 @@ export default async function ChinhSachChiTietPage({ params }: Props) {
       <section className="relative pt-32 pb-14 overflow-hidden">
         <div className="absolute inset-0">
           <Image src="/images/nature/hero-caudat.png" alt="Chính sách FCD" fill className="object-cover object-top" priority />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#1A120A]/92 via-[#1A120A]/82 to-[#FAF6F0]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#2B1810]/92 via-[#2B1810]/82 to-[#FAF6F0]" />
         </div>
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6">
           <Link href="/chinh-sach" className="inline-flex items-center gap-2 text-white/60 hover:text-[#E3A558] text-sm mb-6 transition-colors">
             <ArrowLeft size={14} /> Thư viện chính sách
           </Link>
           <h1 className="font-display text-3xl sm:text-4xl text-white italic mb-3 leading-snug">{policy!.title}</h1>
-          <p className="text-white/55 text-sm">Hiệu lực từ: <strong className="text-[#E3A558]">{policy!.effectiveDate}</strong></p>
+          <p className="text-white/78 text-sm">Hiệu lực từ: <strong className="text-[#E3A558]">{policy!.effectiveDate}</strong></p>
         </div>
       </section>
 
@@ -126,7 +126,7 @@ export default async function ChinhSachChiTietPage({ params }: Props) {
           )}
 
           {/* CTA */}
-          <div className="bg-[#1A120A] rounded-2xl p-6 text-center">
+          <div className="bg-[#2B1810] rounded-2xl p-6 text-center">
             <p className="text-white/65 text-sm mb-4">Cần tư vấn về chính sách này?</p>
             <Link
               href="/lien-he"

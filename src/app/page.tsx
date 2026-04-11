@@ -213,7 +213,7 @@ export default function HomePage() {
                   <div className="text-2xl mb-2">{stat.icon}</div>
                   <div className="font-display text-3xl text-[#E3A558] mb-1 italic">{stat.value}</div>
                   <div className="text-xs font-semibold text-white/80">{stat.label}</div>
-                  <div className="text-[10px] text-white/40 mt-0.5">{stat.sub}</div>
+                  <div className="text-[10px] text-white/62 mt-0.5">{stat.sub}</div>
                 </div>
               ))}
             </div>
@@ -377,7 +377,7 @@ export default function HomePage() {
       </section>
 
       {/* ══ QUICK LINKS ══════════════════════════════════════════════ */}
-      <section className="py-14 bg-[#1A120A]">
+      <section className="py-14 bg-[#2B1810]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="divider-leaf mb-10 opacity-30" />
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -396,9 +396,9 @@ export default function HomePage() {
                   <div className="font-semibold text-white/90 group-hover:text-[#E3A558] transition-colors text-sm tracking-wide">
                     {item.title}
                   </div>
-                  <div className="text-xs text-white/40 mt-0.5">{item.desc}</div>
+                  <div className="text-xs text-white/62 mt-0.5">{item.desc}</div>
                 </div>
-                <ArrowRight size={13} className="ml-auto text-white/25 group-hover:text-[#E3A558] transition-colors" />
+                <ArrowRight size={13} className="ml-auto text-white/72 group-hover:text-[#E3A558] transition-colors" />
               </Link>
             ))}
           </div>

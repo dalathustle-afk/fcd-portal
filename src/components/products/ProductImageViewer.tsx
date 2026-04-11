@@ -78,7 +78,7 @@ export function ProductImageViewer({ src, alt }: Props) {
             />
           </div>
 
-          <p className="absolute bottom-4 left-0 right-0 text-center text-white/50 text-xs">
+          <p className="absolute bottom-4 left-0 right-0 text-center text-white/72 text-xs">
             Click bên ngoài ảnh để đóng
           </p>
         </div>

@@ -45,7 +45,7 @@ export default function QuyTrinhChatLuongPage() {
       <section className="relative pt-32 pb-24 overflow-hidden">
         <div className="absolute inset-0">
           <Image src="/images/nature/hero-caudat.png" alt="Quy trình chất lượng FCD" fill className="object-cover object-center" priority />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#1A120A]/92 via-[#1A120A]/80 to-[#FAF6F0]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#2B1810]/92 via-[#2B1810]/80 to-[#FAF6F0]" />
         </div>
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <span className="badge badge-sage mb-5 inline-flex">⚙️ Quy trình</span>
@@ -183,7 +183,7 @@ export default function QuyTrinhChatLuongPage() {
           <div className="text-center mb-12">
             <span className="badge badge-amber mb-4 inline-flex">📊 Phân loại SCA</span>
             <h2 className="font-display text-3xl text-white mb-3">5 Cấp độ chất lượng SCA</h2>
-            <p className="text-white/55 text-sm max-w-md mx-auto text-center">Bạn đang uống cà phê loại nào? Hầu hết cà phê vỉa hè Việt Nam nằm ở cấp 4–5.</p>
+            <p className="text-white/78 text-sm max-w-md mx-auto text-center">Bạn đang uống cà phê loại nào? Hầu hết cà phê vỉa hè Việt Nam nằm ở cấp 4–5.</p>
           </div>
           <div className="space-y-3">
             {scaGrades.map((grade) => (
@@ -198,7 +198,7 @@ export default function QuyTrinhChatLuongPage() {
                       <span className="text-[9px] bg-[#B87333] text-white px-2 py-0.5 rounded-full font-bold">FCD TARGET</span>
                     )}
                   </div>
-                  <p className="text-xs text-white/50">{grade.description}</p>
+                  <p className="text-xs text-white/72">{grade.description}</p>
                 </div>
               </div>
             ))}
@@ -240,7 +240,7 @@ export default function QuyTrinhChatLuongPage() {
       </section>
 
       {/* ══ CTA ═══════════════════════════════════════════════════ */}
-      <section className="py-14 bg-[#1A120A]">
+      <section className="py-14 bg-[#2B1810]">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center">
           <h2 className="font-display text-2xl text-white mb-6">Muốn tìm hiểu thêm về chất lượng FCD?</h2>
           <div className="flex flex-wrap gap-4 justify-center">
