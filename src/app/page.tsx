@@ -12,74 +12,89 @@ export default function HomePage() {
 
   return (
     <>
-      {/* ══ HERO — Cảnh sắc Cầu Đất ══════════════════════════════════ */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* ══ HERO — Cinematic Cầu Đất ══════════════════════════════════ */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden grain">
 
-        {/* Background landscape */}
-        <div className="absolute inset-0">
-          <Image
-            src="/images/nature/hero-caudat.png"
-            alt="Cầu Đất coffee plantation landscape"
-            fill
-            priority
-            className="object-cover object-center"
-          />
-          {/* Gradient overlay — dark at top, lighter toward bottom */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#1A120A]/90 via-[#1A120A]/65 to-[#2D4A2D]/30" />
-          {/* Extra soft texture at bottom */}
-          <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#FAF6F0]/20 to-transparent" />
+        {/* ── Cinematic video background ── */}
+        <div className="absolute inset-0 z-0">
+          <video
+            autoPlay muted loop playsInline
+            poster="/images/nature/hero-caudat.png"
+            className="absolute inset-0 w-full h-full object-cover object-center"
+            preload="none"
+          >
+            <source src="/video/video-background.mp4" type="video/mp4" />
+          </video>
+          {/* Harmonized warm espresso overlay — no harsh pure black */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#2B1810]/80 via-[#2B1810]/55 to-[#3D2412]/25" />
+          {/* Soft bottom transition to page bg */}
+          <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-[#FAF7F2]/30 to-transparent" />
+          {/* Ambient copper glow — right edge warmth */}
+          <div className="absolute inset-0 bg-gradient-to-l from-[#B87333]/08 via-transparent to-transparent" />
         </div>
 
-        {/* Floating leaf decoration */}
-        <div className="absolute top-28 right-[8%] opacity-30 animate-leaf-sway">
-          <svg width="56" height="80" viewBox="0 0 56 80" fill="none">
-            <path d="M28 2C28 2 54 20 54 44C54 62 42 74 28 78C14 74 2 62 2 44C2 20 28 2 28 2Z" fill="#6B8C6B" opacity=".6"/>
-            <line x1="28" y1="10" x2="28" y2="76" stroke="#4A6741" strokeWidth="1.5" opacity=".5"/>
+        {/* ── Floating leaf accents ── */}
+        <div className="absolute top-32 right-[7%] opacity-25 animate-leaf-sway pointer-events-none z-10">
+          <svg width="48" height="68" viewBox="0 0 56 80" fill="none">
+            <path d="M28 2C28 2 54 20 54 44C54 62 42 74 28 78C14 74 2 62 2 44C2 20 28 2 28 2Z" fill="#A8C4A2" opacity=".7"/>
+            <line x1="28" y1="10" x2="28" y2="76" stroke="#6B8C6B" strokeWidth="1" opacity=".5"/>
           </svg>
         </div>
-        <div className="absolute top-48 left-[6%] opacity-20 animate-leaf-sway" style={{ animationDelay: '1.2s' }}>
-          <svg width="40" height="56" viewBox="0 0 40 56" fill="none">
-            <path d="M20 2C20 2 38 14 38 30C38 44 30 52 20 54C10 52 2 44 2 30C2 14 20 2 20 2Z" fill="#A8C4A2" opacity=".7"/>
+        <div className="absolute top-52 left-[5%] opacity-15 animate-leaf-sway pointer-events-none z-10" style={{ animationDelay: '1.4s' }}>
+          <svg width="32" height="46" viewBox="0 0 40 56" fill="none">
+            <path d="M20 2C20 2 38 14 38 30C38 44 30 52 20 54C10 52 2 44 2 30C2 14 20 2 20 2Z" fill="#6B8C6B" opacity=".8"/>
           </svg>
         </div>
 
-        {/* Content */}
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center pt-28 pb-24 animate-fade-in">
-          <div className="inline-flex items-center gap-2 badge badge-sage mb-8 mx-auto backdrop-blur-sm">
-            <Leaf size={12} /> Cầu Đất, Lâm Đồng · 1.650m
+        {/* ── Hero content — fully centered ── */}
+        <div className="relative z-10 w-full max-w-3xl mx-auto px-5 sm:px-8 text-center flex flex-col items-center pt-28 pb-20">
+
+          {/* Overline badge */}
+          <div className="animate-fade-in" style={{ animationDelay: '100ms' }}>
+            <span className="badge badge-on-dark mb-8 inline-flex items-center gap-1.5">
+              <Leaf size={10} className="text-[#A8C4A2]" />
+              Cầu Đất, Lâm Đồng · 1.650m
+            </span>
           </div>
 
-          <h1 className="font-display text-5xl sm:text-6xl md:text-7xl text-white mb-4 leading-tight">
+          {/* H1 — Spectral italic display */}
+          <h1 className="font-display text-[3rem] sm:text-[4.5rem] md:text-[5.5rem] text-white leading-[1.05] mb-5 animate-fade-in" style={{ animationDelay: '200ms' }}>
             From Cầu Đất
-            <span className="block gradient-text mt-2">Cà Phê Đặc Sản SCA</span>
+            <span className="block gradient-text mt-1.5">Cà Phê Đặc Sản SCA</span>
           </h1>
 
-          <p className="text-base sm:text-lg text-white/70 mb-10 max-w-2xl mx-auto leading-relaxed font-light">
+          {/* Subheadline */}
+          <p className="text-[0.9rem] sm:text-base text-white/68 mb-10 max-w-xl leading-[1.85] font-light animate-fade-in" style={{ animationDelay: '360ms' }}>
             Từ những đồi cà phê phủ sương ở Cầu Đất - Nắng gắt của Ban Mê, chúng tôi bắt đầu hành trình gìn giữ sự tử tế trong từng hạt cà phê — để mỗi tách bạn nâng lên không chỉ là một thức uống, mà là câu chuyện của vùng đất, con người và những giá trị nguyên bản còn được nâng niu.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-3 justify-center mb-14">
+          {/* CTAs */}
+          <div className="flex flex-col sm:flex-row gap-3 justify-center items-center mb-10 animate-fade-in" style={{ animationDelay: '480ms' }}>
             <Link
               href="/an-nhien"
               id="cta-an-nhien"
-              className="flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#B87333] hover:bg-[#D4914A] text-white font-semibold text-sm transition-all shadow-lg shadow-[#B87333]/40 tracking-wide"
+              className="btn-copper flex items-center justify-center gap-2 px-7 py-3.5 rounded-full"
             >
-              Chương trình An Nhiên <ArrowRight size={15} />
+              Chương trình An Nhiên <ArrowRight size={14} />
             </Link>
             <Link
-              href="/san-pham"
-              id="cta-san-pham"
-              className="flex items-center justify-center gap-2 px-7 py-3.5 rounded-full glass-dark text-white/90 hover:text-white font-medium text-sm transition-all tracking-wide"
+              href="/quy-trinh-chat-luong"
+              id="cta-quy-trinh"
+              className="btn-ghost flex items-center justify-center gap-2 px-7 py-3.5 rounded-full"
             >
-              <Coffee size={15} /> Tra cứu sản phẩm
+              <ShieldCheck size={14} /> Quy trình chất lượng
             </Link>
           </div>
 
-          <HeroSearch />
+          {/* Search */}
+          <div className="w-full max-w-lg animate-fade-in" style={{ animationDelay: '560ms' }}>
+            <HeroSearch />
+          </div>
 
-          {/* Subtle scroll indicator */}
-          <div className="mt-14 flex justify-center opacity-50">
-            <div className="w-px h-14 bg-gradient-to-b from-white/60 to-transparent" />
+          {/* Scroll indicator */}
+          <div className="mt-14 flex flex-col items-center gap-2 animate-scroll-bounce opacity-45">
+            <div className="w-px h-10 bg-gradient-to-b from-white/50 to-transparent" />
+            <div className="w-1 h-1 rounded-full bg-white/40" />
           </div>
         </div>
       </section>

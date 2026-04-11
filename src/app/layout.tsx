@@ -1,7 +1,26 @@
 import type { Metadata } from 'next'
+import { Be_Vietnam_Pro, Spectral } from 'next/font/google'
 import './globals.css'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
+
+/* ── Spectral — editorial serif, full Vietnamese Unicode ── */
+const spectral = Spectral({
+  subsets: ['latin', 'vietnamese'],
+  weight: ['300', '400', '500', '600', '700'],
+  style: ['normal', 'italic'],
+  display: 'swap',
+  variable: '--ff-spectral',
+})
+
+/* ── Be Vietnam Pro — native Vietnamese sans-serif ── */
+const beVietnamPro = Be_Vietnam_Pro({
+  subsets: ['latin', 'vietnamese'],
+  weight: ['300', '400', '500', '600', '700', '800'],
+  style: ['normal', 'italic'],
+  display: 'swap',
+  variable: '--ff-bevietnam',
+})
 
 export const metadata: Metadata = {
   title: {
@@ -25,7 +44,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="vi">
+    <html lang="vi" className={`${spectral.variable} ${beVietnamPro.variable}`}>
       <body className="min-h-screen flex flex-col">
         <Navbar />
         <main className="flex-1">{children}</main>
