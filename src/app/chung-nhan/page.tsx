@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
+import { ZoomIn } from 'lucide-react'
 import { certifications, certTypeLabels, type CertType } from '@/data/certifications'
 
 export const metadata: Metadata = {
@@ -20,17 +21,17 @@ const typeColors: Record<CertType, string> = {
 export default function ChungNhanPage() {
   return (
     <>
-      <section className="relative pt-32 pb-16 overflow-hidden">
+      <section className="relative pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0">
-          <Image src="/images/nature/farm-illustration.png" alt="Vườn cà phê Cầu Đất" fill className="object-cover object-top opacity-40" priority />
+          <Image src="/images/nature/hero-caudat.png" alt="Vườn cà phê Cầu Đất" fill className="object-cover object-center" priority />
           <div className="absolute inset-0 bg-gradient-to-b from-[#1A120A]/92 via-[#1A120A]/80 to-[#FAF6F0]" />
         </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 text-center">
           <span className="badge badge-amber mb-5 inline-flex">🏅 Chứng nhận</span>
-          <h1 className="font-display text-4xl sm:text-5xl text-white italic mb-4 leading-tight">
+          <h1 className="font-display text-4xl sm:text-5xl text-white mb-4 leading-tight">
             Hệ thống Chứng nhận FCD
           </h1>
-          <p className="text-white/60 max-w-xl text-sm leading-relaxed">
+          <p className="text-white/60 max-w-xl mx-auto text-sm leading-relaxed text-center">
             Chất lượng không tự công bố — có thể kiểm chứng qua {certifications.length} giấy chứng nhận và kết quả kiểm nghiệm độc lập.
           </p>
         </div>
@@ -54,15 +55,21 @@ export default function ChungNhanPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {certifications.map((cert, i) => (
-              <div key={cert.id} className="card-nature overflow-hidden group" style={{ animationDelay: `${(i%8)*0.05}s` }}>
+              <div key={cert.id} className="card-nature overflow-hidden group cursor-zoom-in" style={{ animationDelay: `${(i%8)*0.05}s` }}>
                 <div className="relative aspect-[3/4] bg-[#F5EDE0] overflow-hidden">
                   <Image
                     src={cert.imagePath}
                     alt={cert.title}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    loading="lazy"
                   />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all flex items-center justify-center">
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity bg-white/90 rounded-full p-2.5 shadow">
+                      <ZoomIn size={16} className="text-[#1A120A]" />
+                    </div>
+                  </div>
                 </div>
                 <div className="p-4">
                   <span className={`text-[10px] font-medium px-2.5 py-0.5 rounded-full border ${typeColors[cert.type]} mb-2 inline-block`}>
@@ -85,10 +92,14 @@ export default function ChungNhanPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-14 bg-[#1A120A]">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="font-display text-2xl text-white italic mb-3">Cần tài liệu pháp lý chính thức?</h2>
-          <p className="text-white/50 mb-6 text-sm">FCD cung cấp file gốc của các giấy chứng nhận theo yêu cầu của đối tác doanh nghiệp.</p>
+      <section className="relative py-16 overflow-hidden">
+        <div className="absolute inset-0">
+          <Image src="/images/nature/coffee-cherry.png" alt="Cà phê arabica" fill className="object-cover object-center" />
+          <div className="absolute inset-0 bg-[#1A120A]/90" />
+        </div>
+        <div className="relative max-w-2xl mx-auto px-4 sm:px-6 text-center">
+          <h2 className="font-display text-2xl text-white mb-3">Cần tài liệu pháp lý chính thức?</h2>
+          <p className="text-white/55 mb-6 text-sm text-center">FCD cung cấp file gốc của các giấy chứng nhận theo yêu cầu của đối tác doanh nghiệp.</p>
           <Link href="/lien-he" className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-[#B87333] hover:bg-[#D4914A] text-white font-semibold text-sm transition-all">
             Yêu cầu tài liệu
           </Link>

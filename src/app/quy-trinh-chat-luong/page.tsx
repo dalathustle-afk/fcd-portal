@@ -28,17 +28,17 @@ export default function QuyTrinhChatLuongPage() {
   return (
     <>
       {/* ══ HERO ══════════════════════════════════════════════════ */}
-      <section className="relative pt-24 pb-20 overflow-hidden">
+      <section className="relative pt-32 pb-24 overflow-hidden">
         <div className="absolute inset-0">
-          <Image src="/images/nature/farm-illustration.png" alt="Quy trình chất lượng" fill className="object-cover object-top opacity-30" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#1A120A]/90 via-[#1A120A]/75 to-[#FAF6F0]" />
+          <Image src="/images/nature/hero-caudat.png" alt="Quy trình chất lượng FCD" fill className="object-cover object-center" priority />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#1A120A]/92 via-[#1A120A]/80 to-[#FAF6F0]" />
         </div>
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <span className="badge badge-sage mb-5 inline-flex">⚙️ Quy trình</span>
-          <h1 className="font-display text-4xl sm:text-5xl text-white italic mb-4 leading-tight">
+          <h1 className="font-display text-4xl sm:text-5xl text-white mb-4 leading-tight">
             Quy trình chất lượng FCD
           </h1>
-          <p className="text-white/65 max-w-lg mx-auto text-sm leading-relaxed">
+          <p className="text-white/65 max-w-lg mx-auto text-sm leading-relaxed text-center">
             Hệ sinh thái khép kín từ nông trại đến ly cà phê — 10 bước kiểm soát theo tiêu chuẩn SCA
           </p>
         </div>
@@ -108,11 +108,15 @@ export default function QuyTrinhChatLuongPage() {
       </section>
 
       {/* ══ SCA GRADE ═════════════════════════════════════════════ */}
-      <section className="py-20 bg-[#1A120A]">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6">
+      <section className="relative py-20 overflow-hidden">
+        <div className="absolute inset-0">
+          <Image src="/images/nature/coffee-cherry.png" alt="Cà phê Arabica quả chín" fill className="object-cover object-center" />
+          <div className="absolute inset-0 bg-[#1A120A]/93" />
+        </div>
+        <div className="relative max-w-3xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
             <span className="badge badge-amber mb-4 inline-flex">📊 Phân loại SCA</span>
-            <h2 className="font-display text-3xl text-white italic mb-3">5 Cấp độ chất lượng SCA</h2>
+            <h2 className="font-display text-3xl text-white mb-3">5 Cấp độ chất lượng SCA</h2>
             <p className="text-white/55 text-sm max-w-md mx-auto text-center">Bạn đang uống cà phê loại nào? Hầu hết cà phê vỉa hè Việt Nam nằm ở cấp 4–5.</p>
           </div>
           <div className="space-y-3">

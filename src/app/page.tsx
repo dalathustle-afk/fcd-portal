@@ -44,19 +44,18 @@ export default function HomePage() {
         </div>
 
         {/* Content */}
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center pt-24 pb-20 animate-fade-in">
-          <div className="inline-flex items-center gap-2 badge badge-sage mb-6 mx-auto backdrop-blur-sm">
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center pt-28 pb-24 animate-fade-in">
+          <div className="inline-flex items-center gap-2 badge badge-sage mb-8 mx-auto backdrop-blur-sm">
             <Leaf size={12} /> Cầu Đất, Lâm Đồng · 1.650m
           </div>
 
-          <h1 className="font-display text-5xl sm:text-6xl md:text-7xl text-white mb-5 leading-snug">
+          <h1 className="font-display text-5xl sm:text-6xl md:text-7xl text-white mb-4 leading-tight">
             From Cầu Đất
-            <span className="block gradient-text mt-1 italic">An nhiên từng ngụm</span>
+            <span className="block gradient-text mt-2">Cà Phê Đặc Sản SCA</span>
           </h1>
 
-          <p className="text-base sm:text-lg text-white/70 mb-10 max-w-xl mx-auto leading-relaxed font-light">
-            Cà phê đặc sản Arabica &amp; Robusta nguyên bản —<br className="hidden sm:block" />
-            minh bạch từ vùng trồng đến tay bạn
+          <p className="text-base sm:text-lg text-white/70 mb-10 max-w-2xl mx-auto leading-relaxed font-light">
+            Từ những đồi cà phê phủ sương ở Cầu Đất - Nắng gắt của Ban Mê, chúng tôi bắt đầu hành trình gìn giữ sự tử tế trong từng hạt cà phê — để mỗi tách bạn nâng lên không chỉ là một thức uống, mà là câu chuyện của vùng đất, con người và những giá trị nguyên bản còn được nâng niu.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 justify-center mb-14">
