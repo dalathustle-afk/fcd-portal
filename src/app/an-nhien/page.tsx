@@ -277,12 +277,12 @@ export default function AnNhienPage() {
               ))}
 
               {/* Deposit highlight */}
-              <div className="mt-2 rounded-2xl bg-gradient-to-r from-[#F5EDE0] to-[#EDE0CF] border border-[#E3A558]/40 p-4">
+              <div className="mt-2 rounded-2xl bg-gradient-to-r from-[#FBF3E8] to-[#F5EDE0] border border-[#D4914A]/40 p-4">
                 <div className="flex items-start gap-3">
-                  <span className="text-[#E3A558] text-xl shrink-0">💡</span>
+                  <span className="text-[#D4914A] text-xl shrink-0">💡</span>
                   <div>
-                    <div className="text-[#E3A558] font-bold text-sm mb-1">Trả trước 50% — chỉ 2.612.000đ</div>
-                    <p className="text-white/65 text-xs leading-relaxed">
+                    <div className="text-[#7C3D18] font-bold text-sm mb-1">Trả trước 50% — chỉ 2.612.000đ</div>
+                    <p className="text-[#6B5442] text-xs leading-relaxed">
                       Là đã được nhận ngay máy pha cà phê và bắt đầu hành trình An Nhiên. Phần còn lại thanh toán linh hoạt sau.
                     </p>
                   </div>
@@ -542,52 +542,66 @@ export default function AnNhienPage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
             <span className="badge badge-sage mb-4 inline-flex backdrop-blur-sm">🔍 Nhận biết</span>
-            <h2 className="font-display text-3xl sm:text-4xl text-white italic mb-3">
+            <h2 className="font-display text-3xl sm:text-4xl text-[#2B1810] italic mb-3">
               Phân Biệt 5 Loại Cà Phê
             </h2>
-            <p className="text-white/78 text-sm max-w-md mx-auto">
+            <p className="text-[#6B5442] text-sm max-w-md mx-auto">
               Nhận diện bằng mắt, mũi, miệng — để không bao giờ bị lừa bởi cà phê kém chất lượng
             </p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
-            {coffeeTypes.map((type, i) => (
+            {coffeeTypes.map((type) => (
               <div
                 key={type.id}
                 className={`rounded-2xl p-5 flex flex-col gap-3 border transition-all card-hover ${
                   type.isFCD
-                    ? 'border-[#E3A558]/50 bg-gradient-to-b from-[#F5EDE0] to-[#EDE0CF] shadow-lg shadow-amber-900/20'
+                    ? 'border-[#E3A558]/50 bg-gradient-to-b from-[#FFFCF8] to-[#F5EDE0] shadow-lg shadow-amber-900/10'
                     : type.danger
-                    ? 'border-red-900/30 bg-red-950/20'
-                    : 'border-white/8 bg-white/3'
+                    ? 'border-[#C0392B]/25 bg-[#FFF5F5]'
+                    : 'border-[#D5C4B4] bg-white'
                 }`}
               >
                 <div className="flex items-center justify-between">
                   <span className="text-2xl">{type.icon}</span>
                   {type.isFCD && (
-                    <span className="text-[10px] bg-[#E3A558]/20 text-[#E3A558] border border-[#E3A558]/30 rounded-full px-2 py-0.5 font-semibold">
+                    <span className="text-[10px] bg-[#E3A558]/20 text-[#7C3D18] border border-[#E3A558]/40 rounded-full px-2 py-0.5 font-semibold">
                       FCD
                     </span>
                   )}
                   {type.danger && (
-                    <span className="text-[10px] bg-red-900/40 text-red-300 border border-red-800/40 rounded-full px-2 py-0.5 font-semibold">
+                    <span className="text-[10px] bg-[#C0392B]/10 text-[#C0392B] border border-[#C0392B]/30 rounded-full px-2 py-0.5 font-semibold">
                       ⚠ Nguy hiểm
                     </span>
                   )}
                 </div>
-                <div className="font-semibold text-white text-sm">{type.name}</div>
+                <div className={`font-semibold text-sm ${type.isFCD ? 'text-[#7C3D18]' : type.danger ? 'text-[#C0392B]' : 'text-[#2B1810]'}`}>
+                  {type.name}
+                </div>
 
                 <div className="space-y-2.5 flex-1">
                   <div>
-                    <div className="text-[10px] text-[#E3A558]/70 font-semibold uppercase tracking-wider mb-0.5">👁 Thị giác</div>
-                    <p className="text-white/72 text-[11px] leading-relaxed">{type.visual}</p>
+                    <div className={`text-[10px] font-semibold uppercase tracking-wider mb-0.5 ${type.isFCD ? 'text-[#B87333]' : type.danger ? 'text-[#C0392B]/80' : 'text-[#9C8472]'}`}>
+                      👁 Thị giác
+                    </div>
+                    <p className={`text-[11px] leading-relaxed ${type.isFCD ? 'text-[#5C3317]' : type.danger ? 'text-[#7B1E1E]' : 'text-[#6B5442]'}`}>
+                      {type.visual}
+                    </p>
                   </div>
                   <div>
-                    <div className="text-[10px] text-[#E3A558]/70 font-semibold uppercase tracking-wider mb-0.5">👃 Khứu giác</div>
-                    <p className="text-white/72 text-[11px] leading-relaxed">{type.smell}</p>
+                    <div className={`text-[10px] font-semibold uppercase tracking-wider mb-0.5 ${type.isFCD ? 'text-[#B87333]' : type.danger ? 'text-[#C0392B]/80' : 'text-[#9C8472]'}`}>
+                      👃 Khứu giác
+                    </div>
+                    <p className={`text-[11px] leading-relaxed ${type.isFCD ? 'text-[#5C3317]' : type.danger ? 'text-[#7B1E1E]' : 'text-[#6B5442]'}`}>
+                      {type.smell}
+                    </p>
                   </div>
                   <div>
-                    <div className="text-[10px] text-[#E3A558]/70 font-semibold uppercase tracking-wider mb-0.5">👅 Vị giác</div>
-                    <p className={`text-[11px] leading-relaxed ${type.isFCD ? 'text-[#E3A558]/80' : 'text-white/72'}`}>{type.taste}</p>
+                    <div className={`text-[10px] font-semibold uppercase tracking-wider mb-0.5 ${type.isFCD ? 'text-[#B87333]' : type.danger ? 'text-[#C0392B]/80' : 'text-[#9C8472]'}`}>
+                      👅 Vị giác
+                    </div>
+                    <p className={`text-[11px] leading-relaxed ${type.isFCD ? 'text-[#B87333]' : type.danger ? 'text-[#7B1E1E]' : 'text-[#6B5442]'}`}>
+                      {type.taste}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -598,4 +612,3 @@ export default function AnNhienPage() {
     </>
   )
 }
-

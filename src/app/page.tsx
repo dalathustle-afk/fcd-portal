@@ -25,10 +25,9 @@ export default function HomePage() {
           >
             <source src="/video/video-background.mp4" type="video/mp4" />
           </video>
-          {/* Very light overlay — keeps video vivid and fresh */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#2B1810]/45 via-[#2B1810]/20 to-transparent" />
-          {/* Soft bottom transition to page bg */}
-          <div className="absolute bottom-0 left-0 right-0 h-36 bg-gradient-to-t from-[#FAF7F2]/25 to-transparent" />
+          {/* NO overlay — video shows fully vivid and natural */}
+          {/* Subtle bottom cream fade for section transition only */}
+          <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-[#FAF7F2] to-transparent" />
         </div>
 
         {/* ── Floating leaf accents ── */}
@@ -62,7 +61,7 @@ export default function HomePage() {
           </h1>
 
           {/* Subheadline */}
-          <p className="text-[0.9rem] sm:text-base text-white/68 mb-10 max-w-xl leading-[1.85] font-light animate-fade-in" style={{ animationDelay: '360ms' }}>
+          <p className="text-[0.9rem] sm:text-base text-white/90 mb-10 max-w-xl leading-[1.85] font-light animate-fade-in" style={{ animationDelay: '360ms' }}>
             Từ những đồi cà phê phủ sương ở Cầu Đất - Nắng gắt của Ban Mê, chúng tôi bắt đầu hành trình gìn giữ sự tử tế trong từng hạt cà phê — để mỗi tách bạn nâng lên không chỉ là một thức uống, mà là câu chuyện của vùng đất, con người và những giá trị nguyên bản còn được nâng niu.
           </p>
 
@@ -389,16 +388,16 @@ export default function HomePage() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="flex items-center gap-4 p-5 rounded-2xl glass-dark hover:border-[#E3A558]/25 group transition-all"
+                className="flex items-center gap-4 p-5 rounded-2xl bg-white border border-[#D5C4B4] hover:border-[#B87333]/50 hover:shadow-md group transition-all"
               >
                 <span className="text-2xl">{item.icon}</span>
                 <div>
-                  <div className="font-semibold text-white/90 group-hover:text-[#E3A558] transition-colors text-sm tracking-wide">
+                  <div className="font-semibold text-[#2B1810] group-hover:text-[#B87333] transition-colors text-sm tracking-wide">
                     {item.title}
                   </div>
-                  <div className="text-xs text-white/62 mt-0.5">{item.desc}</div>
+                  <div className="text-xs text-[#9C8472] mt-0.5">{item.desc}</div>
                 </div>
-                <ArrowRight size={13} className="ml-auto text-white/72 group-hover:text-[#E3A558] transition-colors" />
+                <ArrowRight size={13} className="ml-auto text-[#D5C4B4] group-hover:text-[#B87333] transition-colors" />
               </Link>
             ))}
           </div>

@@ -39,18 +39,18 @@ export default function GioiThieuPage() {
             </div>
           </div>
           <span className="badge badge-sage mb-5 inline-flex backdrop-blur-sm">🌿 Về chúng tôi</span>
-          <h1 className="font-display text-4xl sm:text-6xl text-white italic mb-6 leading-tight">
+          <h1 className="font-display text-4xl sm:text-6xl text-[#1A120A] italic mb-6 leading-tight">
             FROM CẦU ĐẤT<br />
-            <span className="text-[#E3A558] text-3xl sm:text-4xl">Cà Phê Đặc Sản SCA</span>
+            <span className="text-[#B87333] text-3xl sm:text-4xl">Cà Phê Đặc Sản SCA</span>
           </h1>
-          <p className="text-white/70 text-base max-w-2xl mx-auto leading-relaxed font-light">
+          <p className="text-[#4A3428] text-base max-w-2xl mx-auto leading-relaxed font-light">
             {brandInfo.mission}
           </p>
           <div className="mt-8 flex flex-wrap gap-3 justify-center">
             <Link href="/an-nhien" className="px-7 py-3.5 rounded-full bg-[#B87333] hover:bg-[#D4914A] text-white font-semibold text-sm transition-all shadow-lg shadow-[#B87333]/30">
               Chương trình An Nhiên →
             </Link>
-            <Link href="/quy-trinh-chat-luong" className="px-7 py-3.5 rounded-full glass-dark text-white/80 hover:text-white text-sm font-medium transition-all">
+            <Link href="/quy-trinh-chat-luong" className="px-7 py-3.5 rounded-full border border-[#7C3D18]/40 bg-white/60 backdrop-blur-sm text-[#2B1810] hover:bg-white text-sm font-medium transition-all">
               Quy trình chất lượng
             </Link>
           </div>
