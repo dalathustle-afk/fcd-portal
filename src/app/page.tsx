@@ -163,7 +163,7 @@ export default function HomePage() {
             fill
             className="object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#1A120A]/90 via-[#1A120A]/75 to-[#1A120A]/30" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#2B1810]/88 via-[#2B1810]/70 to-[#2B1810]/20" />
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6">

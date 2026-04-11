@@ -35,7 +35,7 @@ export function Footer() {
   const { contact, social } = siteData
 
   return (
-    <footer className="bg-[#1A120A] text-white/60 border-t border-[#E3A558]/08">
+    <footer className="bg-[#2B1810] text-white/65 border-t border-[#E3A558]/10">
 
       {/* Leaf divider top */}
       <div className="divider-leaf opacity-20" />
@@ -50,7 +50,7 @@ export function Footer() {
               <span className="font-display text-[#E3A558] text-2xl italic">FCD</span>
               <span className="text-white/25 text-[10px] font-medium tracking-widest uppercase">FROMCAUDAT</span>
             </div>
-            <p className="text-sm leading-relaxed mb-5 text-white/50 font-light">
+            <p className="text-sm leading-relaxed mb-5 text-white/60 font-light">
               Cà phê đặc sản từ Cầu Đất — chất lượng minh bạch, trải nghiệm an nhiên.
             </p>
 
@@ -102,11 +102,11 @@ export function Footer() {
           {/* Nav columns */}
           {footerLinks.map((section) => (
             <div key={section.title}>
-              <h4 className="text-white/80 font-semibold text-xs mb-4 tracking-widest uppercase">{section.title}</h4>
+              <h4 className="text-white/90 font-semibold text-xs mb-4 tracking-widest uppercase">{section.title}</h4>
               <ul className="space-y-2.5">
                 {section.links.map((link) => (
                   <li key={link.href}>
-                    <Link href={link.href} className="text-xs text-white/45 hover:text-[#E3A558] transition-colors leading-relaxed">
+                    <Link href={link.href} className="text-xs text-white/60 hover:text-[#E3A558] transition-colors leading-relaxed">
                       {link.label}
                     </Link>
                   </li>
