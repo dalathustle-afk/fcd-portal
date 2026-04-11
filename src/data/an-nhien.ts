@@ -91,7 +91,7 @@ export const fiveNoes = [
     title: 'Không trộn độn',
     description:
       'Tuyệt đối không pha lẫn bắp, đậu nành hay bất kỳ ngũ cốc nào khác vào sản phẩm cà phê.',
-    icon: '🌾',
+    icon: '⛔',
   },
   {
     id: 'no-2',
@@ -107,7 +107,7 @@ export const fiveNoes = [
     title: 'Không khét cháy',
     description:
       'Áp dụng kỹ thuật rang Hot-air của Ý tiên tiến, loại bỏ hoàn toàn tình trạng hạt bị cháy khét sinh ra độc tố.',
-    icon: '🔥',
+    icon: '🌬️',
   },
   {
     id: 'no-4',
@@ -115,7 +115,7 @@ export const fiveNoes = [
     title: 'Không tạp hương, tạp vị',
     description:
       'Mỗi mẻ rang đều tinh khiết, không bị dính mùi đất ẩm, mùi giấm lên men hay vị chát gắt của hạt non.',
-    icon: '🎵',
+    icon: '👃',
   },
   {
     id: 'no-5',
@@ -123,7 +123,7 @@ export const fiveNoes = [
     title: 'Không nấm mốc, độc tố',
     description:
       'Lọc sạch 100% hạt mốc (chứa độc tố Ochratoxin A) và các loại hạt lỗi bằng máy quang học Nhật Bản trước khi chế biến.',
-    icon: '🛡️',
+    icon: '🔬',
   },
 ]
 
@@ -361,7 +361,7 @@ export const barriersFaq = [
     id: 'barrier-6',
     barrier: 'Đầu tư 1 lần từ 5–12 triệu là quá lớn',
     solution:
-      'FCD áp dụng đòn bẩy "Chia nhỏ tài chính" — phân kỳ thanh toán và tính toán ROI rõ ràng: chi phí/ly chỉ từ 3.271đ với định dạng 140 ly/kg.',
+      'FCD áp dụng đòn bẩy "Chia nhỏ tài chính" — phân kỳ thanh toán và tính toán ROI rõ ràng: chi phí/ly chỉ từ 3.271đ với định dạng 140 ly/kg. Đặc biệt: Trả trước 50% chỉ còn 2.612.000đ là đã được nhận ngay máy pha cà phê và bắt đầu hành trình An Nhiên.',
   },
 ]
 

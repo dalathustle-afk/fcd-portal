@@ -7,7 +7,7 @@ export const brandInfo: BrandInfo = {
   founded: '2019',
   origin: 'Cầu Đất, Đà Lạt, Lâm Đồng',
   mission:
-    'Mang đến cà phê đặc sản Việt Nam chất lượng cao, minh bạch và đáng tin cậy — từ vùng nguyên liệu đến tay người dùng — thông qua tiêu chuẩn kiểm soát chặt và trải nghiệm thưởng thức an nhiên.',
+    'Từ những đồi cà phê phủ sương ở Cầu Đất — Nắng gắt của Buôn Mê, chúng tôi bắt đầu hành trình gìn giữ sự tử tế trong từng hạt cà phê — để mỗi tách bạn nâng lên không chỉ là một thức uống, mà là câu chuyện của vùng đất, con người và những giá trị nguyên bản còn được nâng niu.',
   values: [
     {
       icon: 'leaf',
@@ -23,9 +23,9 @@ export const brandInfo: BrandInfo = {
     },
     {
       icon: 'award',
-      title: 'Specialty Coffee định hướng',
+      title: 'Cà Phê Đặc Sản SCA',
       description:
-        'Sản phẩm được rang xay theo profile phù hợp với từng gu vị, không dùng hương liệu nhân tạo.',
+        'Tất cả Sản Phẩm của FCD đều trong Top 1 đánh giá của SCA — 100% Không lỗi sơ cấp — Không Độc Tố.',
     },
     {
       icon: 'heart',

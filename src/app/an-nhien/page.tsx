@@ -89,6 +89,22 @@ export default function AnNhienPage() {
         </div>
       </section>
 
+      {/* ══ POSTER AN NHIÊN ════════════════════════════════════════ */}
+      <section className="py-10 section-parchment">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <div className="rounded-3xl overflow-hidden shadow-xl border border-[#D9CABC]">
+            <Image
+              src="/images/nature/poster-an-nhien.png"
+              alt="Poster chương trình An Nhiên cùng FCD"
+              width={1200}
+              height={680}
+              className="w-full h-auto"
+              priority
+            />
+          </div>
+        </div>
+      </section>
+
       {/* ══ 5 KHÔNG ═══════════════════════════════════════════════ */}
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0">
@@ -218,7 +234,7 @@ export default function AnNhienPage() {
             {/* Machine highlight */}
             <div className="card-nature overflow-hidden">
               <div className="relative h-64 bg-[#F5EDE0]">
-                <Image src="/images/nature/may-pha-an-nhien.jpg" alt="Máy pha espresso 20 bar — FCD An Nhiên" fill className="object-cover object-center" sizes="(max-width: 768px) 100vw, 50vw" />
+                <Image src="/images/nature/may-pha-an-nhien.jpg" alt="Máy pha espresso 20 bar — FCD An Nhiên" fill className="object-contain object-center p-4" sizes="(max-width: 768px) 100vw, 50vw" />
                 <div className="absolute top-3 left-3">
                   <span className="badge bg-[#B87333] text-white border-0 text-xs font-bold px-3 py-1.5 rounded-full">
                     {anNhienCombo.machine.highlight}
@@ -242,6 +258,20 @@ export default function AnNhienPage() {
                   <p className="text-xs text-[#9C8472] mt-1">{b.note}</p>
                 </div>
               ))}
+
+              {/* Deposit highlight */}
+              <div className="mt-2 rounded-2xl bg-gradient-to-r from-[#2D1F0A] to-[#1A120A] border border-[#E3A558]/40 p-4">
+                <div className="flex items-start gap-3">
+                  <span className="text-[#E3A558] text-xl shrink-0">💡</span>
+                  <div>
+                    <div className="text-[#E3A558] font-bold text-sm mb-1">Trả trước 50% — chỉ 2.612.000đ</div>
+                    <p className="text-white/65 text-xs leading-relaxed">
+                      Là đã được nhận ngay máy pha cà phê và bắt đầu hành trình An Nhiên. Phần còn lại thanh toán linh hoạt sau.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
               <Link href="/lien-he" className="flex items-center justify-center gap-2 w-full px-6 py-3.5 rounded-full bg-[#B87333] hover:bg-[#D4914A] text-white font-semibold text-sm transition-all mt-4">
                 Đăng ký tư vấn ngay <ArrowRight size={15} />
               </Link>

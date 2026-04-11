@@ -18,6 +18,7 @@ const footerLinks = [
       { href: '/bang-gia', label: 'Bảng giá niêm yết' },
       { href: '/gu-ca-phe', label: 'Gu cà phê' },
       { href: '/chinh-sach', label: 'Chính sách' },
+      { href: '/co-the-ban-chua-biet', label: 'Có Thể Bạn Chưa Biết' },
     ],
   },
   {

@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useState, useEffect, useRef } from 'react'
 import { Search, Menu, X, ChevronDown } from 'lucide-react'
 import { clsx } from 'clsx'
@@ -14,6 +15,7 @@ const navLinks = [
       { href: '/san-pham', label: 'Sản phẩm' },
       { href: '/bang-gia', label: 'Bảng giá' },
       { href: '/gu-ca-phe', label: 'Gu cà phê' },
+      { href: '/co-the-ban-chua-biet', label: 'Có Thể Bạn Chưa Biết' },
     ],
   },
   {
@@ -63,12 +65,20 @@ export function Navbar() {
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 shrink-0">
-          <span className="text-[#E8A84C] font-bold text-xl tracking-tight">FCD</span>
-          <span className="hidden sm:block h-5 w-px bg-[#E8A84C]/30" />
-          <span className="hidden sm:block text-[#EDE4D8]/60 text-xs font-medium tracking-wider uppercase">
-            FROMCAUDAT
-          </span>
+        <Link href="/" className="flex items-center gap-2.5 shrink-0">
+          <div className="w-9 h-9 rounded-full overflow-hidden border border-[#E3A558]/30 shrink-0">
+            <Image
+              src="/images/nature/logo-from-cau-dat.jpg"
+              alt="FCD FROMCAUDAT"
+              width={36}
+              height={36}
+              className="object-cover w-full h-full"
+            />
+          </div>
+          <div className="hidden sm:flex flex-col leading-tight">
+            <span className="text-[#E8A84C] font-bold text-sm tracking-tight">FROMCAUDAT</span>
+            <span className="text-[#EDE4D8]/50 text-[9px] font-medium tracking-widest uppercase">Cà phê đặc sản SCA</span>
+          </div>
         </Link>
 
         {/* Desktop Nav */}

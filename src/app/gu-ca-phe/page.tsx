@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 import { flavorCategories } from '@/content/flavors'
 import { products } from '@/data/products'
@@ -16,18 +17,27 @@ const catSlugToGroup: Record<string, string> = {
   'nguyen-ban': 'gu-nguyen-ban',
 }
 
+// Map category slug to gu image
+const catImages: Record<string, string> = {
+  'dam-vi': '/images/products/gu-dam-vi-b3.jpg',
+  'can-bang': '/images/products/gu-can-bang-a3.jpg',
+  'tinh-te': '/images/products/gu-tinh-tuy-cao1.jpg',
+  'nguyen-ban': '/images/products/gu-nguyen-ban-o1.jpg',
+}
+
 export default function GuCaPhePage() {
   return (
     <>
-      <section className="pt-24 pb-16 bg-[#1A120A] relative overflow-hidden">
-        <div className="absolute inset-0 opacity-8">
-          <div className="absolute top-0 right-0 w-80 h-80 rounded-full bg-[#6B8C6B] blur-3xl" />
-          <div className="absolute bottom-0 left-1/4 w-64 h-64 rounded-full bg-[#B87333] blur-3xl" />
+      {/* ══ HERO ══════════════════════════════════════════════════ */}
+      <section className="relative pt-32 pb-16 overflow-hidden">
+        <div className="absolute inset-0">
+          <Image src="/images/nature/farm-illustration.png" alt="Vườn cà phê" fill className="object-cover object-top opacity-50" priority />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#1A120A]/90 via-[#1A120A]/80 to-[#FAF6F0]" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 text-center">
           <span className="badge badge-sage mb-5 inline-flex mx-auto">🎨 Tra cứu</span>
           <h1 className="font-display text-4xl sm:text-5xl text-white italic mb-4">Gu cà phê FCD</h1>
-          <p className="text-white/55 max-w-lg mx-auto text-sm">
+          <p className="text-white/60 max-w-lg mx-auto text-sm leading-relaxed">
             4 nhóm gu vị đặc trưng — mỗi gu có sản phẩm tương ứng trong catalog chính thức
           </p>
         </div>
@@ -51,16 +61,38 @@ export default function GuCaPhePage() {
           {/* Each flavor category */}
           <div className="space-y-16">
             {flavorCategories.map((cat) => {
-              // Find products matching this flavor group
               const groupKey = catSlugToGroup[cat.slug] ?? ''
               const catProducts = products.filter((p) => p.group === groupKey)
+              const guImage = catImages[cat.slug]
 
               return (
                 <div key={cat.id} id={cat.slug} className="scroll-mt-20">
                   <div className="h-1.5 rounded-full mb-6 max-w-xs" style={{ backgroundColor: cat.color }} />
-                  <div className="grid lg:grid-cols-2 gap-10">
-                    {/* Left: info */}
-                    <div>
+                  <div className="grid lg:grid-cols-3 gap-8 items-start">
+
+                    {/* Column 1: Gu image */}
+                    {guImage && (
+                      <div className="lg:col-span-1">
+                        <div className="card-nature overflow-hidden rounded-3xl aspect-[3/4] relative">
+                          <Image
+                            src={guImage}
+                            alt={`Gu ${cat.label} FCD`}
+                            fill
+                            className="object-cover object-center"
+                            sizes="(max-width: 1024px) 100vw, 33vw"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-[#1A120A]/70 via-transparent to-transparent" />
+                          <div className="absolute bottom-4 left-4 right-4">
+                            <div className="text-2xl mb-1">{cat.icon}</div>
+                            <div className="font-bold text-white text-lg">Gu {cat.label}</div>
+                            <div className="text-white/70 text-xs mt-0.5">{cat.character}</div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Column 2: Info */}
+                    <div className={guImage ? 'lg:col-span-1' : 'lg:col-span-1'}>
                       <div className="flex items-center gap-3 mb-4">
                         <span className="text-4xl">{cat.icon}</span>
                         <div>
@@ -69,7 +101,7 @@ export default function GuCaPhePage() {
                         </div>
                       </div>
 
-                      <p className="text-[#6B5A4E] leading-relaxed mb-6">{cat.description}</p>
+                      <p className="text-[#6B5A4E] leading-relaxed mb-6 text-sm">{cat.description}</p>
 
                       {/* Highlights */}
                       <div className="mb-5">
@@ -95,7 +127,7 @@ export default function GuCaPhePage() {
                       </div>
                     </div>
 
-                    {/* Right: products */}
+                    {/* Column 3: Products */}
                     <div className="space-y-4">
                       {catProducts.length > 0 ? (
                         <div className="bg-white rounded-2xl border border-[#D9CABC] p-5">
@@ -138,13 +170,13 @@ export default function GuCaPhePage() {
                         </div>
                       )}
 
-                      <div className="bg-[#1C0F07] rounded-2xl p-5 text-center">
+                      <div className="bg-[#1A120A] rounded-2xl p-5 text-center">
                         <p className="text-xs text-[#EDE4D8]/60 mb-3">
                           Muốn tư vấn gu phù hợp?
                         </p>
                         <Link
                           href="/lien-he"
-                          className="inline-flex items-center gap-1 px-4 py-2 rounded-lg bg-[#C07A2B] text-[#1C0F07] text-xs font-semibold hover:bg-[#E8A84C] transition-all"
+                          className="inline-flex items-center gap-1 px-4 py-2 rounded-lg bg-[#B87333] text-white text-xs font-semibold hover:bg-[#D4914A] transition-all"
                         >
                           Liên hệ tư vấn
                         </Link>
