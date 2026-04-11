@@ -218,7 +218,7 @@ export default function AnNhienPage() {
             {/* Machine highlight */}
             <div className="card-nature overflow-hidden">
               <div className="relative h-64 bg-[#F5EDE0]">
-                <Image src="/images/nature/machine-poster.png" alt="Máy pha espresso 20 bar" fill className="object-contain object-center p-4" />
+                <Image src="/images/nature/may-pha-an-nhien.jpg" alt="Máy pha espresso 20 bar — FCD An Nhiên" fill className="object-cover object-center" sizes="(max-width: 768px) 100vw, 50vw" />
                 <div className="absolute top-3 left-3">
                   <span className="badge bg-[#B87333] text-white border-0 text-xs font-bold px-3 py-1.5 rounded-full">
                     {anNhienCombo.machine.highlight}

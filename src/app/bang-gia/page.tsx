@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import { priceList } from '@/data/prices'
 import { PriceTableReal } from '@/components/pricing/PriceTableReal'
 
@@ -11,9 +12,10 @@ export default function BangGiaPage() {
   return (
     <>
       {/* ══ HERO ══════════════════════════════════════════════════ */}
-      <section className="pt-24 pb-14 bg-[#1A120A] relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute bottom-0 left-1/4 w-80 h-80 rounded-full bg-[#B87333] blur-3xl" />
+      <section className="relative pt-32 pb-16 overflow-hidden">
+        <div className="absolute inset-0">
+          <Image src="/images/nature/hero-caudat.png" alt="Cầu Đất" fill className="object-cover object-top" priority />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#1A120A]/92 via-[#1A120A]/80 to-[#FAF6F0]" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
           <span className="badge badge-amber mb-5 inline-flex">📋 Giá niêm yết</span>
@@ -21,10 +23,10 @@ export default function BangGiaPage() {
             Bảng giá niêm yết
           </h1>
           <div className="flex flex-wrap items-center gap-5 text-sm mb-3">
-            <span className="text-white/50">
+            <span className="text-white/55">
               Cập nhật: <strong className="text-[#E3A558]">{priceList.updatedAt}</strong>
             </span>
-            <span className="text-white/50">
+            <span className="text-white/55">
               Hiệu lực từ: <strong className="text-[#E3A558]">{priceList.effectiveDate}</strong>
             </span>
           </div>
@@ -33,7 +35,7 @@ export default function BangGiaPage() {
       </section>
 
       {/* ══ TABLE ═════════════════════════════════════════════════ */}
-      <section className="py-12 section-cream">
+      <section className="py-12 section-cream texture-leaf">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <PriceTableReal items={priceList.items} />
         </div>

@@ -309,10 +309,10 @@ export const anNhienCombo = {
     { format: '140 ly/kg', dosage: '~7g/ly', description: 'Espresso pha loãng, ly lớn hơn' },
   ],
   vipBenefits: [
-    { benefit: 'Chiết khấu mua hạt', value: '25–32%', note: 'Vĩnh viễn khi là thành viên VIP' },
-    { benefit: 'Hoa hồng CTV', value: '11%', note: 'Từ đơn hàng của người được giới thiệu' },
-    { benefit: 'Đào tạo cà phê', value: 'Miễn phí', note: 'Online/offline về thưởng thức và vận hành máy' },
-    { benefit: 'Chính sách hậu mãi', value: 'Số hóa', note: 'Đối soát minh bạch trên nền tảng quản lý' },
+    { benefit: 'Chiết khấu mua hạt', value: '15–22%', note: 'Vĩnh viễn khi là thành viên VIP' },
+    { benefit: 'Hoa hồng CTV', value: '10%', note: 'Từ đơn hàng của người được giới thiệu' },
+    { benefit: 'Đào tạo kiến thức cà phê, kỹ năng nghiệp vụ', value: 'Miễn phí', note: 'Online/offline về thưởng thức và vận hành' },
+    { benefit: 'Chính sách hậu mãi', value: 'Thịnh vượng với đối tác, tích hợp công nghệ', note: 'Đối soát minh bạch trên nền tảng quản lý' },
   ],
   skus: ['ANCF.P', 'ANCF.P3', 'ANCF.C', 'ANCF.C3', 'ANCF.B3', 'ANCF.A3', 'ANCF.CAO1', 'ANCF.O1', 'ANCF.MIX'],
   targetSegments: [

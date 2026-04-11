@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { partners } from '@/data/partners'
@@ -11,17 +12,18 @@ export const metadata: Metadata = {
 export default function DoiTacPage() {
   return (
     <>
-      {/* ══ HERO ══════════════════════════════════════════════════ */}
-      <section className="pt-24 pb-16 bg-[#1A120A] relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-[#6B8C6B] blur-3xl" />
+      {/* ══ HERO ═══════════════════════════════════════════════════ */}
+      <section className="relative pt-32 pb-16 overflow-hidden">
+        <div className="absolute inset-0">
+          <Image src="/images/nature/coffee-cherry.png" alt="Cà phê Arabica Cầu Đất" fill className="object-cover object-center" priority />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#1A120A]/90 via-[#1A120A]/78 to-[#EDF3EC]/60" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
           <span className="badge badge-sage mb-5 inline-flex">🤝 Đối tác</span>
           <h1 className="font-display text-4xl sm:text-5xl text-white italic mb-4 leading-tight">
             Đối tác &amp; Doanh nghiệp đồng hành
           </h1>
-          <p className="text-white/55 max-w-lg text-sm leading-relaxed">
+          <p className="text-white/60 max-w-lg text-sm leading-relaxed">
             Các doanh nghiệp và tổ chức đang tin dùng cà phê FCD trong môi trường làm việc.
           </p>
         </div>

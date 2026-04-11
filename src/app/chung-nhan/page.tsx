@@ -20,16 +20,17 @@ const typeColors: Record<CertType, string> = {
 export default function ChungNhanPage() {
   return (
     <>
-      <section className="pt-24 pb-14 bg-[#1A120A] relative overflow-hidden">
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-0 right-0 w-80 h-80 rounded-full bg-[#6B8C6B] blur-3xl" />
+      <section className="relative pt-32 pb-16 overflow-hidden">
+        <div className="absolute inset-0">
+          <Image src="/images/nature/farm-illustration.png" alt="Vườn cà phê Cầu Đất" fill className="object-cover object-top opacity-40" priority />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#1A120A]/92 via-[#1A120A]/80 to-[#FAF6F0]" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
           <span className="badge badge-amber mb-5 inline-flex">🏅 Chứng nhận</span>
           <h1 className="font-display text-4xl sm:text-5xl text-white italic mb-4 leading-tight">
             Hệ thống Chứng nhận FCD
           </h1>
-          <p className="text-white/55 max-w-xl text-sm leading-relaxed">
+          <p className="text-white/60 max-w-xl text-sm leading-relaxed">
             Chất lượng không tự công bố — có thể kiểm chứng qua {certifications.length} giấy chứng nhận và kết quả kiểm nghiệm độc lập.
           </p>
         </div>
