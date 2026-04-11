@@ -49,12 +49,12 @@ export default function HomePage() {
             <Leaf size={12} /> Cầu Đất, Lâm Đồng · 1.650m
           </div>
 
-          <h1 className="font-display text-5xl sm:text-6xl md:text-7xl text-white mb-5 leading-tight tracking-tight">
+          <h1 className="font-display text-5xl sm:text-6xl md:text-7xl text-white mb-5 leading-snug">
             From Cầu Đất
             <span className="block gradient-text mt-1 italic">An nhiên từng ngụm</span>
           </h1>
 
-          <p className="text-base sm:text-lg text-white/70 mb-10 max-w-xl mx-auto leading-relaxed font-light tracking-wide">
+          <p className="text-base sm:text-lg text-white/70 mb-10 max-w-xl mx-auto leading-relaxed font-light">
             Cà phê đặc sản Arabica &amp; Robusta nguyên bản —<br className="hidden sm:block" />
             minh bạch từ vùng trồng đến tay bạn
           </p>

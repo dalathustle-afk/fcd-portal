@@ -192,26 +192,28 @@ export default function AnNhienPage() {
             <h2 className="font-display text-3xl text-white italic mb-3">Chi phí mỗi ly là bao nhiêu?</h2>
             <p className="text-white/55 text-sm max-w-md mx-auto">Tính theo giá niêm yết chính thức tháng 02/2026 — với 2 mức pha chiết</p>
           </div>
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto rounded-2xl border border-white/10">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-white/10">
-                  <th className="text-left pb-3 text-white/50 font-medium text-xs">Sản phẩm</th>
-                  <th className="text-right pb-3 text-white/50 font-medium text-xs">70 ly/kg</th>
-                  <th className="text-right pb-3 text-white/50 font-medium text-xs">140 ly/kg</th>
+                <tr className="border-b border-white/10 bg-white/5">
+                  <th className="text-left px-5 py-3 text-white/50 font-medium text-xs uppercase tracking-wide">Sản phẩm</th>
+                  <th className="text-right px-5 py-3 text-white/50 font-medium text-xs uppercase tracking-wide">70 ly/kg</th>
+                  <th className="text-right px-5 py-3 text-white/50 font-medium text-xs uppercase tracking-wide">140 ly/kg</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-white/5">
                 {costPerCup.map((row) => (
-                  <tr key={row.code} className="group hover:bg-white/3 transition-colors">
-                    <td className="py-3.5">
-                      <span className="font-semibold text-white text-xs font-mono">{row.code}</span>
-                      <span className="text-white/40 text-xs ml-2">{row.name}</span>
+                  <tr key={row.code} className="group hover:bg-white/5 transition-colors">
+                    <td className="px-5 py-3.5">
+                      <div className="flex flex-col">
+                        <span className="font-bold text-white text-xs font-mono tracking-wider">{row.code}</span>
+                        <span className="text-white/45 text-xs mt-0.5">{row.name}</span>
+                      </div>
                     </td>
-                    <td className="text-right py-3.5 text-[#E3A558] font-semibold text-xs">
+                    <td className="text-right px-5 py-3.5 text-[#E3A558] font-semibold text-sm tabular-nums">
                       {row.costPer70.toLocaleString('vi-VN')}đ
                     </td>
-                    <td className="text-right py-3.5 text-[#E3A558] font-semibold text-xs">
+                    <td className="text-right px-5 py-3.5 text-[#E3A558] font-semibold text-sm tabular-nums">
                       {row.costPer140.toLocaleString('vi-VN')}đ
                     </td>
                   </tr>
