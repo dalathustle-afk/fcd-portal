@@ -163,7 +163,7 @@ export default function HomePage() {
             fill
             className="object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#2B1810]/88 via-[#2B1810]/70 to-[#2B1810]/20" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#FAF7F2]/45 via-[#2B1810]/70 to-transparent" />
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
@@ -377,7 +377,7 @@ export default function HomePage() {
       </section>
 
       {/* ══ QUICK LINKS ══════════════════════════════════════════════ */}
-      <section className="py-14 bg-[#2B1810]">
+      <section className="py-14 bg-[#F5EDE0]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="divider-leaf mb-10 opacity-30" />
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">

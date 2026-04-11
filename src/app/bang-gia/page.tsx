@@ -15,7 +15,7 @@ export default function BangGiaPage() {
       <section className="relative pt-32 pb-16 overflow-hidden">
         <div className="absolute inset-0">
           <Image src="/images/nature/hero-caudat.png" alt="Cầu Đất" fill className="object-cover object-top" priority />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#2B1810]/92 via-[#2B1810]/80 to-[#FAF6F0]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#FAF7F2]/55 via-[#FAF7F2]/28 to-[#FAF6F0]" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
           <span className="badge badge-amber mb-5 inline-flex">📋 Giá niêm yết</span>

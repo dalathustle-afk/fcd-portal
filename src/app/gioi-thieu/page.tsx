@@ -23,7 +23,7 @@ export default function GioiThieuPage() {
       <section className="relative pt-24 pb-24 overflow-hidden min-h-[70vh] flex items-center">
         <div className="absolute inset-0">
           <Image src="/images/nature/hero-caudat.png" alt="Cầu Đất" fill className="object-cover object-center" priority />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#2B1810]/88 via-[#2B1810]/72 to-[#FAF6F0]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#FAF7F2]/45 via-[#FAF7F2]/20 to-[#FAF6F0]" />
         </div>
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
           {/* Logo */}

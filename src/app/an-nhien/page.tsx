@@ -30,7 +30,7 @@ export default function AnNhienPage() {
             <source src="/video/video-cf-background.mp4" type="video/mp4" />
           </video>
           {/* Warm espresso overlay — light enough to see video */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#2B1810]/65 via-[#2B1810]/45 to-[#2B1810]/55" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#2B1810]/65 via-[#2B1810]/45 to-transparent" />
           {/* Bottom fade */}
           <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#FAF7F2] to-transparent" />
         </div>
@@ -124,7 +124,7 @@ export default function AnNhienPage() {
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0">
           <Image src="/images/nature/coffee-cherry.png" alt="Cà phê" fill className="object-cover object-center" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#2B1810]/92 to-[#2B1810]/85" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#FAF7F2]/30 via-transparent to-[#FAF7F2]/60" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
@@ -134,11 +134,11 @@ export default function AnNhienPage() {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
             {fiveNoes.map((item, i) => (
-              <div key={item.id} className={`glass-dark rounded-2xl p-5 text-center card-hover animate-fade-in delay-${(i+1)*100}`}>
+              <div key={item.id} className={`card-nature rounded-2xl p-5 text-center card-hover animate-fade-in delay-${(i+1)*100}`}>
                 <div className="text-3xl mb-3">{item.icon}</div>
-                <div className="text-[#E3A558] font-bold text-xs mb-1.5 font-mono">#{item.number}</div>
-                <div className="font-semibold text-white text-sm mb-2">{item.title}</div>
-                <p className="text-white/78 text-xs leading-relaxed">{item.description}</p>
+                <div className="text-[#B87333] font-bold text-xs mb-1.5 font-mono">#{item.number}</div>
+                <div className="font-semibold text-[#2B1810] text-sm mb-2">{item.title}</div>
+                <p className="text-[#6B5442] text-xs leading-relaxed">{item.description}</p>
               </div>
             ))}
           </div>
@@ -200,35 +200,35 @@ export default function AnNhienPage() {
       </section>
 
       {/* ══ CHI PHÍ/LY ════════════════════════════════════════════ */}
-      <section className="py-20 bg-[#2B1810]">
+      <section className="py-20 bg-[#F5EDE0]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
             <span className="badge badge-amber mb-4 inline-flex">💰 Bài toán chi phí</span>
-            <h2 className="font-display text-3xl text-white italic mb-3">Chi phí mỗi ly là bao nhiêu?</h2>
-            <p className="text-white/78 text-sm max-w-md mx-auto text-center">Tính theo giá niêm yết chính thức tháng 02/2026 — với 2 mức pha chiết</p>
+            <h2 className="font-display text-3xl text-[#2B1810] italic mb-3">Chi phí mỗi ly là bao nhiêu?</h2>
+            <p className="text-[#6B5442] text-sm max-w-md mx-auto text-center">Tính theo giá niêm yết chính thức tháng 02/2026 — với 2 mức pha chiết</p>
           </div>
-          <div className="overflow-x-auto rounded-2xl border border-white/10">
+          <div className="overflow-x-auto rounded-2xl border border-[#D5C4B4]">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-white/10 bg-white/5">
-                  <th className="text-left px-5 py-3 text-white/72 font-medium text-xs uppercase tracking-wide">Sản phẩm</th>
-                  <th className="text-right px-5 py-3 text-white/72 font-medium text-xs uppercase tracking-wide">70 ly/kg</th>
-                  <th className="text-right px-5 py-3 text-white/72 font-medium text-xs uppercase tracking-wide">140 ly/kg</th>
+                <tr className="border-b border-[#D5C4B4] bg-[#FAF7F2]">
+                  <th className="text-left px-5 py-3 text-[#6B5442] font-medium text-xs uppercase tracking-wide">Sản phẩm</th>
+                  <th className="text-right px-5 py-3 text-[#6B5442] font-medium text-xs uppercase tracking-wide">70 ly/kg</th>
+                  <th className="text-right px-5 py-3 text-[#6B5442] font-medium text-xs uppercase tracking-wide">140 ly/kg</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-white/5">
+              <tbody className="divide-y divide-[#E4D6C8]">
                 {costPerCup.map((row) => (
-                  <tr key={row.code} className="group hover:bg-white/5 transition-colors">
+                  <tr key={row.code} className="group hover:bg-[#F5EDE0] transition-colors">
                     <td className="px-5 py-3.5">
                       <div className="flex flex-col">
-                        <span className="font-bold text-white text-xs font-mono tracking-wider">{row.code}</span>
-                        <span className="text-white/68 text-xs mt-0.5">{row.name}</span>
+                        <span className="font-bold text-[#2B1810] text-xs font-mono tracking-wider">{row.code}</span>
+                        <span className="text-[#9C8472] text-xs mt-0.5">{row.name}</span>
                       </div>
                     </td>
-                    <td className="text-right px-5 py-3.5 text-[#E3A558] font-semibold text-sm tabular-nums">
+                    <td className="text-right px-5 py-3.5 text-[#B87333] font-semibold text-sm tabular-nums">
                       {row.costPer70.toLocaleString('vi-VN')}đ
                     </td>
-                    <td className="text-right px-5 py-3.5 text-[#E3A558] font-semibold text-sm tabular-nums">
+                    <td className="text-right px-5 py-3.5 text-[#B87333] font-semibold text-sm tabular-nums">
                       {row.costPer140.toLocaleString('vi-VN')}đ
                     </td>
                   </tr>
@@ -277,7 +277,7 @@ export default function AnNhienPage() {
               ))}
 
               {/* Deposit highlight */}
-              <div className="mt-2 rounded-2xl bg-gradient-to-r from-[#3D2412] to-[#2B1810] border border-[#E3A558]/40 p-4">
+              <div className="mt-2 rounded-2xl bg-gradient-to-r from-[#F5EDE0] to-[#EDE0CF] border border-[#E3A558]/40 p-4">
                 <div className="flex items-start gap-3">
                   <span className="text-[#E3A558] text-xl shrink-0">💡</span>
                   <div>
@@ -321,20 +321,20 @@ export default function AnNhienPage() {
       </section>
 
       {/* ══ SCA 5 CẤP ĐỘ ═══════════════════════════════════════════ */}
-      <section className="py-20 bg-[#1C0F08]" id="sca-grade">
+      <section className="py-20 bg-[#FAF7F2]" id="sca-grade">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
 
           {/* Section header */}
           <div className="text-center mb-14">
             <span className="badge badge-amber mb-4 inline-flex">📊 Tiêu chuẩn SCA quốc tế</span>
-            <h2 className="font-display text-3xl sm:text-5xl text-white italic mb-3 leading-tight">
+            <h2 className="font-display text-3xl sm:text-5xl text-[#2B1810] italic mb-3 leading-tight">
               Thang Đo 5 Cấp Độ Chất Lượng
             </h2>
-            <p className="text-[#E3A558]/80 font-display italic text-xl mb-2">theo tiêu chuẩn SCA</p>
-            <p className="text-white/72 text-sm max-w-lg mx-auto leading-relaxed">
+            <p className="text-[#B87333] font-display italic text-xl mb-2">theo tiêu chuẩn SCA</p>
+            <p className="text-[#6B5442] text-sm max-w-lg mx-auto leading-relaxed">
               Dựa trên tiêu chí đánh giá nghiêm ngặt, SCA đã xây dựng hệ thống 5 cấp độ chất lượng.
               Đây là lời giải đáp đanh thép nhất cho câu hỏi:{' '}
-              <em className="text-white/70">Khách hàng đang thực sự bỏ tiền ra mua loại cà phê nào?</em>
+              <em className="text-[#4A3428] italic">Khách hàng đang thực sự bỏ tiền ra mua loại cà phê nào?</em>
             </p>
           </div>
 
@@ -355,14 +355,14 @@ export default function AnNhienPage() {
                   />
                 </div>
                 {/* FCD badge under image */}
-                <div className="mt-4 p-4 rounded-2xl bg-gradient-to-r from-[#3D2412] to-[#2B1810] border border-[#E3A558]/30">
+                <div className="mt-4 p-4 rounded-2xl bg-gradient-to-r from-[#F5EDE0] to-[#EDE0CF] border border-[#D4914A]/30">
                   <div className="flex items-center gap-2 mb-1">
-                    <span className="w-2 h-2 rounded-full bg-[#E3A558] shrink-0" />
-                    <span className="text-xs font-semibold text-[#E3A558] uppercase tracking-wider">FCD đang đạt</span>
+                    <span className="w-2 h-2 rounded-full bg-[#B87333] shrink-0" />
+                    <span className="text-xs font-semibold text-[#7C3D18] uppercase tracking-wider">FCD đang đạt</span>
                   </div>
-                  <p className="text-white/70 text-xs leading-relaxed">
-                    Máy quang học Nhật Bản loại bỏ <strong className="text-white">100% hạt lỗi sơ cấp</strong>,
-                    đảm bảo sản phẩm đạt chuẩn <strong className="text-[#E3A558]">Specialty Grade — Loại 1</strong>.
+                  <p className="text-[#4A3428] text-xs leading-relaxed">
+                    Máy quang học Nhật Bản loại bỏ <strong className="text-[#2B1810]">100% hạt lỗi sơ cấp</strong>,
+                    đảm bảo sản phẩm đạt chuẩn <strong className="text-[#B87333]">Specialty Grade — Loại 1</strong>.
                   </p>
                 </div>
               </div>
@@ -372,10 +372,10 @@ export default function AnNhienPage() {
             <div className="lg:col-span-3 space-y-3">
 
               {/* Column headers — desktop only */}
-              <div className="hidden sm:grid grid-cols-3 gap-2 px-4 pb-2 border-b border-white/8">
-                <span className="text-[10px] font-semibold text-white/78 uppercase tracking-widest">Tiêu chuẩn khuyết tật</span>
-                <span className="text-[10px] font-semibold text-white/78 uppercase tracking-widest">Cảm quan & Độ ẩm</span>
-                <span className="text-[10px] font-semibold text-white/78 uppercase tracking-widest">Thực trạng tiêu dùng</span>
+              <div className="hidden sm:grid grid-cols-3 gap-2 px-4 pb-2 border-b border-[#D5C4B4]">
+                <span className="text-[10px] font-semibold text-[#9C8472] uppercase tracking-widest">Tiêu chuẩn khuyết tật</span>
+                <span className="text-[10px] font-semibold text-[#9C8472] uppercase tracking-widest">Cảm quan &amp; Độ ẩm</span>
+                <span className="text-[10px] font-semibold text-[#9C8472] uppercase tracking-widest">Thực trạng tiêu dùng</span>
               </div>
 
               {scaGrades.map((grade) => (
@@ -403,7 +403,7 @@ export default function AnNhienPage() {
                     </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5">
-                        <span className="font-bold text-white text-sm">LOẠI {grade.level} — {grade.name}</span>
+                        <span className="font-bold text-[#2B1810] text-sm">LOẠI {grade.level} — {grade.name}</span>
                         <span className="text-[11px] font-mono" style={{ color: grade.color + 'AA' }}>{grade.nameEn}</span>
                       </div>
                     </div>
@@ -419,7 +419,7 @@ export default function AnNhienPage() {
                   <div className="grid sm:grid-cols-3 gap-0 divide-y sm:divide-y-0 sm:divide-x" style={{ '--tw-divide-opacity': 0.08 } as React.CSSProperties}>
                     {/* Col 1: Defects */}
                     <div className="p-3.5">
-                      <div className="text-[9px] text-white/78 uppercase tracking-widest mb-1 font-semibold hidden sm:block">Khuyết tật</div>
+                      <div className="text-[9px] text-[#9C8472] uppercase tracking-widest mb-1 font-semibold hidden sm:block">Khuyết tật</div>
                       <div className="flex items-start gap-1.5">
                         <Info size={10} className="mt-0.5 shrink-0" style={{ color: grade.color + '80' }} />
                         <p className="text-xs leading-relaxed" style={{ color: grade.color + 'CC' }}>
@@ -538,7 +538,7 @@ export default function AnNhienPage() {
       </section>
 
       {/* ══ NHẬN DIỆN 5 LOẠI CÀ PHÊ ═══════════════════════════════ */}
-      <section className="py-20 bg-[#2B1810]">
+      <section className="py-20 bg-[#F5EDE0]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
             <span className="badge badge-sage mb-4 inline-flex backdrop-blur-sm">🔍 Nhận biết</span>
@@ -555,7 +555,7 @@ export default function AnNhienPage() {
                 key={type.id}
                 className={`rounded-2xl p-5 flex flex-col gap-3 border transition-all card-hover ${
                   type.isFCD
-                    ? 'border-[#E3A558]/50 bg-gradient-to-b from-[#3D2412] to-[#2B1810] shadow-lg shadow-amber-900/20'
+                    ? 'border-[#E3A558]/50 bg-gradient-to-b from-[#F5EDE0] to-[#EDE0CF] shadow-lg shadow-amber-900/20'
                     : type.danger
                     ? 'border-red-900/30 bg-red-950/20'
                     : 'border-white/8 bg-white/3'

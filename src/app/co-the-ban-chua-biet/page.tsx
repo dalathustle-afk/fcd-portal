@@ -56,7 +56,7 @@ export default function CoTheBanChuaBietPage() {
       <section className="relative pt-32 pb-16 overflow-hidden">
         <div className="absolute inset-0">
           <Image src="/images/nature/coffee-cherry.png" alt="Cà phê Arabica Cầu Đất" fill className="object-cover object-center" priority />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#2B1810]/90 via-[#2B1810]/80 to-[#FAF6F0]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#FAF7F2]/48 via-[#FAF7F2]/28 to-[#FAF6F0]" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
           <span className="badge badge-amber mb-5 inline-flex">💡 Kiến thức cà phê</span>
@@ -81,7 +81,7 @@ export default function CoTheBanChuaBietPage() {
                 onClick={() => handleTabChange(tab.id)}
                 className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-all ${
                   activeTab === tab.id
-                    ? 'bg-[#2B1810] text-[#E3A558] shadow-md'
+                    ? 'bg-[#F5EDE0] text-[#E3A558] shadow-md'
                     : 'bg-white border border-[#D9CABC] text-[#6B5A4E] hover:border-[#B87333] hover:text-[#7C3D18]'
                 }`}
               >
@@ -168,7 +168,7 @@ export default function CoTheBanChuaBietPage() {
 
               {/* CTA based on tab */}
               {activeTab === 'khoi-nghiep' && (
-                <div className="rounded-2xl bg-gradient-to-r from-[#3D2412] to-[#2B1810] border border-[#E3A558]/40 p-5">
+                <div className="rounded-2xl bg-gradient-to-r from-[#F5EDE0] to-[#EDE0CF] border border-[#E3A558]/40 p-5">
                   <div className="text-[#E3A558] font-bold mb-2">💡 Trả trước 50% — chỉ 2.612.000đ</div>
                   <p className="text-white/65 text-xs leading-relaxed mb-4">
                     Nhận ngay máy pha cà phê espresso 20 bar và bắt đầu hành trình An Nhiên ngay hôm nay.

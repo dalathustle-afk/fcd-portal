@@ -61,13 +61,16 @@
   --fcd-border:     #D5C4B4;
   --fcd-bg:         #FAF7F2;
 
-  /* ── Overlay system — CONTRAST-SAFE (minimum 65% at text zones) */
-  --overlay-hero:   linear-gradient(to bottom, rgba(43,24,16,.72) 0%, rgba(43,24,16,.58) 45%, rgba(43,24,16,.30) 100%);
-  --overlay-dark:   linear-gradient(180deg, rgba(43,24,16,.90) 0%, rgba(43,24,16,.78) 60%, rgba(43,24,16,.25) 100%);
-  --overlay-side:   linear-gradient(90deg, rgba(43,24,16,.90) 0%, rgba(43,24,16,.72) 55%, rgba(43,24,16,.10) 100%);
+  /* ── Overlay system — LIGHT WARM EDITION ——————————————
+     All overlays use warm cream tints — NO DARK overlays.
+     Video/images remain vivid and bright beneath.            */
+  --overlay-hero:   linear-gradient(to bottom, rgba(250,247,242,.42) 0%, rgba(250,247,242,.22) 45%, rgba(250,247,242,.05) 100%);
+  --overlay-dark:   linear-gradient(180deg, rgba(250,237,224,.65) 0%, rgba(250,237,224,.42) 60%, rgba(250,237,224,.08) 100%);
+  --overlay-side:   linear-gradient(90deg, rgba(250,247,242,.80) 0%, rgba(250,247,242,.60) 45%, rgba(250,247,242,.10) 100%);
   --overlay-bottom: linear-gradient(to top, rgba(250,247,242,1) 0%, rgba(250,247,242,0) 100%);
-  /* Strong overlay for text sitting directly on bright/colourful photography */
-  --overlay-strong: linear-gradient(to bottom, rgba(43,24,16,.88) 0%, rgba(43,24,16,.75) 50%, rgba(43,24,16,.50) 100%);
+  --overlay-strong: linear-gradient(to bottom, rgba(250,237,224,.85) 0%, rgba(250,237,224,.65) 50%, rgba(250,237,224,.30) 100%);
+  /* Amber-tinted warm overlay for a golden sunrise mood */
+  --overlay-amber:  linear-gradient(to bottom, rgba(240,201,138,.20) 0%, rgba(250,247,242,.30) 60%, rgba(250,247,242,.60) 100%);
 
   /* ── Shadows — organic warm tones, no cold grey ────────────── */
   --shadow-xs:      0 1px 3px rgba(90,52,26,0.06);
@@ -251,15 +254,17 @@ h2, h3, h4, h5, h6 {
 .section-cream     { background: var(--fcd-cream); }
 .section-parchment { background: var(--fcd-parchment); }
 .section-sand      { background: var(--fcd-sand); }
-.section-espresso  { background: var(--fcd-espresso); }
-.section-roast     { background: var(--fcd-roast); }
+/* espresso & roast sections are now remapped to warm light alternatives */
+.section-espresso  { background: var(--fcd-parchment); color: var(--fcd-text); }
+.section-roast     { background: var(--fcd-sand); color: var(--fcd-text); }
 
 /* Gradient section transitions — always warm espresso ↔ cream */
 .section-nature {
   background: linear-gradient(180deg, var(--fcd-mist-green) 0%, var(--fcd-cream) 100%);
 }
 .section-dark-warm {
-  background: linear-gradient(160deg, var(--fcd-espresso) 0%, var(--fcd-roast) 100%);
+  /* Remapped to warm light gradient — no dark backgrounds */
+  background: linear-gradient(160deg, var(--fcd-parchment) 0%, var(--fcd-sand) 100%);
 }
 
 /* ── Grain / noise film texture ─────────────────────────────── */
@@ -309,14 +314,14 @@ h2, h3, h4, h5, h6 {
    Glass / Backdrop effects
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .glass-dark {
-  /* Upgraded: 52% → 72% — text inside is now WCAG AA compliant */
-  background: rgba(43,24,16,0.72);
-  backdrop-filter: blur(16px) saturate(160%);
-  -webkit-backdrop-filter: blur(16px) saturate(160%);
-  border: 1px solid rgba(227,165,88,0.14);
-  color: var(--on-dark-primary);
+  /* Remapped to warm light glass — parchment tinted frosted panel */
+  background: rgba(250,237,224,0.78);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid rgba(213,196,180,0.50);
+  color: var(--fcd-text);
 }
-.glass-dark p, .glass-dark span, .glass-dark li { color: var(--on-dark-secondary); }
+.glass-dark p, .glass-dark span, .glass-dark li { color: var(--fcd-text-mid); }
 .glass-light {
   background: rgba(250,247,242,0.88);
   backdrop-filter: blur(16px) saturate(150%);
