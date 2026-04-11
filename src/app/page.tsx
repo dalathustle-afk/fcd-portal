@@ -25,12 +25,10 @@ export default function HomePage() {
           >
             <source src="/video/video-background.mp4" type="video/mp4" />
           </video>
-          {/* Harmonized warm espresso overlay — no harsh pure black */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#2B1810]/80 via-[#2B1810]/55 to-[#3D2412]/25" />
+          {/* Very light overlay — keeps video vivid and fresh */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#2B1810]/45 via-[#2B1810]/20 to-transparent" />
           {/* Soft bottom transition to page bg */}
-          <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-[#FAF7F2]/30 to-transparent" />
-          {/* Ambient copper glow — right edge warmth */}
-          <div className="absolute inset-0 bg-gradient-to-l from-[#B87333]/08 via-transparent to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 h-36 bg-gradient-to-t from-[#FAF7F2]/25 to-transparent" />
         </div>
 
         {/* ── Floating leaf accents ── */}

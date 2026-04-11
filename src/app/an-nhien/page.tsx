@@ -16,26 +16,41 @@ export const metadata: Metadata = {
 export default function AnNhienPage() {
   return (
     <>
-      {/* ══ HERO ══════════════════════════════════════════════════ */}
-      <section className="relative min-h-[68vh] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0">
-          <Image src="/images/nature/hero-caudat.png" alt="Cầu Đất" fill className="object-cover object-center" priority />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#1A120A]/88 via-[#1A120A]/70 to-[#2D4A2D]/40" />
+      {/* ══ HERO — Cinematic An Nhiên ══════════════════════════════ */}
+      <section className="relative min-h-[75vh] flex items-center justify-center overflow-hidden grain">
+        {/* Video background */}
+        <div className="absolute inset-0 z-0">
+          <video
+            autoPlay muted loop playsInline
+            poster="/images/nature/hero-caudat.png"
+            className="absolute inset-0 w-full h-full object-cover object-center"
+            preload="none"
+          >
+            <source src="/video/video-haicf-background.mp4" type="video/mp4" />
+            <source src="/video/video-cf-background.mp4" type="video/mp4" />
+          </video>
+          {/* Warm espresso overlay — light enough to see video */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#2B1810]/65 via-[#2B1810]/45 to-[#2B1810]/55" />
+          {/* Bottom fade */}
+          <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#FAF7F2] to-transparent" />
         </div>
-        <div className="relative max-w-3xl mx-auto px-4 sm:px-6 text-center pt-28 pb-20 animate-fade-in">
-          <span className="badge badge-sage mb-5 inline-flex backdrop-blur-sm"><Leaf size={11} /> Giải pháp FCD</span>
-          <h1 className="font-display text-5xl sm:text-6xl text-white mb-5 italic leading-tight">
+
+        <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 text-center pt-32 pb-20 animate-fade-in">
+          <span className="badge badge-on-dark mb-5 inline-flex items-center gap-1.5 backdrop-blur-sm">
+            <Leaf size={10} className="text-[#A8C4A2]" /> Giải pháp FCD
+          </span>
+          <h1 className="font-display text-5xl sm:text-6xl text-white mb-5 leading-tight">
             AN NHIÊN<br /><span className="text-[#E3A558]">cùng FCD</span>
           </h1>
-          <p className="text-white/70 text-base max-w-xl mx-auto leading-relaxed font-light">
+          <p className="text-white/75 text-base max-w-xl mx-auto leading-relaxed font-light mb-9">
             Cà phê đặc sản chất lượng cao — minh bạch từ vùng trồng đến ly cà phê.<br />
             An toàn, an tâm, và đúng nghĩa tự nhiên.
           </p>
-          <div className="flex flex-wrap gap-3 mt-9 justify-center">
-            <Link href="#combo" className="px-7 py-3.5 rounded-full bg-[#B87333] hover:bg-[#D4914A] text-white font-semibold text-sm transition-all shadow-lg">
-              Xem Gói An Nhiên
+          <div className="flex flex-wrap gap-3 justify-center">
+            <Link href="#combo" className="btn-copper px-7 py-3.5 rounded-full flex items-center gap-2">
+              Xem Gói An Nhiên <ArrowRight size={14} />
             </Link>
-            <Link href="/lien-he" className="px-7 py-3.5 rounded-full glass-dark text-white/90 hover:text-white font-medium text-sm transition-all">
+            <Link href="/lien-he" className="btn-ghost px-7 py-3.5 rounded-full">
               Liên hệ tư vấn
             </Link>
           </div>

@@ -131,6 +131,7 @@ body {
   font-style: italic;
   letter-spacing: -0.01em;
   line-height: 1.15;
+  /* color: inherit — do NOT set color here, let parent control it */
 }
 .font-display-upright {
   font-family: 'Spectral', 'Be Vietnam Pro', Georgia, serif;
@@ -160,17 +161,18 @@ h2, h3, h4, h5, h6 {
   font-weight: 700;
   line-height: 1.3;
   letter-spacing: -0.01em;
-  color: var(--fcd-text);
+  /* NO color here — inherit from parent so dark sections keep white text */
+  color: inherit;
 }
 
 /* Spectral italic for pull-quotes and editorial text */
 .spectral-quote {
-  font-family: 'Spectral', Georgia, serif;
+  font-family: var(--ff-spectral, 'Spectral', Georgia, serif);
   font-weight: 400;
   font-style: italic;
-  font-size: 1.25rem;
-  line-height: 1.65;
-  color: var(--fcd-text-muted);
+  font-size: 1.2rem;
+  line-height: 1.7;
+  /* color: inherit — use on light bg with a text-muted class explicitly */
 }
 
 /* ── Fluid type scale ─────────────────────────────────────────── */
