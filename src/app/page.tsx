@@ -25,9 +25,9 @@ export default function HomePage() {
           >
             <source src="/video/video-background.mp4" type="video/mp4" />
           </video>
-          {/* NO overlay — video shows fully vivid and natural */}
-          {/* Subtle bottom cream fade for section transition only */}
-          <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-[#FAF7F2] to-transparent" />
+          {/* Dark cinematic overlay */}
+          <div className="absolute inset-0 overlay-hero" />
+          <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-[var(--fcd-bg)] to-transparent" />
         </div>
 
         {/* ── Floating leaf accents ── */}
@@ -97,14 +97,14 @@ export default function HomePage() {
       </section>
 
       {/* ══ VÌ SAO CHỌN FCD ══════════════════════════════════════════ */}
-      <section className="py-24 section-cream texture-leaf">
+      <section className="py-24 section-sand texture-leaf">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-14">
-            <span className="badge badge-sage mb-5 inline-flex">🌿 Cam kết chất lượng</span>
-            <h2 className="font-display text-3xl sm:text-4xl text-[#1A120A] mb-4 italic">
+            <span className="badge badge-sage mb-5 inline-flex backdrop-blur-sm">🌿 Cam kết chất lượng</span>
+            <h2 className="font-display text-3xl sm:text-4xl text-white mb-4 italic">
               Vì sao chọn From Cầu Đất?
             </h2>
-            <p className="text-[#6B5A4E] max-w-lg mx-auto leading-relaxed text-sm text-center">
+            <p className="text-white/60 max-w-lg mx-auto leading-relaxed text-sm text-center">
               Từ vùng nguyên liệu đến thành phẩm — mỗi hạt cà phê đều mang dấu ấn của thiên nhiên và sự tỉ mỉ.
             </p>
           </div>
@@ -138,13 +138,13 @@ export default function HomePage() {
             ].map((item, i) => (
               <div
                 key={item.title}
-                className={`card-nature p-6 animate-fade-in delay-${(i+1)*100}`}
+                className={`bento-card p-6 animate-fade-in delay-${(i+1)*100}`}
               >
-                <div className={`w-11 h-11 rounded-2xl ${item.iconBg} flex items-center justify-center mb-4`}>
+                <div className="w-11 h-11 rounded-2xl glass-nature flex items-center justify-center mb-4">
                   {item.icon}
                 </div>
-                <h3 className="font-semibold text-[#1A120A] mb-2 text-sm">{item.title}</h3>
-                <p className="text-xs text-[#6B5A4E] leading-relaxed">{item.desc}</p>
+                <h3 className="font-semibold text-white mb-2 text-sm">{item.title}</h3>
+                <p className="text-xs text-white/55 leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -160,9 +160,9 @@ export default function HomePage() {
             src="/images/nature/coffee-cherry.png"
             alt="Cà phê Arabica Cầu Đất — quả chín đỏ"
             fill
-            className="object-cover object-center"
+            className="object-cover object-center opacity-60 mix-blend-luminosity"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#FAF7F2]/45 via-[#2B1810]/70 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[var(--fcd-bg)] via-[var(--fcd-bg)]/80 to-transparent" />
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
@@ -221,14 +221,14 @@ export default function HomePage() {
       </section>
 
       {/* ══ GU CÀ PHÊ ═══════════════════════════════════════════════ */}
-      <section className="py-24 section-parchment">
+      <section className="py-24 section-dark-warm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-14">
-            <span className="badge badge-amber mb-5 inline-flex">☕ Hệ gu cà phê</span>
-            <h2 className="font-display text-3xl sm:text-4xl text-[#1A120A] mb-4 italic">
+            <span className="badge badge-amber mb-5 inline-flex backdrop-blur-sm">☕ Hệ gu cà phê</span>
+            <h2 className="font-display text-3xl sm:text-4xl text-white mb-4 italic">
               Tìm gu phù hợp với bạn
             </h2>
-            <p className="text-[#6B5A4E] text-sm max-w-md mx-auto text-center">
+            <p className="text-white/60 text-sm max-w-md mx-auto text-center">
               Từ vị đậm sâu đến nguyên bản nhẹ nhàng — mỗi gu là một câu chuyện của đất trời.
             </p>
           </div>
@@ -238,17 +238,17 @@ export default function HomePage() {
               <Link
                 key={cat.id}
                 href={`/gu-ca-phe#${cat.slug}`}
-                className={`group block rounded-2xl overflow-hidden border border-[#D9CABC] bg-white card-hover animate-fade-in delay-${(i+1)*100}`}
+                className={`group block bento-card animate-fade-in delay-${(i+1)*100}`}
               >
-                <div className="h-1.5 rounded-t-2xl" style={{ backgroundColor: cat.color }} />
+                <div className="h-1.5 rounded-t-2xl opacity-80" style={{ backgroundColor: cat.color }} />
                 <div className="p-5">
-                  <span className="text-3xl mb-3 block animate-float" style={{ animationDelay: `${i*0.5}s` }}>
+                  <span className="text-3xl mb-3 block animate-float mix-blend-screen" style={{ animationDelay: `${i*0.5}s` }}>
                     {cat.icon}
                   </span>
-                  <h3 className="font-semibold text-[#1A120A] mb-1.5 text-sm group-hover:text-[#7C3D18] transition-colors">
+                  <h3 className="font-semibold text-white mb-1.5 text-sm group-hover:text-[var(--fcd-copper)] transition-colors">
                     {cat.label}
                   </h3>
-                  <p className="text-xs text-[#6B5A4E] leading-relaxed mb-3">{cat.character}</p>
+                  <p className="text-xs text-white/55 leading-relaxed mb-3">{cat.character}</p>
                   <div className="flex flex-wrap gap-1">
                     {cat.highlights.slice(0, 2).map((h) => (
                       <span key={h} className="badge badge-dark text-[10px]">{h}</span>
@@ -271,17 +271,17 @@ export default function HomePage() {
       </section>
 
       {/* ══ SẢN PHẨM NỔI BẬT ════════════════════════════════════════ */}
-      <section className="py-24 section-cream">
+      <section className="py-24 section-sand">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex items-end justify-between mb-12">
             <div>
-              <span className="badge badge-amber mb-3 inline-flex">🏅 Nổi bật</span>
-              <h2 className="font-display text-3xl sm:text-4xl text-[#1A120A] italic">Sản phẩm chủ lực</h2>
-              <p className="text-[#6B5A4E] text-sm mt-1">4 gu chủ lực từ catalog chính thức</p>
+              <span className="badge badge-amber mb-3 inline-flex backdrop-blur-sm">🏅 Nổi bật</span>
+              <h2 className="font-display text-3xl sm:text-4xl text-white italic">Sản phẩm chủ lực</h2>
+              <p className="text-white/60 text-sm mt-1">4 gu chủ lực từ catalog chính thức</p>
             </div>
             <Link
               href="/san-pham"
-              className="hidden sm:flex items-center gap-1.5 text-sm font-medium text-[#7C3D18] hover:text-[#B87333] transition-colors"
+              className="hidden sm:flex items-center gap-1.5 text-sm font-medium text-[var(--fcd-copper)] hover:text-[var(--fcd-honey)] transition-colors"
             >
               Xem tất cả <ArrowRight size={13} />
             </Link>
@@ -295,39 +295,39 @@ export default function HomePage() {
                 <Link
                   key={product.id}
                   href={`/san-pham/${product.slug}`}
-                  className={`group block bg-white rounded-2xl overflow-hidden border border-[#D9CABC] hover:border-[#C07A2B]/40 hover:shadow-lg transition-all duration-300 card-nature animate-fade-in delay-${(i+1)*100}`}
+                  className={`group block bento-card animate-fade-in delay-${(i+1)*100}`}
                 >
-                  <div className="relative h-52 bg-white overflow-hidden flex items-center justify-center">
+                  <div className="relative h-52 bg-black/40 overflow-hidden flex items-center justify-center rounded-t-3xl">
                     {hasImage ? (
                       <Image
                         src={product.image}
                         alt={product.alt}
                         fill
-                        className="object-contain object-center group-hover:scale-105 transition-transform duration-500 p-5"
+                        className="object-contain object-center group-hover:scale-105 transition-transform duration-500 p-5 drop-shadow-2xl"
                         sizes="(max-width: 640px) 100vw, 25vw"
                       />
                     ) : (
-                      <div className="h-full flex flex-col items-center justify-center gap-2 opacity-40">
+                      <div className="h-full flex flex-col items-center justify-center gap-2 opacity-30 mix-blend-screen">
                         <span className="text-5xl">☕</span>
-                        <span className="text-xs font-bold text-[#7C3D18] bg-[#E3A558]/20 px-2 py-0.5 rounded-full font-mono">{product.code}</span>
+                        <span className="text-xs font-bold text-white bg-white/10 px-2 py-0.5 rounded-full font-mono">{product.code}</span>
                       </div>
                     )}
-                    <span className="absolute top-2 left-2 text-[10px] font-semibold bg-[#1C0F07]/70 text-[#E8A84C] px-2 py-0.5 rounded-full backdrop-blur-sm">
+                    <span className="absolute top-2 left-2 text-[10px] font-semibold bg-black/60 text-[var(--fcd-amber)] px-2 py-0.5 rounded-full backdrop-blur-md border border-white/10">
                       {product.guLabel}
                     </span>
                   </div>
-                  <div className="p-4 border-t border-[#F5EDE0]">
-                    <h3 className="font-semibold text-[#1A120A] mb-1.5 text-sm group-hover:text-[#7C3D18] leading-snug transition-colors">
+                  <div className="p-4 border-t border-white/5">
+                    <h3 className="font-semibold text-white mb-1.5 text-sm group-hover:text-[var(--fcd-copper)] leading-snug transition-colors">
                       {product.name}
                     </h3>
-                    <p className="text-[11px] text-[#6B5A4E] mb-3 line-clamp-2 leading-relaxed">{product.descriptionShort}</p>
-                    <div className="flex items-center justify-between pt-2 border-t border-[#F5EDE0]">
+                    <p className="text-[11px] text-white/55 mb-3 line-clamp-2 leading-relaxed">{product.descriptionShort}</p>
+                    <div className="flex items-center justify-between pt-2 border-t border-white/5">
                       {minPrice > 0 ? (
-                        <span className="font-bold text-[#7C3D18] text-sm">{minPrice.toLocaleString('vi-VN')}đ</span>
+                        <span className="font-bold text-[var(--fcd-copper)] text-sm">{minPrice.toLocaleString('vi-VN')}đ</span>
                       ) : (
-                        <span className="text-xs text-[#6B5A4E]">Liên hệ</span>
+                        <span className="text-xs text-white/55">Liên hệ</span>
                       )}
-                      <span className="text-[10px] text-[#9C8472]">250g</span>
+                      <span className="text-[10px] text-white/40">250g</span>
                     </div>
                   </div>
                 </Link>
@@ -341,11 +341,11 @@ export default function HomePage() {
       <section className="py-24 section-nature">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
-            <span className="badge badge-sage mb-5 inline-flex">🤝 Đối tác</span>
-            <h2 className="font-display text-3xl sm:text-4xl text-[#1A120A] mb-3 italic">
+            <span className="badge badge-sage mb-5 inline-flex backdrop-blur-sm">🤝 Đối tác</span>
+            <h2 className="font-display text-3xl sm:text-4xl text-white mb-3 italic">
               Doanh nghiệp tin dùng
             </h2>
-            <p className="text-[#6B5A4E] text-sm max-w-md mx-auto text-center">
+            <p className="text-white/60 text-sm max-w-md mx-auto text-center">
               Ngân hàng, tổ chức nước ngoài và doanh nghiệp lớn đã chọn FCD cho văn phòng của họ.
             </p>
           </div>
@@ -354,11 +354,11 @@ export default function HomePage() {
             {featuredPartners.map((partner) => (
               <div
                 key={partner.id}
-                className="bg-white/80 backdrop-blur-sm rounded-xl border border-[#D9CABC] p-4 hover:border-[#B87333]/40 hover:shadow-md transition-all"
+                className="glass-dark p-4 hover:border-white/20 transition-all font-semibold text-white/90 text-sm leading-snug text-center flex flex-col items-center justify-center min-h-24"
               >
-                <div className="font-semibold text-[#1A120A] text-sm leading-snug">{partner.name}</div>
+                {partner.name}
                 {partner.category && (
-                  <div className="text-[11px] text-[#9C8472] mt-0.5">{partner.category}</div>
+                  <div className="text-[11px] text-white/40 mt-1 font-normal">{partner.category}</div>
                 )}
               </div>
             ))}
@@ -367,7 +367,7 @@ export default function HomePage() {
           <div className="text-center mt-9">
             <Link
               href="/doi-tac"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[#D9CABC] bg-white text-sm font-medium text-[#7C3D18] hover:border-[#B87333] hover:shadow-sm transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/10 glass-dark text-sm font-medium text-white hover:border-white/30 transition-all"
             >
               Xem tất cả đối tác <ArrowRight size={14} />
             </Link>
@@ -376,9 +376,8 @@ export default function HomePage() {
       </section>
 
       {/* ══ QUICK LINKS ══════════════════════════════════════════════ */}
-      <section className="py-14 bg-[#F5EDE0]">
+      <section className="py-14 bg-transparent border-t border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="divider-leaf mb-10 opacity-30" />
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {[
               { href: '/bang-gia', icon: '📋', title: 'Bảng giá niêm yết', desc: 'Giá chính thức từ 10/02/2026' },
@@ -388,16 +387,16 @@ export default function HomePage() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="flex items-center gap-4 p-5 rounded-2xl bg-white border border-[#D5C4B4] hover:border-[#B87333]/50 hover:shadow-md group transition-all"
+                className="flex items-center gap-4 p-5 rounded-3xl glass-dark hover:border-white/20 hover:bg-white/5 group transition-all"
               >
-                <span className="text-2xl">{item.icon}</span>
+                <span className="text-2xl drop-shadow-md mix-blend-luminosity">{item.icon}</span>
                 <div>
-                  <div className="font-semibold text-[#2B1810] group-hover:text-[#B87333] transition-colors text-sm tracking-wide">
+                  <div className="font-semibold text-white/90 group-hover:text-white transition-colors text-sm tracking-wide">
                     {item.title}
                   </div>
-                  <div className="text-xs text-[#9C8472] mt-0.5">{item.desc}</div>
+                  <div className="text-xs text-white/50 mt-0.5">{item.desc}</div>
                 </div>
-                <ArrowRight size={13} className="ml-auto text-[#D5C4B4] group-hover:text-[#B87333] transition-colors" />
+                <ArrowRight size={13} className="ml-auto text-white/30 group-hover:text-white/80 transition-colors" />
               </Link>
             ))}
           </div>

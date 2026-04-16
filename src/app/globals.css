@@ -11,75 +11,66 @@
 @import "tailwindcss";
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   DESIGN TOKENS — Highland Edition
-   Single unified warm tone system throughout every module
+   DESIGN TOKENS — Cinematic Espresso Edition
+   Modern Dark Mode, Deep Space, High Contrast Copper
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
 :root {
   /* ── Brand core ─────────────────────────────────────────────── */
-  --fcd-espresso:   #2B1810;   /* rich espresso — hero bg, deep dark (NOT pure black) */
-  --fcd-roast:      #3D2412;   /* dark roast — warm dark surface */
-  --fcd-earth:      #5C3317;   /* rich earth */
-  --fcd-mahogany:   #7C3D18;   /* warm mahogany — accent text */
-  --fcd-copper:     #B87333;   /* PRIMARY copper — CTAs, highlights */
-  --fcd-honey:      #D4914A;   /* honey gold — hover states */
-  --fcd-amber:      #E3A558;   /* warm amber — numbers, accents */
-  --fcd-straw:      #F0C98A;   /* light straw — subtle on dark */
+  --fcd-espresso:   #1A120A;   /* extreme dark espresso — deep space */
+  --fcd-roast:      #261B10;   /* dark roast — card surfaces */
+  --fcd-earth:      #332014;   /* rich earth */
+  --fcd-mahogany:   #7C3D18;   /* warm mahogany */
+  --fcd-copper:     #C87E3A;   /* PRIMARY copper — glowing accents */
+  --fcd-honey:      #E89D52;   /* honey gold — interactive glow */
+  --fcd-amber:      #F5AE5C;   /* radiant amber */
+  --fcd-straw:      #FBE1A6;   /* extreme bright */
 
   /* ── Nature accents ─────────────────────────────────────────── */
-  --fcd-forest:     #2D4A2D;   /* deep forest — used sparingly */
-  --fcd-moss:       #4A6741;   /* moss green */
-  --fcd-sage:       #6B8C6B;   /* sage — soft nature accent */
-  --fcd-sage-light: #A8C4A2;   /* light sage leaf */
-  --fcd-mist-green: #EDF3EC;   /* morning mist */
+  --fcd-forest:     #1C2E1C;   /* ultra deep forest */
+  --fcd-moss:       #3A5233;   /* dark moss */
+  --fcd-sage:       #7D9C7D;   /* illuminated sage */
+  --fcd-sage-light: #BCE3B5;   /* neon leaf */
+  --fcd-mist-green: #0D140D;   /* dark mist */
 
-  /* ── Warm neutrals — parchment family ──────────────────────── */
-  --fcd-cream:      #FAF7F2;   /* warm ivory — page background */
-  --fcd-parchment:  #F5EDE0;   /* aged parchment — card bg */
-  --fcd-sand:       #EDE0CF;   /* warm sand */
-  --fcd-mist:       #E4D6C8;   /* warm mist */
-  --fcd-stone:      #D5C4B4;   /* stone border */
-  --fcd-chalk:      #C8B8A8;   /* chalk — subtle dividers */
+  /* ── Deep Neutrals ─────────────────────────────────────────── */
+  --fcd-cream:      #050302;   /* Pure cinematic black base */
+  --fcd-parchment:  #0C0805;   /* Deep shadow */
+  --fcd-sand:       #15100B;   /* Dark earth */
+  --fcd-mist:       #1F1914;   /* Surface 3 */
+  --fcd-stone:      #2A241F;   /* borders */
+  --fcd-chalk:      #4D443B;   /* active borders, dividers */
 
-  /* ── Text — warm charcoal family (never pure black) ────────── */
-  --fcd-text:       #2B1810;   /* primary text — warm espresso */
-  --fcd-text-mid:   #4A3428;   /* mid text */
-  --fcd-text-muted: #6B5442;   /* muted body text */
-  --fcd-text-soft:  #9C8472;   /* captions, placeholders */
-  --fcd-text-ghost: #BBA898;   /* ghost text */
-
-  /* ── Semantic on-dark text palette ────────────────────────────
-     Use these on dark backgrounds, image overlays, video heroes.
-     All values pass WCAG AA (4.5:1) on espresso bg #2B1810.       */
-  --on-dark-primary:   rgba(255,255,255,0.96); /* headings, CTAs — 14:1 */
-  --on-dark-secondary: rgba(255,255,255,0.82); /* body text — 10:1 */
-  --on-dark-muted:     rgba(255,255,255,0.65); /* captions — 7:1 */
-  --on-dark-faint:     rgba(255,255,255,0.50); /* decorative only — 5:1 */
-  --on-dark-accent:    #E3A558;               /* copper accent on dark */
+  /* ── Text — High contrast on dark ──────────────────────────── */
+  --fcd-text:       rgba(255,255,255,0.95); /* primary text */
+  --fcd-text-mid:   rgba(255,255,255,0.75); /* secondary text */
+  --fcd-text-muted: rgba(255,255,255,0.55); /* muted text */
+  --fcd-text-soft:  rgba(255,255,255,0.35); /* captions */
+  --fcd-text-ghost: rgba(255,255,255,0.15); /* ghosts */
 
   /* ── Semantic ────────────────────────────────────────────────── */
-  --fcd-border:     #D5C4B4;
-  --fcd-bg:         #FAF7F2;
+  --fcd-border:     rgba(255,255,255,0.1);
+  --fcd-bg:         #0A0604;
 
-  /* ── Overlay system — LIGHT WARM EDITION ——————————————
-     All overlays use warm cream tints — NO DARK overlays.
-     Video/images remain vivid and bright beneath.            */
-  --overlay-hero:   linear-gradient(to bottom, rgba(250,247,242,.42) 0%, rgba(250,247,242,.22) 45%, rgba(250,247,242,.05) 100%);
-  --overlay-dark:   linear-gradient(180deg, rgba(250,237,224,.65) 0%, rgba(250,237,224,.42) 60%, rgba(250,237,224,.08) 100%);
-  --overlay-side:   linear-gradient(90deg, rgba(250,247,242,.80) 0%, rgba(250,247,242,.60) 45%, rgba(250,247,242,.10) 100%);
-  --overlay-bottom: linear-gradient(to top, rgba(250,247,242,1) 0%, rgba(250,247,242,0) 100%);
-  --overlay-strong: linear-gradient(to bottom, rgba(250,237,224,.85) 0%, rgba(250,237,224,.65) 50%, rgba(250,237,224,.30) 100%);
-  /* Amber-tinted warm overlay for a golden sunrise mood */
-  --overlay-amber:  linear-gradient(to bottom, rgba(240,201,138,.20) 0%, rgba(250,247,242,.30) 60%, rgba(250,247,242,.60) 100%);
+  /* ── Cinematic Overlays ——————————————
+     Vignettes, deep shadows, and cinematic fades.            */
+  --overlay-hero:   linear-gradient(to bottom, rgba(10,6,4,0.7) 0%, rgba(10,6,4,0.3) 40%, rgba(10,6,4,0.9) 100%);
+  --overlay-dark:   linear-gradient(180deg, rgba(10,6,4,0.95) 0%, rgba(10,6,4,0.7) 60%, rgba(10,6,4,0.2) 100%);
+  --overlay-side:   linear-gradient(90deg, rgba(10,6,4,1) 0%, rgba(10,6,4,0.6) 45%, rgba(10,6,4,0) 100%);
+  --overlay-bottom: linear-gradient(to top, rgba(10,6,4,1) 0%, rgba(10,6,4,0.8) 50%, rgba(10,6,4,0) 100%);
+  --overlay-strong: rgba(10,6,4,0.85);
+  --overlay-amber:  linear-gradient(to bottom, rgba(200,126,58,0.1) 0%, rgba(10,6,4,0.7) 100%);
 
-  /* ── Shadows — organic warm tones, no cold grey ────────────── */
-  --shadow-xs:      0 1px 3px rgba(90,52,26,0.06);
-  --shadow-sm:      0 2px 8px rgba(90,52,26,0.08);
-  --shadow-md:      0 6px 24px rgba(90,52,26,0.10);
-  --shadow-lg:      0 16px 56px rgba(90,52,26,0.13);
-  --shadow-xl:      0 28px 80px rgba(90,52,26,0.16);
-  --shadow-copper:  0 8px 32px rgba(184,115,51,0.22);
-  --shadow-nature:  0 10px 40px rgba(45,74,45,0.12);
+  /* ── Shadows & Glows ────────────── */
+  --shadow-xs:      0 1px 3px rgba(0,0,0,0.8);
+  --shadow-sm:      0 4px 12px rgba(0,0,0,0.6);
+  --shadow-md:      0 8px 32px rgba(0,0,0,0.5);
+  --shadow-lg:      0 16px 56px rgba(0,0,0,0.7);
+  --shadow-xl:      0 28px 80px rgba(0,0,0,0.9);
+  /* Glow effects replacing vvsvs neon */
+  --shadow-copper:  0 0 24px rgba(200,126,58,0.2);
+  --shadow-copper-hover: 0 0 32px rgba(200,126,58,0.4), inset 0 0 16px rgba(200,126,58,0.1);
+  --shadow-nature:  0 0 32px rgba(125,156,125,0.15);
 }
 
 @theme inline {
@@ -89,24 +80,19 @@
   --font-display: 'Spectral', 'Be Vietnam Pro', Georgia, serif;
   --font-body:    'Be Vietnam Pro', system-ui, sans-serif;
 
-  --color-fcd-espresso:  #2B1810;
-  --color-fcd-earth:     #5C3317;
+  --color-fcd-espresso:  #1A120A;
+  --color-fcd-earth:     #332014;
   --color-fcd-mahogany:  #7C3D18;
-  --color-fcd-copper:    #B87333;
-  --color-fcd-honey:     #D4914A;
-  --color-fcd-amber:     #E3A558;
-  --color-fcd-sage:      #6B8C6B;
-  --color-fcd-moss:      #4A6741;
-  --color-fcd-cream:     #FAF7F2;
-  --color-fcd-parchment: #F5EDE0;
-  --color-fcd-muted:     #6B5442;
-  --color-fcd-soft:      #9C8472;
-  --color-fcd-stone:     #D5C4B4;
-  /* keep legacy aliases */
-  --color-fcd-caramel:   #B87333;
-  --color-fcd-forest:    #2D4A2D;
-  --color-fcd-sand:      #EDE0CF;
-  --color-fcd-mist:      #E4D6C8;
+  --color-fcd-copper:    #C87E3A;
+  --color-fcd-honey:     #E89D52;
+  --color-fcd-amber:     #F5AE5C;
+  --color-fcd-sage:      #7D9C7D;
+  --color-fcd-moss:      #3A5233;
+  --color-fcd-cream:     #050302;
+  --color-fcd-parchment: #0C0805;
+  --color-fcd-muted:     #8C7C70;
+  --color-fcd-soft:      #4D443B;
+  --color-fcd-stone:     #2A241F;
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -119,7 +105,6 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-variant-ligatures: none;
-  /* Prevent harsh color jumps on scroll */
   scroll-padding-top: 80px;
 }
 
@@ -248,24 +233,18 @@ h2, h3, h4, h5, h6 {
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   Section backgrounds — UNIFIED warm tone family
-   No pure-black or blue-white contrast. All warm, harmonious.
+   Section backgrounds
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-.section-cream     { background: var(--fcd-cream); }
-.section-parchment { background: var(--fcd-parchment); }
-.section-sand      { background: var(--fcd-sand); }
-/* espresso & roast sections are now remapped to warm light alternatives */
-.section-espresso  { background: var(--fcd-parchment); color: var(--fcd-text); }
-.section-roast     { background: var(--fcd-sand); color: var(--fcd-text); }
+.section-cream     { background: transparent; }
+.section-parchment { background: radial-gradient(circle at center, rgba(38,27,16,0.5) 0%, var(--fcd-bg) 100%); }
+.section-sand      { background: transparent; }
+/* espresso & roast sections reverted to actual dark cinematic sections */
+.section-espresso  { background: var(--fcd-espresso); color: var(--fcd-text); }
+.section-roast     { background: var(--fcd-roast); color: var(--fcd-text); }
 
-/* Gradient section transitions — always warm espresso ↔ cream */
-.section-nature {
-  background: linear-gradient(180deg, var(--fcd-mist-green) 0%, var(--fcd-cream) 100%);
-}
-.section-dark-warm {
-  /* Remapped to warm light gradient — no dark backgrounds */
-  background: linear-gradient(160deg, var(--fcd-parchment) 0%, var(--fcd-sand) 100%);
-}
+/* Gradient section transitions */
+.section-nature { background: linear-gradient(180deg, rgba(28,46,28,0.5) 0%, var(--fcd-bg) 100%); }
+.section-dark-warm { background: radial-gradient(circle at top right, rgba(200,126,58,0.05) 0%, var(--fcd-bg) 100%); }
 
 /* ── Grain / noise film texture ─────────────────────────────── */
 .grain {
@@ -311,72 +290,60 @@ h2, h3, h4, h5, h6 {
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   Glass / Backdrop effects
+   Glass / Bento-box / Backdrop effects
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 .glass-dark {
-  /* Remapped to warm light glass — parchment tinted frosted panel */
-  background: rgba(250,237,224,0.78);
-  backdrop-filter: blur(16px) saturate(140%);
-  -webkit-backdrop-filter: blur(16px) saturate(140%);
-  border: 1px solid rgba(213,196,180,0.50);
+  background: rgba(255,255,255,0.03);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
   color: var(--fcd-text);
+  border-radius: 24px;
 }
 .glass-dark p, .glass-dark span, .glass-dark li { color: var(--fcd-text-mid); }
-.glass-light {
-  background: rgba(250,247,242,0.88);
-  backdrop-filter: blur(16px) saturate(150%);
-  -webkit-backdrop-filter: blur(16px) saturate(150%);
-  border: 1px solid rgba(213,196,180,0.40);
+
+/* Equivalent to vvs.pro's cards */
+.bento-card, .card-nature, .card-premium {
+  background: rgba(255,255,255,0.02);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 28px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+  transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  color: var(--fcd-text);
+  position: relative;
+  overflow: hidden;
 }
+
+.bento-card::before, .card-nature::before, .card-premium::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: 28px;
+  background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, -100%), rgba(200,126,58,0.08), transparent 40%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.bento-card:hover, .card-nature:hover, .card-premium:hover, .card-hover:hover {
+  transform: translateY(-4px) scale(1.01);
+  border-color: rgba(200,126,58,0.3);
+  box-shadow: var(--shadow-copper-hover);
+  background: rgba(255,255,255,0.04);
+}
+
+.bento-card:hover::before, .card-nature:hover::before, .card-premium:hover::before {
+  opacity: 1;
+}
+
 .glass-nature {
-  background: rgba(107,140,107,0.10);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(107,140,107,0.22);
-}
-.glass-parchment {
-  background: rgba(245,237,224,0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(213,196,180,0.35);
-}
-
-/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   Cards — warm paper surface
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-.card-nature {
-  background: #FFFCF8;
-  border: 1px solid var(--fcd-stone);
-  border-radius: 20px;
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.32s cubic-bezier(.22,.68,0,1.2), box-shadow 0.32s ease, border-color 0.32s ease;
-}
-.card-nature:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
-  border-color: var(--fcd-chalk);
-}
-
-.card-hover {
-  transition: transform 0.32s cubic-bezier(.22,.68,0,1.2), box-shadow 0.32s ease;
-}
-.card-hover:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-nature);
-}
-
-/* Premium card — for featured/highlighted items */
-.card-premium {
-  background: #FFFCF8;
-  border: 1px solid var(--fcd-stone);
+  background: rgba(125,156,125,0.05);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(125,156,125,0.15);
   border-radius: 24px;
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.35s cubic-bezier(.22,.68,0,1.2), box-shadow 0.35s ease, border-color 0.3s;
-}
-.card-premium:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-lg);
-  border-color: rgba(184,115,51,0.25);
 }
 
 /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

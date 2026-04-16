@@ -14,43 +14,53 @@ export const metadata: Metadata = {
 }
 
 export default function AnNhienPage() {
+  // Utility cho bento card ánh sáng (Light Mode Bento)
+  const bentoCardLight = "relative overflow-hidden bg-white border border-slate-200/80 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-slate-300 transition-all duration-300 rounded-[28px]";
+  
+  // Nền sáng cho các section
+  const sectionBg1 = "bg-[#FDFBF7]"; // Kem sáng (hơi ngả lúa mạch)
+  const sectionBg2 = "bg-white"; // Trắng tinh sạch sẽ
+  const sectionBg3 = "bg-[#F4F7F4]"; // Xanh nature pastel siêu nhạt
+  const sectionBg4 = "bg-slate-50"; // Ngả xanh lam/xám rất nhẹ cho tương phản
+
   return (
-    <>
-      {/* ══ HERO — Cinematic An Nhiên ══════════════════════════════ */}
-      <section className="relative min-h-[75vh] flex items-center justify-center overflow-hidden grain">
+    <div className="bg-[#FDFBF7] text-slate-900 font-body">
+      {/* ══ HERO — Cinematic An Nhiên (Giữ tối phần trên cùng để hợp với Video) ══════ */}
+      <section className="relative min-h-[75vh] flex items-center justify-center overflow-hidden">
         {/* Video background */}
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 bg-slate-900">
           <video
             autoPlay muted loop playsInline
             poster="/images/nature/hero-caudat.png"
-            className="absolute inset-0 w-full h-full object-cover object-center"
+            className="absolute inset-0 w-full h-full object-cover object-center opacity-80"
             preload="none"
           >
             <source src="/video/video-haicf-background.mp4" type="video/mp4" />
             <source src="/video/video-cf-background.mp4" type="video/mp4" />
           </video>
-          {/* Warm espresso overlay — light enough to see video */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#2B1810]/65 via-[#2B1810]/45 to-transparent" />
-          {/* Bottom fade */}
-          <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#FAF7F2] to-transparent" />
+          {/* Lớp phủ an toàn để vẫn đọc được text màu trắng */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#1A120A]/60 via-black/40 to-black/10" />
+          
+          {/* FADE RA MÀU SÁNG => Đây là điểm kết nối hoàn hảo xuống Light Theme */}
+          <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-[#FDFBF7] via-[#FDFBF7]/80 to-transparent" />
         </div>
 
         <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 text-center pt-32 pb-20 animate-fade-in">
-          <span className="badge badge-on-dark mb-5 inline-flex items-center gap-1.5 backdrop-blur-sm">
-            <Leaf size={10} className="text-[#A8C4A2]" /> Giải pháp FCD
+          <span className="badge inline-flex items-center gap-1.5 backdrop-blur-md bg-white/20 text-white border border-white/40 mb-5">
+            <Leaf size={10} className="text-[#BCE3B5]" /> Giải pháp FCD
           </span>
-          <h1 className="font-display text-5xl sm:text-6xl text-white mb-5 leading-tight">
+          <h1 className="font-display text-5xl sm:text-6xl text-white mb-5 leading-tight drop-shadow-md">
             AN NHIÊN<br /><span className="text-[#E3A558]">cùng FCD</span>
           </h1>
-          <p className="text-white/75 text-base max-w-xl mx-auto leading-relaxed font-light mb-9">
+          <p className="text-white/90 text-base max-w-xl mx-auto leading-relaxed font-medium mb-9 drop-shadow-sm">
             Cà phê đặc sản chất lượng cao — minh bạch từ vùng trồng đến ly cà phê.<br />
             An toàn, an tâm, và đúng nghĩa tự nhiên.
           </p>
           <div className="flex flex-wrap gap-3 justify-center">
-            <Link href="#combo" className="btn-copper px-7 py-3.5 rounded-full flex items-center gap-2">
+            <Link href="#combo" className="px-7 py-3.5 rounded-full flex items-center gap-2 bg-[#C87E3A] hover:bg-[#E89D52] text-white font-semibold shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5">
               Xem Gói An Nhiên <ArrowRight size={14} />
             </Link>
-            <Link href="/lien-he" className="btn-ghost px-7 py-3.5 rounded-full">
+            <Link href="/lien-he" className="px-7 py-3.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/40 text-white font-medium backdrop-blur-sm transition-all hover:-translate-y-0.5">
               Liên hệ tư vấn
             </Link>
           </div>
@@ -58,43 +68,43 @@ export default function AnNhienPage() {
       </section>
 
       {/* ══ AN + NHIÊN MEANING ════════════════════════════════════ */}
-      <section className="py-20 section-cream texture-leaf">
+      <section className={`py-20 ${sectionBg1}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
-            <span className="badge badge-sage mb-4 inline-flex">💡 Triết lý</span>
-            <h2 className="font-display text-3xl sm:text-4xl text-[#1A120A] italic mb-3">&ldquo;AN NHIÊN&rdquo; là gì?</h2>
-            <p className="text-[#6B5A4E] text-sm max-w-md mx-auto text-center">Hai khía cạnh tạo nên giá trị cốt lõi của FCD</p>
+            <span className="badge bg-[#1C2E1C]/5 text-[#3A5233] border border-[#7D9C7D]/30 mb-4">💡 Triết lý</span>
+            <h2 className="font-display text-3xl sm:text-4xl text-slate-800 italic mb-3">&ldquo;AN NHIÊN&rdquo; là gì?</h2>
+            <p className="text-slate-500 text-sm max-w-md mx-auto text-center">Hai khía cạnh tạo nên giá trị cốt lõi của FCD</p>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
             {/* AN */}
-            <div className="card-nature overflow-hidden">
-              <div className="h-1.5 bg-gradient-to-r from-[#B87333] to-[#E3A558]" />
+            <div className={bentoCardLight}>
+              <div className="h-1.5 bg-gradient-to-r from-[#C87E3A] to-[#E89D52]" />
               <div className="p-8">
-                <div className="font-display text-6xl italic text-[#7C3D18] mb-2">AN</div>
-                <div className="text-[#B87333] font-semibold mb-4 text-sm tracking-wide">{anMeaning.subtitle}</div>
-                <p className="text-[#6B5A4E] leading-relaxed mb-6 text-sm">{anMeaning.description}</p>
+                <div className="font-display text-6xl italic text-[#C87E3A]/20 mb-2 drop-shadow-sm -mt-2 absolute top-8 right-8 pointer-events-none">AN</div>
+                <div className="text-amber-700 font-bold mb-4 text-sm tracking-wide uppercase">{anMeaning.subtitle}</div>
+                <p className="text-slate-600 leading-relaxed mb-6 text-sm">{anMeaning.description}</p>
                 <div className="space-y-3">
                   {anMeaning.pillars.map((p) => (
-                    <div key={p.id} className="bg-[#FAF6F0] rounded-xl p-4 border border-[#D9CABC]">
-                      <div className="font-semibold text-[#1A120A] mb-1 text-sm">{p.title}</div>
-                      <p className="text-xs text-[#6B5A4E] leading-relaxed">{p.description}</p>
+                    <div key={p.id} className="bg-amber-50/50 rounded-xl p-4 border border-amber-100/50 hover:bg-amber-50 transition-colors">
+                      <div className="font-semibold text-slate-800 mb-1 text-sm">{p.title}</div>
+                      <p className="text-xs text-slate-600 leading-relaxed">{p.description}</p>
                     </div>
                   ))}
                 </div>
               </div>
             </div>
             {/* NHIÊN */}
-            <div className="card-nature overflow-hidden">
-              <div className="h-1.5 bg-gradient-to-r from-[#4A6741] to-[#6B8C6B]" />
-              <div className="p-8">
-                <div className="font-display text-6xl italic text-[#2D4A2D] mb-2">NHIÊN</div>
-                <div className="text-[#4A6741] font-semibold mb-4 text-sm tracking-wide">{nhienMeaning.subtitle}</div>
-                <p className="text-[#6B5A4E] leading-relaxed mb-6 text-sm">{nhienMeaning.description}</p>
+            <div className={bentoCardLight}>
+              <div className="h-1.5 bg-gradient-to-r from-emerald-500 to-emerald-400" />
+              <div className="p-8 relative">
+                <div className="font-display text-6xl italic text-emerald-600/10 mb-2 drop-shadow-sm -mt-2 absolute top-8 right-8 pointer-events-none">NHIÊN</div>
+                <div className="text-emerald-700 font-bold mb-4 text-sm tracking-wide uppercase">{nhienMeaning.subtitle}</div>
+                <p className="text-slate-600 leading-relaxed mb-6 text-sm">{nhienMeaning.description}</p>
                 <div className="space-y-3">
                   {nhienMeaning.pillars.map((p) => (
-                    <div key={p.id} className="bg-[#EDF3EC] rounded-xl p-4 border border-[#6B8C6B]/20">
-                      <div className="font-semibold text-[#1A120A] mb-1 text-sm">{p.title}</div>
-                      <p className="text-xs text-[#6B5A4E] leading-relaxed">{p.description}</p>
+                    <div key={p.id} className="bg-emerald-50/50 rounded-xl p-4 border border-emerald-100/50 hover:bg-emerald-50 transition-colors">
+                      <div className="font-semibold text-slate-800 mb-1 text-sm">{p.title}</div>
+                      <p className="text-xs text-slate-600 leading-relaxed">{p.description}</p>
                     </div>
                   ))}
                 </div>
@@ -105,9 +115,9 @@ export default function AnNhienPage() {
       </section>
 
       {/* ══ POSTER AN NHIÊN ════════════════════════════════════════ */}
-      <section className="py-10 section-parchment">
+      <section className={`py-10 ${sectionBg2}`}>
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <div className="rounded-3xl overflow-hidden shadow-xl border border-[#D9CABC]">
+          <div className="rounded-[28px] overflow-hidden shadow-xl shadow-slate-200/50 border border-slate-100 bg-white">
             <Image
               src="/images/nature/poster-an-nhien.png"
               alt="Poster chương trình An Nhiên cùng FCD"
@@ -121,24 +131,26 @@ export default function AnNhienPage() {
       </section>
 
       {/* ══ 5 KHÔNG ═══════════════════════════════════════════════ */}
-      <section className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0">
-          <Image src="/images/nature/coffee-cherry.png" alt="Cà phê" fill className="object-cover object-center" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#FAF7F2]/30 via-transparent to-[#FAF7F2]/60" />
+      <section className={`relative py-20 overflow-hidden ${sectionBg3}`}>
+        {/* Subtle Nature Background */}
+        <div className="absolute inset-0 pointer-events-none">
+          <Image src="/images/nature/coffee-cherry.png" alt="" fill className="object-cover object-center opacity-[0.03] mix-blend-multiply" />
         </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6">
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
-            <span className="badge badge-sage mb-4 inline-flex backdrop-blur-sm">🛡️ Cam kết</span>
-            <h2 className="font-display text-3xl sm:text-4xl text-white italic mb-3">Triết lý 5 Không</h2>
-            <p className="text-white/60 text-sm max-w-md mx-auto text-center">FCD kiên định không dùng bất kỳ chất phụ gia nào — trả lại giá trị thực sự cho hạt cà phê</p>
+            <span className="badge bg-emerald-100 text-emerald-800 border border-emerald-200 mb-4 shadow-sm">🛡️ Cam kết</span>
+            <h2 className="font-display text-3xl sm:text-4xl text-slate-800 italic mb-3">Triết lý 5 Không</h2>
+            <p className="text-slate-500 text-sm max-w-md mx-auto text-center">FCD kiên định không dùng bất kỳ chất phụ gia nào — trả lại giá trị thực sự cho hạt cà phê</p>
           </div>
+          
           <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
             {fiveNoes.map((item, i) => (
-              <div key={item.id} className={`card-nature rounded-2xl p-5 text-center card-hover animate-fade-in delay-${(i+1)*100}`}>
-                <div className="text-3xl mb-3">{item.icon}</div>
-                <div className="text-[#B87333] font-bold text-xs mb-1.5 font-mono">#{item.number}</div>
-                <div className="font-semibold text-[#2B1810] text-sm mb-2">{item.title}</div>
-                <p className="text-[#6B5442] text-xs leading-relaxed">{item.description}</p>
+              <div key={item.id} className={`${bentoCardLight} p-6 text-center animate-fade-in delay-${(i+1)*100} group bg-white/80 backdrop-blur-sm`}>
+                <div className="text-3xl mb-4 group-hover:scale-110 transition-transform duration-300 drop-shadow-sm">{item.icon}</div>
+                <div className="text-emerald-700 font-bold text-xs mb-1.5 font-mono">#{item.number}</div>
+                <div className="font-bold text-slate-800 text-sm mb-2">{item.title}</div>
+                <p className="text-slate-600 text-xs leading-relaxed">{item.description}</p>
               </div>
             ))}
           </div>
@@ -146,27 +158,40 @@ export default function AnNhienPage() {
       </section>
 
       {/* ══ 10 BƯỚC ═══════════════════════════════════════════════ */}
-      <section className="py-20 section-parchment">
+      <section className={`py-20 ${sectionBg2}`}>
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
-            <span className="badge badge-amber mb-4 inline-flex">⚙️ Quy trình</span>
-            <h2 className="font-display text-3xl sm:text-4xl text-[#1A120A] italic mb-3">10 Bước Kiểm Soát Chất Lượng</h2>
-            <p className="text-[#6B5A4E] text-sm max-w-md mx-auto text-center">Hệ sinh thái khép kín từ nông trại đến ly cà phê — mỗi bước đều có chứng minh</p>
+            <span className="badge bg-amber-100 text-amber-800 border border-amber-200 mb-4 shadow-sm">⚙️ Quy trình</span>
+            <h2 className="font-display text-3xl sm:text-4xl text-slate-800 italic mb-3">10 Bước Kiểm Soát Chất Lượng</h2>
+            <p className="text-slate-500 text-sm max-w-md mx-auto text-center">Hệ sinh thái khép kín từ nông trại đến ly cà phê — mỗi bước đều có chứng minh</p>
           </div>
-          <div className="space-y-3">
+          
+          <div className="space-y-3 relative">
+            {/* Connecting visual line (left side) */}
+            <div className="absolute left-[38px] top-8 bottom-8 w-px bg-slate-200 hidden sm:block"></div>
+            
             {tenSteps.map((step, i) => (
-              <div key={step.step} className={`bg-white rounded-2xl border border-[#D9CABC] p-5 flex gap-4 items-start card-nature animate-fade-in delay-${Math.min(i*50, 500)}`} style={{ animationDelay: `${i * 0.06}s` }}>
-                <div className={`step-circle shrink-0 ${step.step <= 5 ? '' : 'step-circle-sage'}`}>
-                  {step.step}
+              <div key={step.step} className={`${bentoCardLight} p-5 flex gap-5 items-start z-10 animate-fade-in`} style={{ animationDelay: `${i * 0.05}s` }}>
+                <div className={`w-12 h-12 rounded-full flex flex-col items-center justify-center shrink-0 font-bold text-white shadow-md
+                  ${step.step <= 5 
+                    ? 'bg-gradient-to-br from-amber-500 to-amber-600' 
+                    : 'bg-gradient-to-br from-emerald-500 to-emerald-600'
+                  }
+                `}>
+                  <span className="text-[10px] uppercase opacity-70 mb-[-4px]">BƯỚC</span>
+                  <span className="text-lg leading-none">{step.step}</span>
                 </div>
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-start justify-between gap-2 flex-wrap">
-                    <div className="font-semibold text-[#1A120A] text-sm mb-1">{step.icon} {step.title}</div>
-                    <span className="text-[10px] bg-[#FAF6F0] text-[#B87333] border border-[#B87333]/20 rounded-full px-2.5 py-0.5 shrink-0 hidden sm:block">
+                
+                <div className="flex-1 min-w-0 pt-0.5">
+                  <div className="flex items-start justify-between gap-3 flex-wrap mb-1.5">
+                    <div className="font-bold text-slate-800 text-[15px] flex items-center gap-2">
+                       <span className="text-lg drop-shadow-sm">{step.icon}</span> {step.title}
+                    </div>
+                    <span className="text-[10px] bg-slate-100 text-slate-500 border border-slate-200 rounded-full px-2.5 py-1 shrink-0 font-medium whitespace-nowrap">
                       {step.proof}
                     </span>
                   </div>
-                  <p className="text-xs text-[#6B5A4E] leading-relaxed">{step.description}</p>
+                  <p className="text-sm text-slate-600 leading-relaxed">{step.description}</p>
                 </div>
               </div>
             ))}
@@ -175,60 +200,65 @@ export default function AnNhienPage() {
       </section>
 
       {/* ══ CHỨNG NHẬN ════════════════════════════════════════════ */}
-      <section className="py-20 section-cream">
+      <section className={`py-20 ${sectionBg4}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
-            <span className="badge badge-green mb-4 inline-flex">✅ Chứng nhận</span>
-            <h2 className="font-display text-3xl sm:text-4xl text-[#1A120A] italic mb-3">Bảo chứng chất lượng</h2>
-            <p className="text-[#6B5A4E] text-sm max-w-md mx-auto text-center">Chất lượng không tự công bố — có thể kiểm chứng qua hệ thống chứng nhận uy tín</p>
+            <span className="badge bg-slate-200 text-slate-700 border border-slate-300 mb-4 shadow-sm">✅ Chứng nhận</span>
+            <h2 className="font-display text-3xl sm:text-4xl text-slate-800 italic mb-3">Bảo chứng chất lượng</h2>
+            <p className="text-slate-500 text-sm max-w-md mx-auto text-center">Chất lượng không tự công bố — có thể kiểm chứng qua hệ thống chứng nhận uy tín</p>
           </div>
+          
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {proofPoints.map((pp, i) => (
-              <div key={pp.id} className={`card-nature p-6 text-center animate-fade-in delay-${(i+1)*100}`}>
-                <div className="font-display text-4xl italic text-[#7C3D18] mb-2">{pp.label}</div>
-                <div className="text-sm font-semibold text-[#B87333] mb-3">{pp.fullName}</div>
-                <p className="text-xs text-[#6B5A4E] leading-relaxed">{pp.description}</p>
+              <div key={pp.id} className={`${bentoCardLight} p-6 px-5 text-center animate-fade-in delay-${(i+1)*100}`}>
+                <div className="font-display text-4xl italic text-[#C87E3A] mb-3 drop-shadow-sm font-semibold">{pp.label}</div>
+                <div className="text-sm font-bold text-slate-800 mb-2.5">{pp.fullName}</div>
+                <p className="text-xs text-slate-500 leading-relaxed">{pp.description}</p>
               </div>
             ))}
           </div>
-          <div className="mt-8 text-center">
-            <Link href="/chung-nhan" className="inline-flex items-center gap-2 text-sm font-medium text-[#7C3D18] hover:text-[#B87333] transition-colors">
-              Xem toàn bộ 15 giấy chứng nhận <ArrowRight size={14} />
+          
+          <div className="mt-10 text-center">
+            <Link href="/chung-nhan" className="inline-flex items-center gap-2 text-sm font-semibold text-amber-700 hover:text-amber-600 bg-amber-50 px-5 py-2.5 rounded-full border border-amber-100 transition-colors">
+              Xem toàn bộ 15 hồ sơ chứng nhận <ArrowRight size={16} />
             </Link>
           </div>
         </div>
       </section>
 
-      {/* ══ CHI PHÍ/LY ════════════════════════════════════════════ */}
-      <section className="py-20 bg-[#F5EDE0]">
+      {/* ══ BÀI TOÁN CHI PHÍ/LY ════════════════════════════════════ */}
+      <section className={`py-20 ${sectionBg2}`}>
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-12">
-            <span className="badge badge-amber mb-4 inline-flex">💰 Bài toán chi phí</span>
-            <h2 className="font-display text-3xl text-[#2B1810] italic mb-3">Chi phí mỗi ly là bao nhiêu?</h2>
-            <p className="text-[#6B5442] text-sm max-w-md mx-auto text-center">Tính theo giá niêm yết chính thức tháng 02/2026 — với 2 mức pha chiết</p>
+          <div className="text-center mb-10">
+            <span className="badge bg-amber-100 text-amber-800 border border-amber-200 mb-4 shadow-sm">💰 Bài toán chi phí</span>
+            <h2 className="font-display text-3xl sm:text-4xl text-slate-800 italic mb-3">Chi phí mỗi ly là bao nhiêu?</h2>
+            <p className="text-slate-500 text-sm max-w-md mx-auto text-center">
+              Chỉ từ 3.271đ/ly chuẩn đặc sản cao cấp (Tính theo giá niêm yết Tháng 2/2026)
+            </p>
           </div>
-          <div className="overflow-x-auto rounded-2xl border border-[#D5C4B4]">
-            <table className="w-full text-sm">
+          
+          <div className="rounded-[28px] overflow-hidden border border-slate-200 shadow-[0_8px_30px_rgb(0,0,0,0.04)] bg-white">
+            <table className="w-full text-sm text-left whitespace-nowrap sm:whitespace-normal">
               <thead>
-                <tr className="border-b border-[#D5C4B4] bg-[#FAF7F2]">
-                  <th className="text-left px-5 py-3 text-[#6B5442] font-medium text-xs uppercase tracking-wide">Sản phẩm</th>
-                  <th className="text-right px-5 py-3 text-[#6B5442] font-medium text-xs uppercase tracking-wide">70 ly/kg</th>
-                  <th className="text-right px-5 py-3 text-[#6B5442] font-medium text-xs uppercase tracking-wide">140 ly/kg</th>
+                <tr className="bg-slate-50 border-b border-slate-200">
+                  <th className="px-5 py-4 text-slate-500 font-bold text-xs uppercase tracking-wider">Mã / Dòng cà phê</th>
+                  <th className="text-right px-5 py-4 text-slate-500 font-bold text-xs uppercase tracking-wider">Định mức 70 ly/kg</th>
+                  <th className="text-right px-5 py-4 text-slate-500 font-bold text-xs uppercase tracking-wider">Định mức 140 ly/kg</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#E4D6C8]">
-                {costPerCup.map((row) => (
-                  <tr key={row.code} className="group hover:bg-[#F5EDE0] transition-colors">
-                    <td className="px-5 py-3.5">
+              <tbody className="divide-y divide-slate-100">
+                {costPerCup.map((row, index) => (
+                  <tr key={row.code} className={`group hover:bg-amber-50/30 transition-colors ${index % 2 === 0 ? 'bg-white' : 'bg-slate-50/50'}`}>
+                    <td className="px-5 py-4">
                       <div className="flex flex-col">
-                        <span className="font-bold text-[#2B1810] text-xs font-mono tracking-wider">{row.code}</span>
-                        <span className="text-[#9C8472] text-xs mt-0.5">{row.name}</span>
+                        <span className="font-bold text-slate-800 text-sm">{row.name}</span>
+                        <span className="text-slate-400 text-xs font-mono mt-0.5">{row.code}</span>
                       </div>
                     </td>
-                    <td className="text-right px-5 py-3.5 text-[#B87333] font-semibold text-sm tabular-nums">
+                    <td className="text-right px-5 py-4 text-amber-700 font-semibold text-[15px] tabular-nums">
                       {row.costPer70.toLocaleString('vi-VN')}đ
                     </td>
-                    <td className="text-right px-5 py-3.5 text-[#B87333] font-semibold text-sm tabular-nums">
+                    <td className="text-right px-5 py-4 text-emerald-700 font-semibold text-[15px] tabular-nums">
                       {row.costPer140.toLocaleString('vi-VN')}đ
                     </td>
                   </tr>
@@ -236,82 +266,104 @@ export default function AnNhienPage() {
               </tbody>
             </table>
           </div>
+          <p className="text-xs text-center text-slate-400 mt-4 italic">
+            * 70 ly/kg: ~14g/ly (Cốc lớn đậm vị). * 140 ly/kg: ~7g/ly (Cốc vừa). 
+          </p>
         </div>
       </section>
 
       {/* ══ GÓI AN NHIÊN COMBO ════════════════════════════════════ */}
-      <section id="combo" className="py-20 section-parchment">
+      <section id="combo" className={`py-20 ${sectionBg1}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-12">
-            <span className="badge badge-amber mb-4 inline-flex">☕ Gói đặc biệt</span>
-            <h2 className="font-display text-3xl sm:text-4xl text-[#1A120A] italic mb-3">{anNhienCombo.title}</h2>
-            <p className="text-[#6B5A4E] text-sm max-w-lg mx-auto">{anNhienCombo.subtitle}</p>
+          <div className="text-center mb-14">
+            <span className="badge bg-amber-100 text-amber-800 border border-amber-200 mb-4 shadow-sm">☕ Gói đặc quyền</span>
+            <h2 className="font-display text-4xl sm:text-5xl text-slate-800 italic mb-4">{anNhienCombo.title}</h2>
+            <p className="text-slate-600 text-sm max-w-xl mx-auto leading-relaxed">{anNhienCombo.subtitle}</p>
           </div>
-          <div className="grid md:grid-cols-2 gap-8 items-start">
-            {/* Machine highlight */}
-            <div className="card-nature overflow-hidden">
-              <div className="relative h-64 bg-[#F5EDE0]">
-                <Image src="/images/nature/may-pha-an-nhien.jpg" alt="Máy pha espresso 20 bar — FCD An Nhiên" fill className="object-contain object-center p-4" sizes="(max-width: 768px) 100vw, 50vw" />
-                <div className="absolute top-3 left-3">
-                  <span className="badge bg-[#B87333] text-white border-0 text-xs font-bold px-3 py-1.5 rounded-full">
-                    {anNhienCombo.machine.highlight}
+          
+          <div className="grid lg:grid-cols-2 gap-10 items-center">
+            {/* Left: Machine highlight image */}
+            <div className={`${bentoCardLight} overflow-hidden group`}>
+              <div className="relative h-80 bg-slate-100 flex items-center justify-center p-8">
+                <div className="absolute inset-0 bg-gradient-to-tr from-amber-100/50 to-transparent"></div>
+                <Image 
+                  src="/images/nature/may-pha-an-nhien.jpg" 
+                  alt="Máy pha espresso 20 bar — FCD An Nhiên" 
+                  fill 
+                  className="object-contain object-center mix-blend-darken drop-shadow-2xl group-hover:scale-105 transition-transform duration-700 p-8" 
+                  sizes="(max-width: 768px) 100vw, 50vw" 
+                />
+                <div className="absolute top-4 left-4 z-10">
+                  <span className="bg-red-600 text-white border-0 text-xs font-bold px-3 py-1.5 rounded-full shadow-[0_4px_15px_rgba(220,38,38,0.3)] animate-pulse">
+                    🔥 {anNhienCombo.machine.highlight} TẶNG MÁY 20 BAR
                   </span>
                 </div>
               </div>
-              <div className="p-6">
-                <h3 className="font-semibold text-[#1A120A] mb-2">{anNhienCombo.machine.name}</h3>
-                <p className="text-sm text-[#6B5A4E] leading-relaxed">{anNhienCombo.machine.description}</p>
+              <div className="p-6 bg-white relative z-10 border-t border-slate-100">
+                <h3 className="font-bold text-slate-800 text-lg mb-2">{anNhienCombo.machine.name}</h3>
+                <p className="text-sm text-slate-600 leading-relaxed">{anNhienCombo.machine.description}</p>
               </div>
             </div>
-            {/* Benefits */}
+            
+            {/* Right: Benefits & Pricing */}
             <div className="space-y-4">
-              <h3 className="font-semibold text-[#1A120A] mb-4 text-sm tracking-wide uppercase text-[#9C8472]">Quyền lợi VIP</h3>
-              {anNhienCombo.vipBenefits.map((b, i) => (
-                <div key={b.benefit} className={`card-nature p-4 animate-fade-in delay-${(i+1)*100}`}>
-                  <div className="flex items-center justify-between gap-2">
-                    <span className="text-sm text-[#1A120A]">{b.benefit}</span>
-                    <span className="font-bold text-[#7C3D18] text-sm shrink-0">{b.value}</span>
+              <h3 className="font-bold mb-5 text-sm tracking-widest uppercase text-slate-400">Quyền lợi thành viên VIP</h3>
+              
+              <div className="grid sm:grid-cols-2 gap-3 mb-6">
+                {anNhienCombo.vipBenefits.map((b, i) => (
+                  <div key={b.benefit} className="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                     <div className="font-bold text-[#C87E3A] text-lg mb-1 drop-shadow-sm">{b.value}</div>
+                     <div className="text-sm font-semibold text-slate-800 leading-snug">{b.benefit}</div>
+                     <p className="text-xs text-slate-500 mt-1.5 line-clamp-2">{b.note}</p>
                   </div>
-                  <p className="text-xs text-[#9C8472] mt-1">{b.note}</p>
-                </div>
-              ))}
+                ))}
+              </div>
 
               {/* Deposit highlight */}
-              <div className="mt-2 rounded-2xl bg-gradient-to-r from-[#FBF3E8] to-[#F5EDE0] border border-[#D4914A]/40 p-4">
-                <div className="flex items-start gap-3">
-                  <span className="text-[#D4914A] text-xl shrink-0">💡</span>
+              <div className={`${bentoCardLight} p-6 relative overflow-hidden bg-gradient-to-r from-amber-50/80 to-white`}>
+                <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-[#C87E3A]" />
+                <div className="flex items-start gap-4">
+                  <span className="text-amber-500 text-3xl shrink-0 drop-shadow-md">💎</span>
                   <div>
-                    <div className="text-[#7C3D18] font-bold text-sm mb-1">Trả trước 50% — chỉ 2.612.000đ</div>
-                    <p className="text-[#6B5442] text-xs leading-relaxed">
-                      Là đã được nhận ngay máy pha cà phê và bắt đầu hành trình An Nhiên. Phần còn lại thanh toán linh hoạt sau.
+                    <div className="text-slate-800 font-bold text-lg mb-1.5">
+                      Trả trước 50% — chỉ <span className="text-[#C87E3A] text-2xl drop-shadow-sm">2.612.000đ</span>
+                    </div>
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                      Là đã được **nhận ngay máy pha cà phê áp suất 20 bar** tại nhà/văn phòng và bắt đầu hành trình An Nhiên. Phần còn lại thanh toán linh hoạt.
                     </p>
                   </div>
                 </div>
               </div>
 
-              <Link href="/lien-he" className="flex items-center justify-center gap-2 w-full px-6 py-3.5 rounded-full bg-[#B87333] hover:bg-[#D4914A] text-white font-semibold text-sm transition-all mt-4">
-                Đăng ký tư vấn ngay <ArrowRight size={15} />
-              </Link>
+              <div className="pt-2">
+                <Link href="/lien-he" className="flex items-center justify-center gap-2 w-full px-8 py-4 rounded-full bg-[#1A120A] hover:bg-[#C87E3A] text-white font-bold text-sm transition-colors shadow-lg hover:shadow-xl">
+                  Đăng ký tư vấn An Nhiên ngay <ArrowRight size={16} />
+                </Link>
+                <p className="text-center text-xs text-slate-400 mt-3">* Gói giải pháp được thiết kế tối ưu nhất cho văn phòng, phòng khám, SME.</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* ══ FAQ / RÀO CẢN ═════════════════════════════════════════ */}
-      <section className="py-20 section-cream">
+      <section className={`py-20 border-y border-slate-100 ${sectionBg2}`}>
         <div className="max-w-3xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
-            <span className="badge badge-sage mb-4 inline-flex">❓ Câu hỏi thường gặp</span>
-            <h2 className="font-display text-3xl text-[#1A120A] italic mb-3">Gỡ bỏ rào cản</h2>
+            <span className="badge bg-slate-100 text-slate-600 border border-slate-200 mb-4 shadow-sm">❓ Xóa bỏ âu lo</span>
+            <h2 className="font-display text-3xl sm:text-4xl text-slate-800 italic mb-3">Gỡ bỏ mọi rào cản</h2>
           </div>
+          
           <div className="space-y-4">
             {barriersFaq.map((item, i) => (
-              <div key={item.id} className={`card-nature p-6 animate-fade-in delay-${(i+1)*100}`}>
-                <div className="flex items-start gap-3">
-                  <span className="step-circle shrink-0 text-xs" style={{ width: 28, height: 28 }}>{i + 1}</span>
+              <div key={item.id} className={`${bentoCardLight} p-5 sm:p-6 group hover:bg-slate-50`}>
+                <div className="flex items-start gap-4">
+                  <span className="w-8 h-8 rounded-full bg-slate-100 text-slate-500 font-bold flex items-center justify-center shrink-0 group-hover:bg-[#C87E3A] group-hover:text-white transition-colors text-sm">
+                    {i + 1}
+                  </span>
                   <div>
-                    <div className="font-semibold text-[#1A120A] mb-2 text-sm leading-snug">{item.barrier}</div>
-                    <p className="text-xs text-[#6B5A4E] leading-relaxed">{item.solution}</p>
+                    <div className="font-bold text-slate-800 mb-2 text-sm sm:text-[15px] leading-snug">{item.barrier}</div>
+                    <p className="text-sm text-slate-600 leading-relaxed">{item.solution}</p>
                   </div>
                 </div>
               </div>
@@ -321,147 +373,228 @@ export default function AnNhienPage() {
       </section>
 
       {/* ══ SCA 5 CẤP ĐỘ ═══════════════════════════════════════════ */}
-      <section className="py-20 bg-[#FAF7F2]" id="sca-grade">
+      <section className={`py-20 ${sectionBg4}`} id="sca-grade">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
 
           {/* Section header */}
           <div className="text-center mb-14">
-            <span className="badge badge-amber mb-4 inline-flex">📊 Tiêu chuẩn SCA quốc tế</span>
-            <h2 className="font-display text-3xl sm:text-5xl text-[#2B1810] italic mb-3 leading-tight">
+            <span className="badge bg-amber-100 text-amber-800 border border-amber-200 mb-4 shadow-sm">📊 Tiêu chuẩn SCA quốc tế</span>
+            <h2 className="font-display text-3xl sm:text-5xl text-slate-800 italic mb-2 leading-tight">
               Thang Đo 5 Cấp Độ Chất Lượng
             </h2>
-            <p className="text-[#B87333] font-display italic text-xl mb-2">theo tiêu chuẩn SCA</p>
-            <p className="text-[#6B5442] text-sm max-w-lg mx-auto leading-relaxed">
-              Dựa trên tiêu chí đánh giá nghiêm ngặt, SCA đã xây dựng hệ thống 5 cấp độ chất lượng.
-              Đây là lời giải đáp đanh thép nhất cho câu hỏi:{' '}
-              <em className="text-[#4A3428] italic">Khách hàng đang thực sự bỏ tiền ra mua loại cà phê nào?</em>
+            <p className="text-[#C87E3A] font-display italic text-xl mb-4">theo tiêu chuẩn Coffee Association (SCA)</p>
+            <p className="text-slate-600 text-sm max-w-xl mx-auto leading-relaxed">
+              Dựa trên tiêu chí đánh giá nghiêm ngặt, SCA đã xây dựng hệ thống 5 cấp độ. 
+              Đây là câu trả lời rõ ràng nhất cho việc: <em className="italic text-slate-500">Người Việt Nam đang thực sự bỏ tiền ra mua loại cà phê nào?</em>
             </p>
           </div>
 
-          {/* 2-col layout: infographic + detail table */}
           <div className="grid lg:grid-cols-5 gap-8 items-start">
-
+            
             {/* Left: Infographic */}
             <div className="lg:col-span-2">
               <div className="sticky top-24">
-                <div className="rounded-3xl overflow-hidden shadow-2xl border border-[#E3A558]/15">
-                  <Image
-                    src="/images/nature/sca-grade-scale.png"
-                    alt="Thang đo 5 cấp độ SCA — From Cầu Đất"
-                    width={560}
-                    height={840}
-                    className="w-full h-auto"
-                    priority
-                  />
-                </div>
-                {/* FCD badge under image */}
-                <div className="mt-4 p-4 rounded-2xl bg-gradient-to-r from-[#F5EDE0] to-[#EDE0CF] border border-[#D4914A]/30">
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="w-2 h-2 rounded-full bg-[#B87333] shrink-0" />
-                    <span className="text-xs font-semibold text-[#7C3D18] uppercase tracking-wider">FCD đang đạt</span>
+                <div className={`${bentoCardLight} overflow-hidden bg-white p-2`}>
+                  <div className="rounded-2xl overflow-hidden bg-slate-900 border border-[var(--fcd-copper)]/20 relative">
+                    {/* The image is dark, so keep a dark container for it to blend well */}
+                    <Image
+                      src="/images/nature/sca-grade-scale.png"
+                      alt="Thang đo 5 cấp độ SCA — From Cầu Đất"
+                      width={560}
+                      height={840}
+                      className="w-full h-auto drop-shadow-xl opacity-90 mix-blend-screen"
+                    />
                   </div>
-                  <p className="text-[#4A3428] text-xs leading-relaxed">
-                    Máy quang học Nhật Bản loại bỏ <strong className="text-[#2B1810]">100% hạt lỗi sơ cấp</strong>,
-                    đảm bảo sản phẩm đạt chuẩn <strong className="text-[#B87333]">Specialty Grade — Loại 1</strong>.
+                </div>
+                
+                {/* FCD badge under image */}
+                <div className="mt-4 p-5 rounded-3xl bg-amber-50 border border-amber-200 shadow-sm relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-20 h-20 bg-amber-200 blur-2xl opacity-50"></div>
+                  <div className="flex items-center gap-2 mb-2 relative z-10">
+                    <span className="w-2.5 h-2.5 rounded-full bg-amber-500 shadow-[0_0_8px_rgba(245,174,92,0.8)] shrink-0 animate-pulse" />
+                    <span className="text-xs font-bold text-amber-800 uppercase tracking-widest">Tiêu chuẩn FCD đang áp dụng</span>
+                  </div>
+                  <p className="text-slate-700 text-sm leading-relaxed relative z-10">
+                    Sử dụng máy quang học Nhật Bản loại bỏ <strong className="text-amber-700">100% hạt lỗi mốc/đen</strong>,
+                    trực tiếp đưa sản phẩm đạt chuẩn <strong className="text-[#C87E3A]">Specialty Grade (Loại 1)</strong>.
                   </p>
                 </div>
               </div>
             </div>
 
             {/* Right: Detailed grade cards */}
-            <div className="lg:col-span-3 space-y-3">
-
-              {/* Column headers — desktop only */}
-              <div className="hidden sm:grid grid-cols-3 gap-2 px-4 pb-2 border-b border-[#D5C4B4]">
-                <span className="text-[10px] font-semibold text-[#9C8472] uppercase tracking-widest">Tiêu chuẩn khuyết tật</span>
-                <span className="text-[10px] font-semibold text-[#9C8472] uppercase tracking-widest">Cảm quan &amp; Độ ẩm</span>
-                <span className="text-[10px] font-semibold text-[#9C8472] uppercase tracking-widest">Thực trạng tiêu dùng</span>
-              </div>
-
+            <div className="lg:col-span-3 space-y-4">
               {scaGrades.map((grade) => (
                 <div
                   key={grade.level}
-                  className={`rounded-2xl border overflow-hidden transition-all ${
-                    grade.level === 1
-                      ? 'border-[#E3A558]/40 shadow-lg shadow-amber-900/20'
+                  className={`rounded-[24px] border overflow-hidden transition-all duration-300 shadow-sm relative group
+                    ${grade.level === 1
+                      ? 'border-amber-300 bg-white shadow-[0_8px_30px_rgb(200,126,58,0.12)] hover:-translate-y-1'
                       : grade.danger
-                      ? 'border-red-900/40'
-                      : 'border-white/8'
+                      ? 'border-red-200 bg-red-50/50 hover:bg-red-50'
+                      : 'border-slate-200 bg-white hover:bg-slate-50'
                   }`}
-                  style={{ backgroundColor: grade.bgColor }}
                 >
-                  {/* Grade title row */}
-                  <div
-                    className="flex items-center gap-3 px-4 py-3 border-b"
-                    style={{ borderColor: grade.color + '22' }}
-                  >
+                  {/* FCD highlight outline for Level 1 */}
+                  {grade.level === 1 && (
+                     <div className="absolute inset-0 border-2 border-[#C87E3A]/40 rounded-[24px] pointer-events-none"></div>
+                  )}
+
+                  {/* Level Header */}
+                  <div className="flex items-center gap-3 px-5 py-4 border-b border-slate-100/50 bg-white/50 backdrop-blur-sm">
                     <div
-                      className="shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold font-mono"
-                      style={{ backgroundColor: grade.color + '25', color: grade.color, border: `1.5px solid ${grade.color}60` }}
+                      className="shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold shadow-sm"
+                      style={{ backgroundColor: grade.level === 1 ? '#C87E3A' : grade.danger ? '#ef4444' : '#64748b', color: 'white' }}
                     >
                       {grade.level}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <div className="flex flex-wrap items-center gap-x-2 gap-y-0.5">
-                        <span className="font-bold text-[#2B1810] text-sm">LOẠI {grade.level} — {grade.name}</span>
-                        <span className="text-[11px] font-mono" style={{ color: grade.color + 'AA' }}>{grade.nameEn}</span>
+                      <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                        <span className={`font-bold text-sm sm:text-base ${grade.level === 1 ? 'text-amber-800' : grade.danger ? 'text-red-800' : 'text-slate-800'}`}>
+                          LOẠI {grade.level} — {grade.name}
+                        </span>
+                        <span className="text-[11px] font-medium text-slate-500 uppercase tracking-wide">{grade.nameEn}</span>
                       </div>
                     </div>
                     <span
-                      className="shrink-0 text-[10px] px-2.5 py-1 rounded-full font-semibold"
-                      style={{ backgroundColor: grade.color + '20', color: grade.color, border: `1px solid ${grade.color}40` }}
+                      className={`hidden sm:inline-flex shrink-0 text-[10px] px-2.5 py-1 rounded-full font-bold uppercase tracking-wide`}
+                      style={{ 
+                        backgroundColor: grade.tagType === 'positive' ? '#fef3c7' : grade.tagType === 'warning' ? '#ffedd5' : grade.tagType === 'danger' ? '#fee2e2' : '#f1f5f9',
+                        color: grade.tagType === 'positive' ? '#92400e' : grade.tagType === 'warning' ? '#c2410c' : grade.tagType === 'danger' ? '#b91c1c' : '#475569',
+                      }}
                     >
                       {grade.tag}
                     </span>
                   </div>
 
-                  {/* Grade detail grid */}
-                  <div className="grid sm:grid-cols-3 gap-0 divide-y sm:divide-y-0 sm:divide-x" style={{ '--tw-divide-opacity': 0.08 } as React.CSSProperties}>
-                    {/* Col 1: Defects */}
-                    <div className="p-3.5">
-                      <div className="text-[9px] text-[#9C8472] uppercase tracking-widest mb-1 font-semibold hidden sm:block">Khuyết tật</div>
-                      <div className="flex items-start gap-1.5">
-                        <Info size={10} className="mt-0.5 shrink-0" style={{ color: grade.color + '80' }} />
-                        <p className="text-xs leading-relaxed" style={{ color: grade.color + 'CC' }}>
-                          {grade.defects}
-                        </p>
+                  {/* Details Grid */}
+                  <div className="p-4 sm:p-5 grid sm:grid-cols-2 gap-4">
+                    <div className="space-y-3">
+                      <div>
+                         <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">Khuyết tật</span>
+                         <div className="flex items-start gap-1.5">
+                            <Info size={14} className={`mt-[2px] shrink-0 ${grade.danger ? 'text-red-500' : 'text-slate-400'}`} />
+                            <p className="text-sm font-medium text-slate-700 leading-snug">{grade.defects}</p>
+                         </div>
+                      </div>
+                      <div>
+                         <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">Cảm quan & Độ ẩm</span>
+                         <p className="text-[13px] text-slate-600 leading-relaxed">{grade.sensory}</p>
                       </div>
                     </div>
-                    {/* Col 2: Sensory */}
-                    <div className="p-3.5">
-                      <div className="text-[9px] text-white/78 uppercase tracking-widest mb-1 font-semibold hidden sm:block">Cảm quan</div>
-                      <p className="text-xs text-white/78 leading-relaxed">{grade.sensory}</p>
-                    </div>
-                    {/* Col 3: Market */}
-                    <div className="p-3.5">
-                      <div className="text-[9px] text-white/78 uppercase tracking-widest mb-1 font-semibold hidden sm:block">Thị trường</div>
-                      <div className="flex items-start gap-1.5">
-                        {grade.danger
-                          ? <AlertTriangle size={10} className="mt-0.5 shrink-0 text-red-400" />
-                          : <CheckCircle2 size={10} className="mt-0.5 shrink-0 text-green-500/70" />
-                        }
-                        <p className={`text-xs leading-relaxed ${grade.danger ? 'text-red-300/75' : 'text-white/72'}`}>
-                          {grade.market}
-                        </p>
-                      </div>
+                    
+                    <div className={`p-3 rounded-xl border ${grade.danger ? 'bg-red-100/50 border-red-200' : 'bg-slate-100/50 border-slate-200'}`}>
+                       <span className={`text-[10px] font-bold uppercase tracking-widest block mb-1.5 ${grade.danger ? 'text-red-800' : 'text-slate-500'}`}>Thực trạng thị trường</span>
+                       <div className="flex items-start gap-1.5">
+                          {grade.danger 
+                            ? <AlertTriangle size={14} className="mt-0.5 shrink-0 text-red-600" />
+                            : <CheckCircle2 size={14} className={`mt-0.5 shrink-0 ${grade.level===1 ? 'text-amber-600' : 'text-emerald-600'}`} />
+                          }
+                          <p className={`text-[13px] leading-relaxed ${grade.danger ? 'text-red-900 font-medium' : 'text-slate-700'}`}>
+                            {grade.market}
+                          </p>
+                       </div>
                     </div>
                   </div>
-
-                  {/* Bottom quality bar */}
-                  <div className="px-4 pb-3">
-                    <div className="h-0.5 rounded-full" style={{ background: `linear-gradient(to right, ${grade.color}55, transparent)`, width: `${(6 - grade.level) * 20}%` }} />
+                  
+                  {/* Mobile Tag Show */}
+                  <div className="sm:hidden px-4 pb-3">
+                    <span className={`inline-flex shrink-0 text-[10px] px-2.5 py-1 rounded-full font-bold uppercase tracking-wide`}
+                      style={{ backgroundColor: grade.danger ? '#fee2e2' : '#f1f5f9', color: grade.danger ? '#b91c1c' : '#475569' }}>
+                      {grade.tag}
+                    </span>
                   </div>
                 </div>
               ))}
 
-              {/* Warning callout */}
-              <div className="mt-2 p-4 rounded-2xl border border-red-900/40 bg-red-950/20 flex items-start gap-3">
-                <AlertTriangle size={16} className="text-red-400 shrink-0 mt-0.5" />
-                <p className="text-red-200/65 text-xs leading-relaxed">
-                  <strong className="text-red-300">Thực trạng nhức nhối:</strong> Đa số người tiêu dùng Việt Nam tại các
-                  quán vỉa hè, xe đẩy bình dân đang uống cà phê{' '}
-                  <strong className="text-red-300">Loại 4 và Loại 5</strong> — chứa đầy hạt đen, mốc, sâu bệnh — khi
-                  rang cháy khét và tẩm ướp hóa chất, khách hàng không thể nhận ra mình đang nạp mầm bệnh vào cơ thể.
+              {/* Warning box */}
+              <div className="mt-6 p-5 rounded-2xl border border-red-200 bg-red-50/80 flex items-start gap-3 shadow-sm">
+                <AlertTriangle size={20} className="text-red-600 shrink-0 mt-0.5" />
+                <p className="text-red-900 text-sm leading-relaxed">
+                  <strong className="text-red-700">Mối nguy khôn lường:</strong> Đa số phân khúc cà phê bình dân, xe đẩy lề đường đang sử dụng nguồn nguyên liệu là {' '}
+                  <strong className="text-red-700">cà phê Loại 4 và Loại 5</strong> — đầy rẫy hạt mốc, lép, đen. Chúng thường bị rang khét lẹt và tẩm hóa chất tột độ để đánh lừa vị giác, che giấu hoàn toàn sự độc hại bên trong.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* ══ PHÂN KHÚC THỊ TRƯỜNG ══════════════════════════════════ */}
+      <section className={`py-20 border-t border-slate-200 ${sectionBg2}`}>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-14">
+            <span className="badge bg-indigo-50 text-indigo-700 border border-indigo-200 mb-4 shadow-sm">📈 Chiến lược</span>
+            <h2 className="font-display text-3xl sm:text-4xl text-slate-800 italic mb-3">
+              5 Phân Khúc Cà Phê Việt Nam
+            </h2>
+            <p className="text-slate-500 text-sm max-w-xl mx-auto">
+              Thị trường rộng lớn nhưng phân hóa sâu sắc. FCD nhắm thẳng vào nhóm uống mộc đại trà và đặc sản vô hình (chiếm 26-33% thị phần).
+            </p>
+          </div>
+          
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {marketSegments.map((seg) => (
+              <div
+                key={seg.id}
+                className={`${bentoCardLight} p-6 flex flex-col ${
+                  seg.isFCDTarget
+                    ? 'border-amber-300 bg-amber-50/20 shadow-[0_8px_20px_rgb(245,174,92,0.12)]'
+                    : 'bg-white'
+                }`}
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="text-3xl drop-shadow-sm">{seg.icon}</span>
+                  <div>
+                     <h3 className="font-bold text-slate-800 text-[15px]">{seg.name}</h3>
+                     <span className="text-xs font-bold px-2 py-0.5 rounded-md mt-1 inline-block"
+                       style={{ backgroundColor: seg.color + '15', color: seg.color }}>
+                       Thị phần: {seg.share}
+                     </span>
+                  </div>
+                </div>
+                
+                <p className="text-[13px] text-slate-600 leading-relaxed mb-4 flex-1">
+                  {seg.weakness}
+                </p>
+                
+                <div className="mt-auto">
+                   <div className="text-[11px] text-slate-400 font-medium mb-1.5 flex justify-between">
+                     <span>Quy mô</span>
+                     <span>{seg.population}</span>
+                   </div>
+                   <div className="h-1.5 rounded-full bg-slate-100 overflow-hidden">
+                     <div 
+                       className="h-full rounded-full transition-all" 
+                       style={{ 
+                         width: seg.share.split('–')[0].replace('%','').replace('~','').trim() + '%',
+                         backgroundColor: seg.isFCDTarget ? '#C87E3A' : seg.color,
+                       }} 
+                     />
+                   </div>
+                   {seg.isFCDTarget && (
+                     <div className="mt-3 text-center">
+                        <span className="text-[10px] font-bold bg-[#C87E3A] text-white px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">
+                          🎯 Mục tiêu FCD
+                        </span>
+                     </div>
+                   )}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-10 p-8 rounded-[28px] bg-gradient-to-br from-amber-50 to-white border border-amber-200 shadow-md relative overflow-hidden">
+            <div className="relative z-10 flex flex-col sm:flex-row gap-6 items-center">
+              <div className="w-16 h-16 rounded-full bg-white shadow-md flex items-center justify-center shrink-0 border border-amber-100">
+                <span className="text-3xl">🎯</span>
+              </div>
+              <div>
+                <div className="font-display text-2xl italic mb-2 text-amber-800">Cơ hội vàng của FCD</div>
+                <p className="text-slate-700 text-[15px] leading-relaxed">
+                  Đem đến cho khách hàng một ly cà phê chuẩn <strong className="text-amber-800">Specialty (Đặc sản)</strong>,
+                  nhưng với <strong className="text-red-600 bg-red-50 px-1 rounded">chi phí vốn chỉ ngang ngửa cà phê hòa tan</strong> nhờ chính sách tặng miễn phí máy pha 20 bar.
                 </p>
               </div>
             </div>
@@ -469,137 +602,74 @@ export default function AnNhienPage() {
         </div>
       </section>
 
-      {/* ══ PHÂN KHÚC THỊ TRƯỜNG ══════════════════════════════════ */}
-      <section className="py-20 section-parchment">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-12">
-            <span className="badge badge-sage mb-4 inline-flex">📈 Phân tích thị trường</span>
-            <h2 className="font-display text-3xl sm:text-4xl text-[#1A120A] italic mb-3">
-              5 Phân Khúc Cà Phê Việt Nam
-            </h2>
-            <p className="text-[#6B5A4E] text-sm max-w-lg mx-auto">
-              FCD tấn công trực tiếp vào phân khúc số 4 &amp; 5 — chiếm ~26–33% thị phần, tương đương 10–13 triệu khách hàng mục tiêu
-            </p>
-          </div>
-          <div className="space-y-3">
-            {marketSegments.map((seg) => (
-              <div
-                key={seg.id}
-                className={`rounded-2xl p-5 border transition-all ${
-                  seg.isFCDTarget
-                    ? 'border-[#B87333]/40 bg-gradient-to-r from-[#FAF0E4] to-[#FDF8F2] shadow-md'
-                    : 'bg-white border-[#D9CABC]/60 card-nature'
-                }`}
-              >
-                <div className="flex items-start gap-4">
-                  <span className="text-2xl shrink-0">{seg.icon}</span>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex flex-wrap items-center gap-2 mb-1.5">
-                      <span className="font-semibold text-[#1A120A] text-sm">{seg.name}</span>
-                      <span
-                        className="text-xs font-bold px-2.5 py-0.5 rounded-full"
-                        style={{ backgroundColor: seg.color + '22', color: seg.color }}
-                      >
-                        {seg.share}
-                      </span>
-                      <span className="text-xs text-[#9C8472]">{seg.population}</span>
-                      {seg.isFCDTarget && (
-                        <span className="ml-auto text-xs bg-[#B87333] text-white px-2.5 py-0.5 rounded-full font-semibold shrink-0">
-                          🎯 FCD nhắm đến
-                        </span>
-                      )}
-                    </div>
-                    <p className="text-xs text-[#6B5A4E] leading-relaxed">{seg.weakness}</p>
-                  </div>
-                </div>
-                {/* Share bar */}
-                <div className="mt-3 h-1.5 rounded-full bg-[#E8DDD4]">
-                  <div
-                    className="h-full rounded-full transition-all"
-                    style={{
-                      width: seg.share.split('–')[0].replace('%','').replace('~','').trim() + '%',
-                      backgroundColor: seg.isFCDTarget ? '#B87333' : seg.color,
-                    }}
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* FCD positioning callout */}
-          <div className="mt-8 p-6 rounded-2xl bg-gradient-to-br from-[#B87333] to-[#7C3D18] text-white shadow-xl">
-            <div className="font-display text-xl italic mb-2">Cơ hội của FCD</div>
-            <p className="text-white/80 text-sm leading-relaxed">
-              Cung cấp chất lượng của nhóm cà phê cao cấp, nhưng với{' '}
-              <strong className="text-[#E3A558]">chi phí vốn chỉ bằng ly cà phê hòa tan</strong> nhờ chiếc máy pha áp suất 20 bar được tặng miễn phí.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* ══ NHẬN DIỆN 5 LOẠI CÀ PHÊ ═══════════════════════════════ */}
-      <section className="py-20 bg-[#F5EDE0]">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-12">
-            <span className="badge badge-sage mb-4 inline-flex backdrop-blur-sm">🔍 Nhận biết</span>
-            <h2 className="font-display text-3xl sm:text-4xl text-[#2B1810] italic mb-3">
-              Phân Biệt 5 Loại Cà Phê
+      <section className={`py-20 border-t border-slate-200 ${sectionBg1}`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-14">
+            <span className="badge bg-emerald-100 text-emerald-800 border border-emerald-200 mb-4 shadow-sm">🔍 Hướng dẫn nhận biết</span>
+            <h2 className="font-display text-3xl sm:text-4xl text-slate-800 italic mb-3">
+              Kỹ Năng Phân Biệt Cà Phê
             </h2>
-            <p className="text-[#6B5442] text-sm max-w-md mx-auto">
-              Nhận diện bằng mắt, mũi, miệng — để không bao giờ bị lừa bởi cà phê kém chất lượng
+            <p className="text-slate-500 text-sm max-w-md mx-auto">
+              Trang bị kiến thức để không bao giờ bị lừa bởi hương liệu và cà phê bẩn. Thử mù qua 3 giác quan: Mắt, Mũi, Miệng.
             </p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+          
+          <div className="grid md:grid-cols-2 xl:grid-cols-5 gap-4">
             {coffeeTypes.map((type) => (
               <div
                 key={type.id}
-                className={`rounded-2xl p-5 flex flex-col gap-3 border transition-all card-hover ${
+                className={`${bentoCardLight} p-5 flex flex-col transition-all ${
                   type.isFCD
-                    ? 'border-[#E3A558]/50 bg-gradient-to-b from-[#FFFCF8] to-[#F5EDE0] shadow-lg shadow-amber-900/10'
+                    ? 'border-amber-300/80 bg-amber-50/50 shadow-md scale-100 xl:scale-105 z-10'
                     : type.danger
-                    ? 'border-[#C0392B]/25 bg-[#FFF5F5]'
-                    : 'border-[#D5C4B4] bg-white'
+                    ? 'border-red-200 bg-white'
+                    : 'bg-white'
                 }`}
               >
-                <div className="flex items-center justify-between">
-                  <span className="text-2xl">{type.icon}</span>
+                <div className="flex items-center justify-between mb-4 border-b border-slate-100/60 pb-3">
+                  <div className="flex items-center gap-2">
+                    <span className="text-2xl drop-shadow-sm">{type.icon}</span>
+                    <h3 className={`font-bold text-[15px] leading-tight ${type.isFCD ? 'text-amber-800' : type.danger ? 'text-red-700' : 'text-slate-800'}`}>
+                      {type.name}
+                    </h3>
+                  </div>
                   {type.isFCD && (
-                    <span className="text-[10px] bg-[#E3A558]/20 text-[#7C3D18] border border-[#E3A558]/40 rounded-full px-2 py-0.5 font-semibold">
+                    <span className="text-[10px] bg-amber-500 text-white rounded-full px-2 py-0.5 font-bold shadow-sm shrink-0 uppercase tracking-wide">
                       FCD
                     </span>
                   )}
                   {type.danger && (
-                    <span className="text-[10px] bg-[#C0392B]/10 text-[#C0392B] border border-[#C0392B]/30 rounded-full px-2 py-0.5 font-semibold">
-                      ⚠ Nguy hiểm
+                    <span className="text-[10px] bg-red-100 text-red-700 rounded-full px-2 py-0.5 font-bold shrink-0 uppercase tracking-wide">
+                      Độc
                     </span>
                   )}
                 </div>
-                <div className={`font-semibold text-sm ${type.isFCD ? 'text-[#7C3D18]' : type.danger ? 'text-[#C0392B]' : 'text-[#2B1810]'}`}>
-                  {type.name}
-                </div>
 
-                <div className="space-y-2.5 flex-1">
+                <div className="space-y-4 flex-1">
                   <div>
-                    <div className={`text-[10px] font-semibold uppercase tracking-wider mb-0.5 ${type.isFCD ? 'text-[#B87333]' : type.danger ? 'text-[#C0392B]/80' : 'text-[#9C8472]'}`}>
-                      👁 Thị giác
+                    <div className={`text-[10px] font-bold uppercase tracking-widest mb-1.5 flex items-center gap-1.5 ${type.isFCD ? 'text-amber-700' : type.danger ? 'text-red-600' : 'text-slate-400'}`}>
+                      <span className="opacity-70">👁️</span> Nhìn
                     </div>
-                    <p className={`text-[11px] leading-relaxed ${type.isFCD ? 'text-[#5C3317]' : type.danger ? 'text-[#7B1E1E]' : 'text-[#6B5442]'}`}>
+                    <p className={`text-xs leading-relaxed ${type.isFCD ? 'text-slate-700' : 'text-slate-600'}`}>
                       {type.visual}
                     </p>
                   </div>
+                  
                   <div>
-                    <div className={`text-[10px] font-semibold uppercase tracking-wider mb-0.5 ${type.isFCD ? 'text-[#B87333]' : type.danger ? 'text-[#C0392B]/80' : 'text-[#9C8472]'}`}>
-                      👃 Khứu giác
+                    <div className={`text-[10px] font-bold uppercase tracking-widest mb-1.5 flex items-center gap-1.5 ${type.isFCD ? 'text-amber-700' : type.danger ? 'text-red-600' : 'text-slate-400'}`}>
+                       <span className="opacity-70">👃</span> Ngửi
                     </div>
-                    <p className={`text-[11px] leading-relaxed ${type.isFCD ? 'text-[#5C3317]' : type.danger ? 'text-[#7B1E1E]' : 'text-[#6B5442]'}`}>
+                    <p className={`text-xs leading-relaxed ${type.isFCD ? 'text-slate-700' : 'text-slate-600'}`}>
                       {type.smell}
                     </p>
                   </div>
-                  <div>
-                    <div className={`text-[10px] font-semibold uppercase tracking-wider mb-0.5 ${type.isFCD ? 'text-[#B87333]' : type.danger ? 'text-[#C0392B]/80' : 'text-[#9C8472]'}`}>
-                      👅 Vị giác
+                  
+                  <div className="bg-slate-50/50 -mx-3 p-3 rounded-xl mt-2">
+                    <div className={`text-[10px] font-bold uppercase tracking-widest mb-1.5 flex items-center gap-1.5 ${type.isFCD ? 'text-amber-700' : type.danger ? 'text-red-600' : 'text-slate-500'}`}>
+                       <span className="opacity-70">👅</span> Nếm
                     </div>
-                    <p className={`text-[11px] leading-relaxed ${type.isFCD ? 'text-[#B87333]' : type.danger ? 'text-[#7B1E1E]' : 'text-[#6B5442]'}`}>
+                    <p className={`text-[13px] leading-relaxed font-medium ${type.isFCD ? 'text-amber-900' : type.danger ? 'text-red-800' : 'text-slate-800'}`}>
                       {type.taste}
                     </p>
                   </div>
@@ -609,6 +679,6 @@ export default function AnNhienPage() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   )
 }
