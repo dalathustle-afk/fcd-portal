@@ -88,7 +88,7 @@ export default function AnNhienPage() {
           <div className="flex flex-col items-center gap-12">
             
             {/* Left: Infographic */}
-            <div className="w-full max-w-2xl">
+            <div className="w-full max-w-2xl mx-auto">
               <div>
                 <div className={`${bentoCardLight} overflow-hidden bg-white p-2`}>
                   <div className="rounded-2xl overflow-hidden bg-slate-900 border border-[var(--fcd-copper)]/20 relative">
@@ -119,7 +119,7 @@ export default function AnNhienPage() {
             </div>
 
             {/* Right: Detailed grade cards */}
-            <div className="w-full max-w-4xl space-y-4">
+            <div className="w-full max-w-4xl mx-auto space-y-4">
               {scaGrades.map((grade) => (
                 <div
                   key={grade.level}
@@ -229,15 +229,15 @@ export default function AnNhienPage() {
           
           <div className="flex flex-col items-center gap-10 w-full">
 
-            <div className="w-full max-w-4xl rounded-[32px] overflow-hidden shadow-xl border border-slate-200 bg-[#E6BF50] mb-8">
+            <div className="w-full max-w-4xl mx-auto rounded-[32px] overflow-hidden shadow-xl border border-slate-200 bg-[#E6BF50] mb-8">
                <Image src="/images/nature/quy-trinh-10-buoc.png" alt="10 Bước" width={1200} height={800} className="w-full h-auto object-contain" />
             </div>
-            <div className="grid lg:grid-cols-2 gap-4 w-full max-w-4xl">
+            <div className="grid lg:grid-cols-2 gap-4 w-full max-w-4xl mx-auto">
             {/* Connecting visual line (left side) */}
             
             
             {tenSteps.map((step, i) => (
-              <div key={step.step} className={`${bentoCardLight} p-5 flex gap-5 items-start z-10 animate-fade-in`} style={{ animationDelay: `${i * 0.05}s` }}>
+              <div key={step.step} className={`\${bentoCardLight} p-6 flex flex-col items-center text-center gap-4 z-10 animate-fade-in`} style={{ animationDelay: `${i * 0.05}s` }}>
                 <div className={`w-12 h-12 rounded-full flex flex-col items-center justify-center shrink-0 font-bold text-white shadow-md
                   ${step.step <= 5 
                     ? 'bg-gradient-to-br from-amber-500 to-amber-600' 
@@ -249,7 +249,7 @@ export default function AnNhienPage() {
                 </div>
                 
                 <div className="flex-1 min-w-0 pt-0.5">
-                  <div className="flex items-start justify-between gap-3 flex-wrap mb-1.5">
+                  <div className="flex flex-col items-center justify-center gap-2 mb-2">
                     <div className="font-bold text-slate-800 text-[15px] flex items-center gap-2">
                        <span className="text-lg drop-shadow-sm">{step.icon}</span> {step.title}
                     </div>
