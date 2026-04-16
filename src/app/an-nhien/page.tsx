@@ -67,6 +67,206 @@ export default function AnNhienPage() {
         </div>
       </section>
 
+
+      {/* ══ SCA 5 CẤP ĐỘ ═══════════════════════════════════════════ */}
+      <section className={`py-20 ${sectionBg4}`} id="sca-grade">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+
+          {/* Section header */}
+          <div className="text-center mb-14">
+            <span className="badge bg-amber-100 text-amber-800 border border-amber-200 mb-4 shadow-sm">📊 Tiêu chuẩn SCA quốc tế</span>
+            <h2 className="font-display text-3xl sm:text-5xl text-slate-800 italic mb-2 leading-tight">
+              Thang Đo 5 Cấp Độ Chất Lượng
+            </h2>
+            <p className="text-[#C87E3A] font-display italic text-xl mb-4">theo tiêu chuẩn Coffee Association (SCA)</p>
+            <p className="text-slate-600 text-sm max-w-xl mx-auto leading-relaxed">
+              Dựa trên tiêu chí đánh giá nghiêm ngặt, SCA đã xây dựng hệ thống 5 cấp độ. 
+              Đây là câu trả lời rõ ràng nhất cho việc: <em className="italic text-slate-500">Người Việt Nam đang thực sự bỏ tiền ra mua loại cà phê nào?</em>
+            </p>
+          </div>
+
+          <div className="flex flex-col items-center gap-12">
+            
+            {/* Left: Infographic */}
+            <div className="w-full max-w-2xl">
+              <div>
+                <div className={`${bentoCardLight} overflow-hidden bg-white p-2`}>
+                  <div className="rounded-2xl overflow-hidden bg-slate-900 border border-[var(--fcd-copper)]/20 relative">
+                    {/* The image is dark, so keep a dark container for it to blend well */}
+                    <Image
+                      src="/images/nature/sca-grade-scale.png"
+                      alt="Thang đo 5 cấp độ SCA — From Cầu Đất"
+                      width={560}
+                      height={840}
+                      className="w-full h-auto drop-shadow-xl opacity-90 mix-blend-screen"
+                    />
+                  </div>
+                </div>
+                
+                {/* FCD badge under image */}
+                <div className="mt-4 p-5 rounded-3xl bg-amber-50 border border-amber-200 shadow-sm relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-20 h-20 bg-amber-200 blur-2xl opacity-50"></div>
+                  <div className="flex items-center gap-2 mb-2 relative z-10">
+                    <span className="w-2.5 h-2.5 rounded-full bg-amber-500 shadow-[0_0_8px_rgba(245,174,92,0.8)] shrink-0 animate-pulse" />
+                    <span className="text-xs font-bold text-amber-800 uppercase tracking-widest">Tiêu chuẩn FCD đang áp dụng</span>
+                  </div>
+                  <p className="text-slate-700 text-sm leading-relaxed relative z-10">
+                    Sử dụng máy quang học Nhật Bản loại bỏ <strong className="text-amber-700">100% hạt lỗi mốc/đen</strong>,
+                    trực tiếp đưa sản phẩm đạt chuẩn <strong className="text-[#C87E3A]">Specialty Grade (Loại 1)</strong>.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Right: Detailed grade cards */}
+            <div className="w-full max-w-4xl space-y-4">
+              {scaGrades.map((grade) => (
+                <div
+                  key={grade.level}
+                  className={`rounded-[24px] border overflow-hidden transition-all duration-300 shadow-sm relative group
+                    ${grade.level === 1
+                      ? 'border-amber-300 bg-white shadow-[0_8px_30px_rgb(200,126,58,0.12)] hover:-translate-y-1'
+                      : grade.danger
+                      ? 'border-red-200 bg-red-50/50 hover:bg-red-50'
+                      : 'border-slate-200 bg-white hover:bg-slate-50'
+                  }`}
+                >
+                  {/* FCD highlight outline for Level 1 */}
+                  {grade.level === 1 && (
+                     <div className="absolute inset-0 border-2 border-[#C87E3A]/40 rounded-[24px] pointer-events-none"></div>
+                  )}
+
+                  {/* Level Header */}
+                  <div className="flex items-center gap-3 px-5 py-4 border-b border-slate-100/50 bg-white/50 backdrop-blur-sm">
+                    <div
+                      className="shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold shadow-sm"
+                      style={{ backgroundColor: grade.level === 1 ? '#C87E3A' : grade.danger ? '#ef4444' : '#64748b', color: 'white' }}
+                    >
+                      {grade.level}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                        <span className={`font-bold text-sm sm:text-base ${grade.level === 1 ? 'text-amber-800' : grade.danger ? 'text-red-800' : 'text-slate-800'}`}>
+                          LOẠI {grade.level} — {grade.name}
+                        </span>
+                        <span className="text-[11px] font-medium text-slate-500 uppercase tracking-wide">{grade.nameEn}</span>
+                      </div>
+                    </div>
+                    <span
+                      className={`hidden sm:inline-flex shrink-0 text-[10px] px-2.5 py-1 rounded-full font-bold uppercase tracking-wide`}
+                      style={{ 
+                        backgroundColor: grade.tagType === 'positive' ? '#fef3c7' : grade.tagType === 'warning' ? '#ffedd5' : grade.tagType === 'danger' ? '#fee2e2' : '#f1f5f9',
+                        color: grade.tagType === 'positive' ? '#92400e' : grade.tagType === 'warning' ? '#c2410c' : grade.tagType === 'danger' ? '#b91c1c' : '#475569',
+                      }}
+                    >
+                      {grade.tag}
+                    </span>
+                  </div>
+
+                  {/* Details Grid */}
+                  <div className="p-4 sm:p-5 grid sm:grid-cols-2 gap-4">
+                    <div className="space-y-3">
+                      <div>
+                         <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">Khuyết tật</span>
+                         <div className="flex items-start gap-1.5">
+                            <Info size={14} className={`mt-[2px] shrink-0 ${grade.danger ? 'text-red-500' : 'text-slate-400'}`} />
+                            <p className="text-sm font-medium text-slate-700 leading-snug">{grade.defects}</p>
+                         </div>
+                      </div>
+                      <div>
+                         <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">Cảm quan & Độ ẩm</span>
+                         <p className="text-[13px] text-slate-600 leading-relaxed">{grade.sensory}</p>
+                      </div>
+                    </div>
+                    
+                    <div className={`p-3 rounded-xl border ${grade.danger ? 'bg-red-100/50 border-red-200' : 'bg-slate-100/50 border-slate-200'}`}>
+                       <span className={`text-[10px] font-bold uppercase tracking-widest block mb-1.5 ${grade.danger ? 'text-red-800' : 'text-slate-500'}`}>Thực trạng thị trường</span>
+                       <div className="flex items-start gap-1.5">
+                          {grade.danger 
+                            ? <AlertTriangle size={14} className="mt-0.5 shrink-0 text-red-600" />
+                            : <CheckCircle2 size={14} className={`mt-0.5 shrink-0 ${grade.level===1 ? 'text-amber-600' : 'text-emerald-600'}`} />
+                          }
+                          <p className={`text-[13px] leading-relaxed ${grade.danger ? 'text-red-900 font-medium' : 'text-slate-700'}`}>
+                            {grade.market}
+                          </p>
+                       </div>
+                    </div>
+                  </div>
+                  
+                  {/* Mobile Tag Show */}
+                  <div className="sm:hidden px-4 pb-3">
+                    <span className={`inline-flex shrink-0 text-[10px] px-2.5 py-1 rounded-full font-bold uppercase tracking-wide`}
+                      style={{ backgroundColor: grade.danger ? '#fee2e2' : '#f1f5f9', color: grade.danger ? '#b91c1c' : '#475569' }}>
+                      {grade.tag}
+                    </span>
+                  </div>
+                </div>
+              ))}
+
+              {/* Warning box */}
+              <div className="mt-6 p-5 rounded-2xl border border-red-200 bg-red-50/80 flex items-start gap-3 shadow-sm">
+                <AlertTriangle size={20} className="text-red-600 shrink-0 mt-0.5" />
+                <p className="text-red-900 text-sm leading-relaxed">
+                  <strong className="text-red-700">Mối nguy khôn lường:</strong> Đa số phân khúc cà phê bình dân, xe đẩy lề đường đang sử dụng nguồn nguyên liệu là {' '}
+                  <strong className="text-red-700">cà phê Loại 4 và Loại 5</strong> — đầy rẫy hạt mốc, lép, đen. Chúng thường bị rang khét lẹt và tẩm hóa chất tột độ để đánh lừa vị giác, che giấu hoàn toàn sự độc hại bên trong.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+
+      {/* ══ 10 BƯỚC ═══════════════════════════════════════════════ */}
+      <section className={`py-20 ${sectionBg2}`}>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <div className="text-center mb-12">
+            <span className="badge bg-amber-100 text-amber-800 border border-amber-200 mb-4 shadow-sm">⚙️ Quy trình</span>
+            <h2 className="font-display text-3xl sm:text-4xl text-slate-800 italic mb-3">10 Bước Kiểm Soát Chất Lượng</h2>
+            <p className="text-slate-500 text-sm max-w-md mx-auto text-center">Hệ sinh thái khép kín từ nông trại đến ly cà phê — mỗi bước đều có chứng minh</p>
+          </div>
+          
+          <div className="flex flex-col items-center gap-10 w-full">
+
+            <div className="w-full max-w-4xl rounded-[32px] overflow-hidden shadow-xl border border-slate-200 bg-[#E6BF50] mb-8">
+               <Image src="/images/nature/quy-trinh-10-buoc.png" alt="10 Bước" width={1200} height={800} className="w-full h-auto object-contain" />
+            </div>
+            <div className="grid lg:grid-cols-2 gap-4 w-full max-w-4xl">
+            {/* Connecting visual line (left side) */}
+            
+            
+            {tenSteps.map((step, i) => (
+              <div key={step.step} className={`${bentoCardLight} p-5 flex gap-5 items-start z-10 animate-fade-in`} style={{ animationDelay: `${i * 0.05}s` }}>
+                <div className={`w-12 h-12 rounded-full flex flex-col items-center justify-center shrink-0 font-bold text-white shadow-md
+                  ${step.step <= 5 
+                    ? 'bg-gradient-to-br from-amber-500 to-amber-600' 
+                    : 'bg-gradient-to-br from-emerald-500 to-emerald-600'
+                  }
+                `}>
+                  <span className="text-[10px] uppercase opacity-70 mb-[-4px]">BƯỚC</span>
+                  <span className="text-lg leading-none">{step.step}</span>
+                </div>
+                
+                <div className="flex-1 min-w-0 pt-0.5">
+                  <div className="flex items-start justify-between gap-3 flex-wrap mb-1.5">
+                    <div className="font-bold text-slate-800 text-[15px] flex items-center gap-2">
+                       <span className="text-lg drop-shadow-sm">{step.icon}</span> {step.title}
+                    </div>
+                    <span className="text-[10px] bg-slate-100 text-slate-500 border border-slate-200 rounded-full px-2.5 py-1 shrink-0 font-medium whitespace-nowrap">
+                      {step.proof}
+                    </span>
+                  </div>
+                  <p className="text-sm text-slate-600 leading-relaxed">{step.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          </div>
+        </div>
+      </section>
+
+
       {/* ══ AN + NHIÊN MEANING ════════════════════════════════════ */}
       <section className={`py-20 ${sectionBg1}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -157,47 +357,6 @@ export default function AnNhienPage() {
         </div>
       </section>
 
-      {/* ══ 10 BƯỚC ═══════════════════════════════════════════════ */}
-      <section className={`py-20 ${sectionBg2}`}>
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <div className="text-center mb-12">
-            <span className="badge bg-amber-100 text-amber-800 border border-amber-200 mb-4 shadow-sm">⚙️ Quy trình</span>
-            <h2 className="font-display text-3xl sm:text-4xl text-slate-800 italic mb-3">10 Bước Kiểm Soát Chất Lượng</h2>
-            <p className="text-slate-500 text-sm max-w-md mx-auto text-center">Hệ sinh thái khép kín từ nông trại đến ly cà phê — mỗi bước đều có chứng minh</p>
-          </div>
-          
-          <div className="space-y-3 relative">
-            {/* Connecting visual line (left side) */}
-            <div className="absolute left-[38px] top-8 bottom-8 w-px bg-slate-200 hidden sm:block"></div>
-            
-            {tenSteps.map((step, i) => (
-              <div key={step.step} className={`${bentoCardLight} p-5 flex gap-5 items-start z-10 animate-fade-in`} style={{ animationDelay: `${i * 0.05}s` }}>
-                <div className={`w-12 h-12 rounded-full flex flex-col items-center justify-center shrink-0 font-bold text-white shadow-md
-                  ${step.step <= 5 
-                    ? 'bg-gradient-to-br from-amber-500 to-amber-600' 
-                    : 'bg-gradient-to-br from-emerald-500 to-emerald-600'
-                  }
-                `}>
-                  <span className="text-[10px] uppercase opacity-70 mb-[-4px]">BƯỚC</span>
-                  <span className="text-lg leading-none">{step.step}</span>
-                </div>
-                
-                <div className="flex-1 min-w-0 pt-0.5">
-                  <div className="flex items-start justify-between gap-3 flex-wrap mb-1.5">
-                    <div className="font-bold text-slate-800 text-[15px] flex items-center gap-2">
-                       <span className="text-lg drop-shadow-sm">{step.icon}</span> {step.title}
-                    </div>
-                    <span className="text-[10px] bg-slate-100 text-slate-500 border border-slate-200 rounded-full px-2.5 py-1 shrink-0 font-medium whitespace-nowrap">
-                      {step.proof}
-                    </span>
-                  </div>
-                  <p className="text-sm text-slate-600 leading-relaxed">{step.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ══ CHỨNG NHẬN ════════════════════════════════════════════ */}
       <section className={`py-20 ${sectionBg4}`}>
@@ -372,154 +531,6 @@ export default function AnNhienPage() {
         </div>
       </section>
 
-      {/* ══ SCA 5 CẤP ĐỘ ═══════════════════════════════════════════ */}
-      <section className={`py-20 ${sectionBg4}`} id="sca-grade">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-
-          {/* Section header */}
-          <div className="text-center mb-14">
-            <span className="badge bg-amber-100 text-amber-800 border border-amber-200 mb-4 shadow-sm">📊 Tiêu chuẩn SCA quốc tế</span>
-            <h2 className="font-display text-3xl sm:text-5xl text-slate-800 italic mb-2 leading-tight">
-              Thang Đo 5 Cấp Độ Chất Lượng
-            </h2>
-            <p className="text-[#C87E3A] font-display italic text-xl mb-4">theo tiêu chuẩn Coffee Association (SCA)</p>
-            <p className="text-slate-600 text-sm max-w-xl mx-auto leading-relaxed">
-              Dựa trên tiêu chí đánh giá nghiêm ngặt, SCA đã xây dựng hệ thống 5 cấp độ. 
-              Đây là câu trả lời rõ ràng nhất cho việc: <em className="italic text-slate-500">Người Việt Nam đang thực sự bỏ tiền ra mua loại cà phê nào?</em>
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-5 gap-8 items-start">
-            
-            {/* Left: Infographic */}
-            <div className="lg:col-span-2">
-              <div className="sticky top-24">
-                <div className={`${bentoCardLight} overflow-hidden bg-white p-2`}>
-                  <div className="rounded-2xl overflow-hidden bg-slate-900 border border-[var(--fcd-copper)]/20 relative">
-                    {/* The image is dark, so keep a dark container for it to blend well */}
-                    <Image
-                      src="/images/nature/sca-grade-scale.png"
-                      alt="Thang đo 5 cấp độ SCA — From Cầu Đất"
-                      width={560}
-                      height={840}
-                      className="w-full h-auto drop-shadow-xl opacity-90 mix-blend-screen"
-                    />
-                  </div>
-                </div>
-                
-                {/* FCD badge under image */}
-                <div className="mt-4 p-5 rounded-3xl bg-amber-50 border border-amber-200 shadow-sm relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-20 h-20 bg-amber-200 blur-2xl opacity-50"></div>
-                  <div className="flex items-center gap-2 mb-2 relative z-10">
-                    <span className="w-2.5 h-2.5 rounded-full bg-amber-500 shadow-[0_0_8px_rgba(245,174,92,0.8)] shrink-0 animate-pulse" />
-                    <span className="text-xs font-bold text-amber-800 uppercase tracking-widest">Tiêu chuẩn FCD đang áp dụng</span>
-                  </div>
-                  <p className="text-slate-700 text-sm leading-relaxed relative z-10">
-                    Sử dụng máy quang học Nhật Bản loại bỏ <strong className="text-amber-700">100% hạt lỗi mốc/đen</strong>,
-                    trực tiếp đưa sản phẩm đạt chuẩn <strong className="text-[#C87E3A]">Specialty Grade (Loại 1)</strong>.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Right: Detailed grade cards */}
-            <div className="lg:col-span-3 space-y-4">
-              {scaGrades.map((grade) => (
-                <div
-                  key={grade.level}
-                  className={`rounded-[24px] border overflow-hidden transition-all duration-300 shadow-sm relative group
-                    ${grade.level === 1
-                      ? 'border-amber-300 bg-white shadow-[0_8px_30px_rgb(200,126,58,0.12)] hover:-translate-y-1'
-                      : grade.danger
-                      ? 'border-red-200 bg-red-50/50 hover:bg-red-50'
-                      : 'border-slate-200 bg-white hover:bg-slate-50'
-                  }`}
-                >
-                  {/* FCD highlight outline for Level 1 */}
-                  {grade.level === 1 && (
-                     <div className="absolute inset-0 border-2 border-[#C87E3A]/40 rounded-[24px] pointer-events-none"></div>
-                  )}
-
-                  {/* Level Header */}
-                  <div className="flex items-center gap-3 px-5 py-4 border-b border-slate-100/50 bg-white/50 backdrop-blur-sm">
-                    <div
-                      className="shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold shadow-sm"
-                      style={{ backgroundColor: grade.level === 1 ? '#C87E3A' : grade.danger ? '#ef4444' : '#64748b', color: 'white' }}
-                    >
-                      {grade.level}
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-                        <span className={`font-bold text-sm sm:text-base ${grade.level === 1 ? 'text-amber-800' : grade.danger ? 'text-red-800' : 'text-slate-800'}`}>
-                          LOẠI {grade.level} — {grade.name}
-                        </span>
-                        <span className="text-[11px] font-medium text-slate-500 uppercase tracking-wide">{grade.nameEn}</span>
-                      </div>
-                    </div>
-                    <span
-                      className={`hidden sm:inline-flex shrink-0 text-[10px] px-2.5 py-1 rounded-full font-bold uppercase tracking-wide`}
-                      style={{ 
-                        backgroundColor: grade.tagType === 'positive' ? '#fef3c7' : grade.tagType === 'warning' ? '#ffedd5' : grade.tagType === 'danger' ? '#fee2e2' : '#f1f5f9',
-                        color: grade.tagType === 'positive' ? '#92400e' : grade.tagType === 'warning' ? '#c2410c' : grade.tagType === 'danger' ? '#b91c1c' : '#475569',
-                      }}
-                    >
-                      {grade.tag}
-                    </span>
-                  </div>
-
-                  {/* Details Grid */}
-                  <div className="p-4 sm:p-5 grid sm:grid-cols-2 gap-4">
-                    <div className="space-y-3">
-                      <div>
-                         <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">Khuyết tật</span>
-                         <div className="flex items-start gap-1.5">
-                            <Info size={14} className={`mt-[2px] shrink-0 ${grade.danger ? 'text-red-500' : 'text-slate-400'}`} />
-                            <p className="text-sm font-medium text-slate-700 leading-snug">{grade.defects}</p>
-                         </div>
-                      </div>
-                      <div>
-                         <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">Cảm quan & Độ ẩm</span>
-                         <p className="text-[13px] text-slate-600 leading-relaxed">{grade.sensory}</p>
-                      </div>
-                    </div>
-                    
-                    <div className={`p-3 rounded-xl border ${grade.danger ? 'bg-red-100/50 border-red-200' : 'bg-slate-100/50 border-slate-200'}`}>
-                       <span className={`text-[10px] font-bold uppercase tracking-widest block mb-1.5 ${grade.danger ? 'text-red-800' : 'text-slate-500'}`}>Thực trạng thị trường</span>
-                       <div className="flex items-start gap-1.5">
-                          {grade.danger 
-                            ? <AlertTriangle size={14} className="mt-0.5 shrink-0 text-red-600" />
-                            : <CheckCircle2 size={14} className={`mt-0.5 shrink-0 ${grade.level===1 ? 'text-amber-600' : 'text-emerald-600'}`} />
-                          }
-                          <p className={`text-[13px] leading-relaxed ${grade.danger ? 'text-red-900 font-medium' : 'text-slate-700'}`}>
-                            {grade.market}
-                          </p>
-                       </div>
-                    </div>
-                  </div>
-                  
-                  {/* Mobile Tag Show */}
-                  <div className="sm:hidden px-4 pb-3">
-                    <span className={`inline-flex shrink-0 text-[10px] px-2.5 py-1 rounded-full font-bold uppercase tracking-wide`}
-                      style={{ backgroundColor: grade.danger ? '#fee2e2' : '#f1f5f9', color: grade.danger ? '#b91c1c' : '#475569' }}>
-                      {grade.tag}
-                    </span>
-                  </div>
-                </div>
-              ))}
-
-              {/* Warning box */}
-              <div className="mt-6 p-5 rounded-2xl border border-red-200 bg-red-50/80 flex items-start gap-3 shadow-sm">
-                <AlertTriangle size={20} className="text-red-600 shrink-0 mt-0.5" />
-                <p className="text-red-900 text-sm leading-relaxed">
-                  <strong className="text-red-700">Mối nguy khôn lường:</strong> Đa số phân khúc cà phê bình dân, xe đẩy lề đường đang sử dụng nguồn nguyên liệu là {' '}
-                  <strong className="text-red-700">cà phê Loại 4 và Loại 5</strong> — đầy rẫy hạt mốc, lép, đen. Chúng thường bị rang khét lẹt và tẩm hóa chất tột độ để đánh lừa vị giác, che giấu hoàn toàn sự độc hại bên trong.
-                </p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </section>
 
       {/* ══ PHÂN KHÚC THỊ TRƯỜNG ══════════════════════════════════ */}
       <section className={`py-20 border-t border-slate-200 ${sectionBg2}`}>
