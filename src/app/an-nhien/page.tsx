@@ -514,6 +514,11 @@ export default function AnNhienPage() {
             <p className="text-slate-600 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">Từ phản hồi tích cực của gần 300 khách hàng, FCD không dừng lại ở việc cung cấp sản phẩm mà quyết định chuẩn hóa Giải pháp An Nhiên. Đặc biệt, chúng tôi mở hướng phối hợp cùng VDTBK và Quý nhà trường để trao tận tay sinh viên một công cụ khởi nghiệp tinh gọn, minh bạch và thực chiến.</p>
           </header>
 
+          {/* IMAGE MOU HIGHLIGHT */}
+          <div className="w-full max-w-5xl mx-auto rounded-[32px] overflow-hidden shadow-xl border border-slate-200 bg-[#E6BF50] mb-16">
+             <Image src="/images/nature/fcd-mou.jpg" alt="Lễ Ký Kết Thỏa Thuận Hợp Tác FCD x VDTBK" width={1280} height={720} className="w-full h-auto object-contain mix-blend-multiply" />
+          </div>
+
           {/* PROOF METRICS BOARD */}
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-0 divide-y sm:divide-y-0 sm:divide-x divide-slate-200 text-slate-800 bg-white shadow-sm border border-slate-100 rounded-3xl sm:rounded-full px-6 sm:px-10 py-6 sm:py-4 mb-16 max-w-4xl mx-auto">
              <div className="flex-1 text-center py-2 sm:py-0 px-4"><span className="text-sm font-semibold block text-slate-700">Gần 300 khách hàng trải nghiệm</span></div>
