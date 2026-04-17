@@ -229,9 +229,8 @@ export default function AnNhienPage() {
           
           <div className="flex flex-col items-center gap-10 w-full">
 
-            <div className="w-full max-w-4xl mx-auto rounded-[32px] overflow-hidden border border-amber-200/50 bg-amber-50/50 mb-8 p-10 flex flex-col items-center justify-center text-center">
-               <span className="text-amber-700/50 font-bold mb-2">[Khu vực Hình ảnh 10 Bước]</span>
-               <p className="text-sm text-slate-500">Vui lòng tải file ảnh "quy-trinh-10-buoc.png" vào thư mục public/images/nature/</p>
+            <div className="w-full max-w-4xl mx-auto rounded-[32px] overflow-hidden shadow-xl border border-slate-200 bg-[#E6BF50] mb-8">
+               <Image src="/images/nature/quy-trinh-10-buoc.jpg" alt="10 Bước" width={1200} height={800} className="w-full h-auto object-contain" />
             </div>
             <div className="grid lg:grid-cols-2 gap-4 w-full max-w-4xl mx-auto">
             {/* Connecting visual line (left side) */}
