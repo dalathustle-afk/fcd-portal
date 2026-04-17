@@ -396,8 +396,8 @@ export default function AnNhienPage() {
             </p>
           </div>
           
-          <div className="rounded-[28px] overflow-hidden border border-slate-200 shadow-[0_8px_30px_rgb(0,0,0,0.04)] bg-white">
-            <table className="w-full text-sm text-left whitespace-nowrap sm:whitespace-normal">
+          <div className="rounded-[28px] overflow-x-auto border border-slate-200 shadow-[0_8px_30px_rgb(0,0,0,0.04)] bg-white max-w-full">
+            <table className="w-full text-sm text-left whitespace-nowrap sm:whitespace-normal min-w-[600px]">
               <thead>
                 <tr className="bg-slate-50 border-b border-slate-200">
                   <th className="px-5 py-4 text-slate-500 font-bold text-xs uppercase tracking-wider">Mã / Dòng cà phê</th>

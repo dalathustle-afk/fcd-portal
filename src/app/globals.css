@@ -772,9 +772,3 @@ h2, h3, h4, h5, h6 {
 }
 .nav-link:hover { color: #E8A84C; }
 
-
-/* FIX TRIỆT ĐỂ: HORIZONTAL SCROLL OFFSET BUG TRÊN MÀN HÌNH PC WIDE */
-html, body {
-  overflow-x: hidden;
-  width: 100%;
-}

@@ -45,9 +45,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="vi" className={`${spectral.variable} ${beVietnamPro.variable}`}>
-      <body className="min-h-screen flex flex-col">
+      <body className="min-h-[100dvh] flex flex-col relative antialiased">
         <Navbar />
-        <main className="flex-1">{children}</main>
+        {/* Root Wrapper giới hạn bề ngang max, ko cho bung */}
+        <div className="flex-1 flex flex-col w-full max-w-[100vw] overflow-x-hidden relative">
+          <main className="flex-1 flex flex-col w-full">{children}</main>
+        </div>
         <Footer />
       </body>
     </html>
