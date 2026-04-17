@@ -515,8 +515,8 @@ export default function AnNhienPage() {
           </header>
 
           {/* IMAGE MOU HIGHLIGHT */}
-          <div className="w-full max-w-5xl mx-auto rounded-[32px] overflow-hidden shadow-xl border border-slate-200 bg-[#E6BF50] mb-16">
-             <Image src="/images/nature/fcd-mou.jpg" alt="Lễ Ký Kết Thỏa Thuận Hợp Tác FCD x VDTBK" width={1280} height={720} className="w-full h-auto object-contain mix-blend-multiply" />
+          <div className="w-full max-w-5xl mx-auto rounded-[32px] overflow-hidden shadow-xl border border-slate-200 bg-white mb-16">
+             <Image src="/images/nature/fcd-mou.jpg" alt="Lễ Ký Kết Thỏa Thuận Hợp Tác FCD x VDTBK" width={1280} height={720} className="w-full h-auto object-cover" />
           </div>
 
           {/* PROOF METRICS BOARD */}
