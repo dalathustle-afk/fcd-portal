@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowRight, Leaf, AlertTriangle, CheckCircle2, Info } from 'lucide-react'
+import { ArrowRight, Leaf, AlertTriangle, CheckCircle2, Info, BarChart3, Layers, GraduationCap, Rocket } from 'lucide-react'
 import {
   anMeaning, nhienMeaning, fiveNoes, tenSteps,
   proofPoints, costPerCup, anNhienCombo, barriersFaq,
@@ -502,6 +502,109 @@ export default function AnNhienPage() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ══ CHIẾN LƯỢC MỞ RỘNG & HỢP TÁC VDTBK ════════════════════ */}
+      <section id="strategic-validation" className="py-24 bg-[#FAF9F5] border-y border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <header className="text-center mb-16">
+            <span className="badge bg-slate-800 text-amber-400 border border-slate-700 mb-4 px-4 py-1.5 shadow-sm uppercase tracking-widest text-[10px] font-bold">Chiến lược</span>
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-slate-900 italic mb-6 leading-tight">Kiểm Chứng Thực Tế <br className="hidden sm:block" />— Bước Đệm Cho Quyết Định Chiến Lược</h2>
+            <p className="text-slate-600 text-sm sm:text-base max-w-2xl mx-auto leading-relaxed">Từ phản hồi tích cực của gần 300 khách hàng, FCD không dừng lại ở việc cung cấp sản phẩm mà quyết định chuẩn hóa Giải pháp An Nhiên. Đặc biệt, chúng tôi mở hướng phối hợp cùng VDTBK và Quý nhà trường để trao tận tay sinh viên một công cụ khởi nghiệp tinh gọn, minh bạch và thực chiến.</p>
+          </header>
+
+          {/* PROOF METRICS BOARD */}
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-0 divide-y sm:divide-y-0 sm:divide-x divide-slate-200 text-slate-800 bg-white shadow-sm border border-slate-100 rounded-3xl sm:rounded-full px-6 sm:px-10 py-6 sm:py-4 mb-16 max-w-4xl mx-auto">
+             <div className="flex-1 text-center py-2 sm:py-0 px-4"><span className="text-sm font-semibold block text-slate-700">Gần 300 khách hàng trải nghiệm</span></div>
+             <div className="flex-1 text-center py-2 sm:py-0 px-4"><span className="text-sm font-semibold block text-slate-700">Phản hồi thị trường tích cực</span></div>
+             <div className="flex-1 text-center py-2 sm:py-0 px-4"><span className="text-sm font-semibold block text-slate-700">Chuẩn hóa Giải pháp An Nhiên</span></div>
+             <div className="flex-1 text-center py-2 sm:py-0 px-4"><span className="text-sm font-semibold block text-amber-700">Đồng hành cùng VDTBK</span></div>
+          </div>
+
+          {/* 3 CARDS LAYOUT */}
+          <article className="grid lg:grid-cols-3 gap-8 mb-16">
+            
+            <div className="bg-white rounded-[2rem] p-8 border border-slate-100 shadow-[0_4px_25px_rgb(0,0,0,0.03)] flex flex-col hover:shadow-lg transition-shadow">
+              <div className="w-12 h-12 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center mb-6">
+                <BarChart3 size={24} strokeWidth={1.5} />
+              </div>
+              <h3 className="text-xl font-bold text-slate-800 mb-3">Khởi Nguồn Bằng Sự Đo Lường</h3>
+              <p className="text-sm text-slate-500 mb-6 leading-relaxed flex-1">Khảo sát và phục vụ thực tế gần 300 khách hàng tiên phong. Ghi nhận phản hồi vô cùng tích cực về giá trị thực của ly cà phê chuẩn SCA kết hợp cùng giải pháp thiết bị.</p>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 size={16} className="text-amber-500 mt-0.5 shrink-0" />
+                  <span className="text-sm text-slate-700 leading-snug">Thực thi dựa trên dữ liệu thật, không phỏng đoán cảm tính.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 size={16} className="text-amber-500 mt-0.5 shrink-0" />
+                  <span className="text-sm text-slate-700 leading-snug">Sản phẩm chứng minh được tính cạnh tranh trong bài toán vận hành.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 size={16} className="text-amber-500 mt-0.5 shrink-0" />
+                  <span className="text-sm text-slate-700 leading-snug">Khẳng định mô hình tiêu dùng &quot;An Nhiên&quot; là giải pháp tất yếu.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="bg-white rounded-[2rem] p-8 border border-slate-100 shadow-[0_4px_25px_rgb(0,0,0,0.03)] flex flex-col hover:shadow-lg transition-shadow relative overflow-hidden">
+              <div className="absolute top-0 right-0 p-8 opacity-5">
+                 <Rocket size={120} />
+              </div>
+              <div className="w-12 h-12 bg-slate-900 text-white rounded-xl flex items-center justify-center mb-6 relative z-10">
+                <Layers size={24} strokeWidth={1.5} />
+              </div>
+              <h3 className="text-xl font-bold text-slate-800 mb-3 relative z-10">Chuẩn Hóa Giải Pháp Vận Hành</h3>
+              <p className="text-sm text-slate-500 mb-6 leading-relaxed flex-1 relative z-10">FCD tiến hành đóng gói toàn diện mô hình thay vì chỉ dừng ở quy mô bán lẻ nguyên liệu. Từ sản phẩm hạt, kỹ thuật pha chiết cho tới thông điệp truyền thông.</p>
+              <ul className="space-y-3 relative z-10">
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 size={16} className="text-slate-800 mt-0.5 shrink-0" />
+                  <span className="text-sm text-slate-700 leading-snug">Loại bỏ rào cản tài chính bằng chính sách hỗ trợ thiết bị pha chế.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 size={16} className="text-slate-800 mt-0.5 shrink-0" />
+                  <span className="text-sm text-slate-700 leading-snug">Cơ cấu lại quy trình vận hành tinh gọn, dễ dàng nhân bản.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 size={16} className="text-slate-800 mt-0.5 shrink-0" />
+                  <span className="text-sm text-slate-700 leading-snug">Chuyển tiếp từ thử nghiệm sản phẩm sang hệ sinh thái giải pháp.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="bg-white rounded-[2rem] p-8 border border-slate-100 shadow-[0_4px_25px_rgb(0,0,0,0.03)] flex flex-col hover:shadow-lg transition-shadow">
+              <div className="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center mb-6">
+                <GraduationCap size={24} strokeWidth={1.5} />
+              </div>
+              <h3 className="text-xl font-bold text-slate-800 mb-3">Trao Công Cụ — Ươm Mầm Khởi Nghiệp</h3>
+              <p className="text-sm text-slate-500 mb-6 leading-relaxed flex-1">Định hướng phối hợp chiến lược cùng VDTBK và Quý nhà trường nhằm chuyển giao bộ công cụ khởi nghiệp thực chiến cho sinh viên.</p>
+              <ul className="space-y-3">
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 size={16} className="text-emerald-500 mt-0.5 shrink-0" />
+                  <span className="text-sm text-slate-700 leading-snug">Tiêu chuẩn minh bạch, dễ tiếp cận và bắt đầu ở quy mô nhỏ.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 size={16} className="text-emerald-500 mt-0.5 shrink-0" />
+                  <span className="text-sm text-slate-700 leading-snug">Cung cấp mô hình sales kit và hướng dẫn cốt lõi.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <CheckCircle2 size={16} className="text-emerald-500 mt-0.5 shrink-0" />
+                  <span className="text-sm text-slate-700 leading-snug">Xây dựng tư duy kinh doanh ưu việt với nền tảng là sự &quot;Tử Tế&quot;.</span>
+                </li>
+              </ul>
+            </div>
+
+          </article>
+
+          <footer className="max-w-3xl mx-auto text-center space-y-8">
+            <p className="text-[#3A5233] font-medium leading-relaxed italic text-base sm:text-lg">
+              &quot;Sự minh bạch của sản phẩm là nền tảng. Khi quy trình đủ sắc bén và mô hình đủ tinh gọn, FCD mong muốn điều đó trở thành đòn bẩy thiết yếu để sinh viên tự tin hiện thực hóa tư duy học thuật thành năng lực kinh doanh.&quot;
+            </p>
+            <Link href="/lien-he" className="inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full bg-slate-900 hover:bg-[#C87E3A] text-white font-bold text-sm transition-all shadow-md group">
+              Tìm hiểu mô hình phối hợp khởi nghiệp tinh gọn 
+              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </footer>
         </div>
       </section>
 
