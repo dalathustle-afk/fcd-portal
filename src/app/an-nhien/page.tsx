@@ -260,29 +260,42 @@ export default function AnNhienPage() {
                   key={step.step}
                   className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
                 >
-                  {/* items-stretch giúp 2 cột cùng chiều cao */}
                   <div className={`flex flex-col md:flex-row md:items-stretch ${!isEven ? 'md:flex-row-reverse' : ''}`}>
-                    {/* Image column — chiếm 40% width, ảnh fill toàn bộ */}
-                    <div className="md:w-2/5 shrink-0 min-h-[220px] md:min-h-[260px] relative bg-slate-100">
+
+                    {/* ── Image column: object-contain + zoom on click ── */}
+                    <a
+                      href={imgSrc}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Xem ảnh lớn: Bước ${step.step} — ${step.title}`}
+                      className="md:w-2/5 shrink-0 h-64 md:h-auto md:min-h-[280px] relative bg-[#1A120A] overflow-hidden group block cursor-zoom-in"
+                    >
                       <Image
                         src={imgSrc}
                         alt={`Bước ${step.step}: ${step.title}`}
                         fill
-                        className="object-cover"
+                        className="object-contain group-hover:scale-[1.04] transition-transform duration-500"
                         sizes="(max-width: 768px) 100vw, 40vw"
                         loading={i < 3 ? 'eager' : 'lazy'}
                       />
-                      {/* Step number overlay */}
-                      <div className={`absolute top-4 left-4 w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg z-10
+                      {/* Zoom hint — hiện khi hover */}
+                      <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                        <span className="text-white text-[10px] bg-black/70 px-2.5 py-1 rounded-full backdrop-blur-sm flex items-center gap-1 shadow">
+                          🔍 Nhấn để phóng to
+                        </span>
+                      </div>
+                    </a>
+
+                    {/* ── Text column: badge số ở đây ── */}
+                    <div className="flex-1 p-6 md:p-8 flex flex-col justify-center">
+                      {/* Step badge — chuyển sang text column */}
+                      <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-md mb-4 shrink-0
                         ${step.step <= 5
                           ? 'bg-gradient-to-br from-amber-500 to-amber-600'
                           : 'bg-gradient-to-br from-emerald-500 to-emerald-600'
                         }`}>
                         {step.step}
                       </div>
-                    </div>
-                    {/* Text column — flex-1 giúp tự giãn đều */}
-                    <div className="flex-1 p-6 md:p-8 flex flex-col justify-center">
                       <h3 className="font-bold text-slate-800 text-lg mb-3 leading-snug">
                         {step.icon} {step.title}
                       </h3>
@@ -292,6 +305,7 @@ export default function AnNhienPage() {
                         <span className={`text-xs font-medium italic ${step.step <= 5 ? 'text-amber-700' : 'text-emerald-700'}`}>{step.proof}</span>
                       </div>
                     </div>
+
                   </div>
                 </div>
               )
