@@ -32,7 +32,7 @@ const stepImages: Record<number, string> = {
   4:  '/images/nature/qtb4.jpg',
   5:  '/images/nature/qtb-5.jpg',
   6:  '/images/nature/qtb-6.jpg',
-  7:  '/images/nature/qtb-6.jpg',  // no qtb-7, reuse 6
+  7:  '/images/nature/qtb-7.jpg',
   8:  '/images/nature/qtb-8.jpg',
   9:  '/images/nature/qtb-9.jpg',
   10: '/images/nature/qtb-10.jpg',
