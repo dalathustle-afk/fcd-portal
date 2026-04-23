@@ -219,60 +219,84 @@ export default function AnNhienPage() {
 
       {/* ══ 10 BƯỚC ═══════════════════════════════════════════════ */}
       <section className={`py-20 ${sectionBg2}`}>
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
             <span className="badge bg-amber-100 text-amber-800 border border-amber-200 mb-4 shadow-sm">⚙️ Quy trình</span>
             <h2 className="font-display text-3xl sm:text-4xl text-slate-800 italic mb-3">10 Bước Kiểm Soát Chất Lượng</h2>
             <p className="text-slate-500 text-sm max-w-md mx-auto text-center">Hệ sinh thái khép kín từ nông trại đến ly cà phê — mỗi bước đều có chứng minh</p>
           </div>
-          
-          <div className="flex flex-col items-center gap-10 w-full">
 
-            {/* Overview infographic — giống module quy-trinh-chat-luong */}
-            <div className="w-full max-w-3xl mx-auto rounded-3xl overflow-hidden shadow-xl border border-slate-200">
-              <Image
-                src="/images/nature/qtb-0.jpg"
-                alt="Infographic 10 bước kiểm soát chất lượng FCD"
-                width={1200}
-                height={900}
-                className="w-full h-auto"
-                priority
-              />
-            </div>
-
-            <div className="w-full max-w-4xl mx-auto rounded-[32px] overflow-hidden shadow-xl border border-slate-200 bg-[#E6BF50]">
-               <Image src="/images/nature/quy-trinh-10-buoc.jpg" alt="10 Bước" width={1200} height={800} className="w-full h-auto object-contain" />
-            </div>
-            <div className="grid lg:grid-cols-2 gap-4 w-full max-w-4xl mx-auto">
-            {/* Connecting visual line (left side) */}
-            
-            
-            {tenSteps.map((step, i) => (
-              <div key={step.step} className={`\${bentoCardLight} p-6 flex flex-col items-center text-center gap-4 z-10 animate-fade-in`} style={{ animationDelay: `${i * 0.05}s` }}>
-                <div className={`w-12 h-12 rounded-full flex flex-col items-center justify-center shrink-0 font-bold text-white shadow-md
-                  ${step.step <= 5 
-                    ? 'bg-gradient-to-br from-amber-500 to-amber-600' 
-                    : 'bg-gradient-to-br from-emerald-500 to-emerald-600'
-                  }
-                `}>
-                  <span className="text-[10px] uppercase opacity-70 mb-[-4px]">BƯỚC</span>
-                  <span className="text-lg leading-none">{step.step}</span>
-                </div>
-                
-                <div className="flex-1 min-w-0 pt-0.5">
-                  <div className="flex flex-col items-center justify-center gap-2 mb-2">
-                    <div className="font-bold text-slate-800 text-[15px] flex items-center gap-2">
-                       <span className="text-lg drop-shadow-sm">{step.icon}</span> {step.title}
-                    </div>
-                    <span className="text-[10px] bg-slate-100 text-slate-500 border border-slate-200 rounded-full px-2.5 py-1 shrink-0 font-medium whitespace-nowrap">
-                      {step.proof}
-                    </span>
-                  </div>
-                  <p className="text-sm text-slate-600 leading-relaxed">{step.description}</p>
-                </div>
-              </div>
-            ))}
+          {/* Overview infographic */}
+          <div className="w-full max-w-3xl mx-auto rounded-3xl overflow-hidden shadow-xl border border-slate-200 mb-14">
+            <Image
+              src="/images/nature/qtb-0.jpg"
+              alt="Infographic 10 bước kiểm soát chất lượng FCD"
+              width={1200}
+              height={900}
+              className="w-full h-auto"
+              priority
+            />
           </div>
+
+          {/* Steps — alternating image/text layout (giống quy-trinh-chat-luong) */}
+          <div className="space-y-10">
+            {tenSteps.map((step, i) => {
+              const stepImgMap: Record<number, string> = {
+                1: '/images/nature/qtb-1.jpg',
+                2: '/images/nature/qtb-2.jpg',
+                3: '/images/nature/qtb-3.jpg',
+                4: '/images/nature/qtb4.jpg',
+                5: '/images/nature/qtb-5.jpg',
+                6: '/images/nature/qtb-6.jpg',
+                7: '/images/nature/qtb-6.jpg',
+                8: '/images/nature/qtb-8.jpg',
+                9: '/images/nature/qtb-9.jpg',
+                10: '/images/nature/qtb-10.jpg',
+              }
+              const imgSrc = stepImgMap[step.step]
+              const isEven = i % 2 === 0
+              return (
+                <div
+                  key={step.step}
+                  className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                >
+                  <div className={`flex flex-col md:flex-row ${!isEven ? 'md:flex-row-reverse' : ''}`}>
+                    {/* Image column */}
+                    <div className="md:w-2/5 shrink-0">
+                      <div className="relative h-56 md:h-full min-h-[200px] bg-slate-100">
+                        <Image
+                          src={imgSrc}
+                          alt={`Bước ${step.step}: ${step.title}`}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 768px) 100vw, 40vw"
+                          loading={i < 3 ? 'eager' : 'lazy'}
+                        />
+                        {/* Step number overlay */}
+                        <div className={`absolute top-4 left-4 w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg
+                          ${step.step <= 5
+                            ? 'bg-gradient-to-br from-amber-500 to-amber-600'
+                            : 'bg-gradient-to-br from-emerald-500 to-emerald-600'
+                          }`}>
+                          {step.step}
+                        </div>
+                      </div>
+                    </div>
+                    {/* Text column */}
+                    <div className="md:w-3/5 p-6 md:p-8 flex flex-col justify-center">
+                      <h3 className="font-bold text-slate-800 text-lg mb-3 leading-snug">
+                        {step.icon} {step.title}
+                      </h3>
+                      <p className="text-sm text-slate-600 leading-relaxed mb-4">{step.description}</p>
+                      <div className="flex items-center gap-2 mt-auto">
+                        <span className={`w-2 h-2 rounded-full shrink-0 ${step.step <= 5 ? 'bg-amber-500' : 'bg-emerald-500'}`} />
+                        <span className={`text-xs font-medium italic ${step.step <= 5 ? 'text-amber-700' : 'text-emerald-700'}`}>{step.proof}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )
+            })}
           </div>
         </div>
       </section>
