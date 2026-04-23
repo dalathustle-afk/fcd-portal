@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight, Leaf, AlertTriangle, CheckCircle2, Info, BarChart3, Layers, GraduationCap, Rocket } from 'lucide-react'
+import QualityStepsSection from '@/components/an-nhien/QualityStepsSection'
 import {
   anMeaning, nhienMeaning, fiveNoes, tenSteps,
   proofPoints, costPerCup, anNhienCombo, barriersFaq,
@@ -238,79 +239,8 @@ export default function AnNhienPage() {
             />
           </div>
 
-          {/* Steps — alternating image/text layout (giống quy-trinh-chat-luong) */}
-          <div className="space-y-10">
-            {tenSteps.map((step, i) => {
-              const stepImgMap: Record<number, string> = {
-                1: '/images/nature/qtb-1.jpg',
-                2: '/images/nature/qtb-2.jpg',
-                3: '/images/nature/qtb-3.jpg',
-                4: '/images/nature/qtb4.jpg',
-                5: '/images/nature/qtb-5.jpg',
-                6: '/images/nature/qtb-6.jpg',
-                7: '/images/nature/qtb-7.jpg',
-                8: '/images/nature/qtb-8.jpg',
-                9: '/images/nature/qtb-9.jpg',
-                10: '/images/nature/qtb-10.jpg',
-              }
-              const imgSrc = stepImgMap[step.step]
-              const isEven = i % 2 === 0
-              return (
-                <div
-                  key={step.step}
-                  className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
-                >
-                  <div className={`flex flex-col md:flex-row md:items-stretch ${!isEven ? 'md:flex-row-reverse' : ''}`}>
-
-                    {/* ── Image column: object-contain + zoom on click ── */}
-                    <a
-                      href={imgSrc}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`Xem ảnh lớn: Bước ${step.step} — ${step.title}`}
-                      className="md:w-2/5 shrink-0 h-64 md:h-auto md:min-h-[280px] relative bg-[#1A120A] overflow-hidden group block cursor-zoom-in"
-                    >
-                      <Image
-                        src={imgSrc}
-                        alt={`Bước ${step.step}: ${step.title}`}
-                        fill
-                        className="object-contain group-hover:scale-[1.04] transition-transform duration-500"
-                        sizes="(max-width: 768px) 100vw, 40vw"
-                        loading={i < 3 ? 'eager' : 'lazy'}
-                      />
-                      {/* Zoom hint — hiện khi hover */}
-                      <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                        <span className="text-white text-[10px] bg-black/70 px-2.5 py-1 rounded-full backdrop-blur-sm flex items-center gap-1 shadow">
-                          🔍 Nhấn để phóng to
-                        </span>
-                      </div>
-                    </a>
-
-                    {/* ── Text column: badge số ở đây ── */}
-                    <div className="flex-1 p-6 md:p-8 flex flex-col justify-center">
-                      {/* Step badge — chuyển sang text column */}
-                      <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-md mb-4 shrink-0
-                        ${step.step <= 5
-                          ? 'bg-gradient-to-br from-amber-500 to-amber-600'
-                          : 'bg-gradient-to-br from-emerald-500 to-emerald-600'
-                        }`}>
-                        {step.step}
-                      </div>
-                      <h3 className="font-bold text-slate-800 text-lg mb-3 leading-snug">
-                        {step.icon} {step.title}
-                      </h3>
-                      <p className="text-sm text-slate-600 leading-relaxed mb-4">{step.description}</p>
-                      <div className="flex items-center gap-2 mt-auto">
-                        <span className={`w-2 h-2 rounded-full shrink-0 ${step.step <= 5 ? 'bg-amber-500' : 'bg-emerald-500'}`} />
-                        <span className={`text-xs font-medium italic ${step.step <= 5 ? 'text-amber-700' : 'text-emerald-700'}`}>{step.proof}</span>
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-              )
-            })}
-          </div>
+          {/* Steps — client component có lightbox */}
+          <QualityStepsSection steps={tenSteps} />
         </div>
       </section>
 
