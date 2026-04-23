@@ -310,7 +310,7 @@ export const anNhienCombo = {
   ],
   vipBenefits: [
     { benefit: 'Chiết khấu mua hạt', value: '15–22%', note: 'Vĩnh viễn khi là thành viên VIP' },
-    { benefit: 'Hoa hồng CTV', value: '10%', note: 'Từ đơn hàng của người được giới thiệu' },
+    { benefit: 'Hoa hồng CTV', value: '', note: 'Từ đơn hàng của người được giới thiệu' },
     { benefit: 'Đào tạo kiến thức cà phê, kỹ năng nghiệp vụ', value: 'Miễn phí', note: 'Online/offline về thưởng thức và vận hành' },
     { benefit: 'Chính sách hậu mãi', value: 'Thịnh vượng với đối tác, tích hợp công nghệ', note: 'Đối soát minh bạch trên nền tảng quản lý' },
   ],
