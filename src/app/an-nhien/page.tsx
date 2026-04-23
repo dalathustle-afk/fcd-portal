@@ -24,7 +24,7 @@ export default function AnNhienPage() {
   const sectionBg4 = "bg-slate-50"; // Ngả xanh lam/xám rất nhẹ cho tương phản
 
   return (
-    <div className="bg-[#FDFBF7] text-slate-900 font-body">
+    <div className="bg-[#FDFBF7] text-slate-900 font-body w-full min-w-0">
       {/* ══ HERO — Cinematic An Nhiên (Giữ tối phần trên cùng để hợp với Video) ══════ */}
       <section className="relative min-h-[75vh] flex items-center justify-center overflow-hidden">
         {/* Video background */}
