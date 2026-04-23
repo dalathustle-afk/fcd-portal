@@ -260,30 +260,29 @@ export default function AnNhienPage() {
                   key={step.step}
                   className="bg-white rounded-3xl border border-slate-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
                 >
-                  <div className={`flex flex-col md:flex-row ${!isEven ? 'md:flex-row-reverse' : ''}`}>
-                    {/* Image column */}
-                    <div className="md:w-2/5 shrink-0">
-                      <div className="relative h-56 md:h-full min-h-[200px] bg-slate-100">
-                        <Image
-                          src={imgSrc}
-                          alt={`Bước ${step.step}: ${step.title}`}
-                          fill
-                          className="object-cover"
-                          sizes="(max-width: 768px) 100vw, 40vw"
-                          loading={i < 3 ? 'eager' : 'lazy'}
-                        />
-                        {/* Step number overlay */}
-                        <div className={`absolute top-4 left-4 w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg
-                          ${step.step <= 5
-                            ? 'bg-gradient-to-br from-amber-500 to-amber-600'
-                            : 'bg-gradient-to-br from-emerald-500 to-emerald-600'
-                          }`}>
-                          {step.step}
-                        </div>
+                  {/* items-stretch giúp 2 cột cùng chiều cao */}
+                  <div className={`flex flex-col md:flex-row md:items-stretch ${!isEven ? 'md:flex-row-reverse' : ''}`}>
+                    {/* Image column — chiếm 40% width, ảnh fill toàn bộ */}
+                    <div className="md:w-2/5 shrink-0 min-h-[220px] md:min-h-[260px] relative bg-slate-100">
+                      <Image
+                        src={imgSrc}
+                        alt={`Bước ${step.step}: ${step.title}`}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 40vw"
+                        loading={i < 3 ? 'eager' : 'lazy'}
+                      />
+                      {/* Step number overlay */}
+                      <div className={`absolute top-4 left-4 w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg z-10
+                        ${step.step <= 5
+                          ? 'bg-gradient-to-br from-amber-500 to-amber-600'
+                          : 'bg-gradient-to-br from-emerald-500 to-emerald-600'
+                        }`}>
+                        {step.step}
                       </div>
                     </div>
-                    {/* Text column */}
-                    <div className="md:w-3/5 p-6 md:p-8 flex flex-col justify-center">
+                    {/* Text column — flex-1 giúp tự giãn đều */}
+                    <div className="flex-1 p-6 md:p-8 flex flex-col justify-center">
                       <h3 className="font-bold text-slate-800 text-lg mb-3 leading-snug">
                         {step.icon} {step.title}
                       </h3>
